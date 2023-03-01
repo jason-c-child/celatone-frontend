@@ -4,7 +4,6 @@ import { useWallet } from "@cosmos-kit/react";
 
 import {
   getExplorerBlockUrl,
-  getExplorerTxUrl,
   getProposalUrl,
   getExplorerValidatorUrl,
 } from "lib/app-fns/explorer";
@@ -41,7 +40,7 @@ const getNavigationUrl = (
   let url = "";
   switch (type) {
     case "tx_hash":
-      url = getExplorerTxUrl(currentChainName);
+      url = "/tx";
       break;
     case "contract_address":
       url = "/contract";
@@ -146,7 +145,8 @@ export const ExplorerLink = ({
   const isInternal =
     type === "code_id" ||
     type === "contract_address" ||
-    type === "user_address";
+    type === "user_address" ||
+    type === "tx_hash";
 
   const [hrefLink, textValue] = [
     getNavigationUrl(type, currentChainName, copyValue || value),
