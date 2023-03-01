@@ -38,6 +38,7 @@ const variantStyle: Record<
     "> div > p:first-of-type": {
       minW: "180px",
       w: "180px",
+      mr: 4,
       color: "text.dark",
       fontWeight: 500,
     },

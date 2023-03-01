@@ -4,6 +4,7 @@ import { IoIosWarning } from "react-icons/io";
 import { MdCheckCircle, MdLaunch } from "react-icons/md";
 
 import { ExplorerLink } from "lib/components/ExplorerLink";
+import { useLCDEndpoint } from "lib/hooks";
 import type { TxData } from "lib/services/txService";
 import { dateFromNow, formatUTC } from "lib/utils";
 
@@ -16,7 +17,15 @@ const DotSeparator = () => {
 };
 
 export const TxHeader = ({ txData, ...flexProps }: TxHeaderProps) => {
+  const lcdEndpoint = useLCDEndpoint();
   const isTxFailed = Boolean(txData.code);
+  const openLcdPage = () => {
+    window.open(
+      `${lcdEndpoint}/txs/${txData.txhash}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
   return (
     <Flex direction="column" gap={2} {...flexProps}>
       <Flex justify="space-between" align="center">
@@ -26,6 +35,7 @@ export const TxHeader = ({ txData, ...flexProps }: TxHeaderProps) => {
         <Button
           variant="ghost-gray"
           rightIcon={<Icon as={MdLaunch} boxSize={5} color="text.dark" />}
+          onClick={openLcdPage}
         >
           View in JSON
         </Button>
