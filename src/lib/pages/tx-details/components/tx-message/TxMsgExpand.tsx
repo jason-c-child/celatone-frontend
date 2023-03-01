@@ -12,8 +12,8 @@ import {
   MdMail,
 } from "react-icons/md";
 
+import { useGetAddressType } from "lib/app-provider";
 import { ExplorerLink } from "lib/components/ExplorerLink";
-import { useGetAddressType } from "lib/hooks";
 import type { Addr } from "lib/types";
 
 import type { TxMsgData } from ".";

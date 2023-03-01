@@ -2,7 +2,7 @@ import { Button, Icon } from "@chakra-ui/react";
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 
-import { useGetAddressType } from "lib/hooks";
+import { useGetAddressType } from "lib/app-provider";
 import type { PermissionAddresses } from "lib/types";
 
 import { ExplorerLink } from "./ExplorerLink";

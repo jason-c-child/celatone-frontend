@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 
-import { TxReceiptRender } from "lib/components/tx/receipt";
-import { useGetAddressType } from "lib/hooks";
+import { useGetAddressType } from "lib/app-provider";
+import { TxReceiptRender } from "lib/components/tx";
 import { useAssetInfos } from "lib/services/assetService";
 import type { TxReceipt } from "lib/types";
 

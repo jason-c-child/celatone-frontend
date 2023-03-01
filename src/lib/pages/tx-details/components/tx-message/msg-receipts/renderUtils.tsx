@@ -1,10 +1,10 @@
 import { Text } from "@chakra-ui/react";
 import type { Coin } from "@cosmjs/stargate";
 
+import type { AddressReturnType } from "lib/app-provider";
 import type { LinkType } from "lib/components/ExplorerLink";
 import { ExplorerLink } from "lib/components/ExplorerLink";
 import JsonReadOnly from "lib/components/json/JsonReadOnly";
-import type { AddressReturnType } from "lib/hooks";
 import type {
   Addr,
   AssetInfo,

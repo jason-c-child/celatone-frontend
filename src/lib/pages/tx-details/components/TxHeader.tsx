@@ -3,8 +3,8 @@ import { Button, Box, Flex, Heading, Icon, Text } from "@chakra-ui/react";
 import { IoIosWarning } from "react-icons/io";
 import { MdCheckCircle, MdLaunch } from "react-icons/md";
 
+import { useLCDEndpoint } from "lib/app-provider";
 import { ExplorerLink } from "lib/components/ExplorerLink";
-import { useLCDEndpoint } from "lib/hooks";
 import type { TxData } from "lib/services/txService";
 import { dateFromNow, formatUTC } from "lib/utils";
 

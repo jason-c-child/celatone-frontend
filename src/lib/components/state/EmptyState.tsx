@@ -8,6 +8,7 @@ interface EmptyStateProps {
   imageVariant?: ImageVariant;
   message: string;
   heading?: string;
+  withBorder?: boolean;
 }
 
 const imageSourceMap: Record<ImageVariant, string> = {
@@ -18,10 +19,16 @@ const imageSourceMap: Record<ImageVariant, string> = {
 export const EmptyState = ({
   icon,
   message,
-  heading,
   imageVariant,
-}: EmptyStateProps) => {
-  return (
+  heading,
+  withBorder = false,
+}: EmptyStateProps) => (
+  <Flex
+    py="64px"
+    direction="column"
+    borderY={withBorder ? "1px solid" : undefined}
+    borderColor="pebble.700"
+  >
     <Flex alignItems="center" flexDir="column" gap="4" width="full">
       {icon && <Icon as={icon} color="pebble.600" boxSize="16" />}
       {imageVariant && (
@@ -40,5 +47,5 @@ export const EmptyState = ({
         {message}
       </Text>
     </Flex>
-  );
-};
+  </Flex>
+);

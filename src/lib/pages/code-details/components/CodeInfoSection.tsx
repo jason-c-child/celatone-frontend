@@ -1,10 +1,10 @@
 import { Heading, Flex, Text, Box, Grid } from "@chakra-ui/react";
 
+import { useGetAddressType } from "lib/app-provider";
 import { ExplorerLink } from "lib/components/ExplorerLink";
 import { LabelText } from "lib/components/LabelText";
 import { PermissionChip } from "lib/components/PermissionChip";
 import { ViewPermissionAddresses } from "lib/components/ViewPermissionAddresses";
-import { useGetAddressType } from "lib/hooks";
 import type { CodeData } from "lib/types";
 import { dateFromNow, formatUTC, getAddressTypeText } from "lib/utils";
 

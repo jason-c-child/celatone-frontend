@@ -31,13 +31,11 @@ const TxDetails = () => {
           </Flex>
         </>
       ) : (
-        <Flex mt="24px" py="48px" borderWidth="1px 0" borderColor="pebble.700">
-          <EmptyState
-            imageVariant="not-found"
-            heading="Transaction does not exist"
-            message="Please check your input or make sure you have selected the correct network."
-          />
-        </Flex>
+        <EmptyState
+          imageVariant="not-found"
+          heading="Transaction does not exist"
+          message="Please check your input or make sure you have selected the correct network."
+        />
       )}
     </PageContainer>
   );

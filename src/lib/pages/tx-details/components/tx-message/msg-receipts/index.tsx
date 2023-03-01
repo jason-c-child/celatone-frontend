@@ -5,10 +5,10 @@ import { findAttribute } from "@cosmjs/stargate/build/logs";
 import big from "big.js";
 
 import type { TxMsgData } from "..";
+import type { AddressReturnType } from "lib/app-provider";
 import { CopyButton } from "lib/components/copy";
 import { PermissionChip } from "lib/components/PermissionChip";
 import { ViewPermissionAddresses } from "lib/components/ViewPermissionAddresses";
-import type { AddressReturnType } from "lib/hooks";
 import type { TxReceipt, Option, AssetInfo } from "lib/types";
 import { formatUTC, parseDate } from "lib/utils";
 

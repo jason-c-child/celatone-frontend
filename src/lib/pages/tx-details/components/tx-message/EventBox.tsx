@@ -5,10 +5,10 @@ import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { MdList } from "react-icons/md";
 
+import { useGetAddressType } from "lib/app-provider";
 import { ExplorerLink } from "lib/components/ExplorerLink";
 import JsonReadOnly from "lib/components/json/JsonReadOnly";
-import { TxReceiptRender } from "lib/components/tx/receipt";
-import { useGetAddressType } from "lib/hooks";
+import { TxReceiptRender } from "lib/components/tx";
 import type { TxReceipt } from "lib/types";
 import { jsonPrettify, jsonValidate } from "lib/utils";
 
