@@ -165,6 +165,11 @@ export const TxMsgExpand = ({
         </>
       );
       break;
+    // vote
+    // delegate
+    // migrate
+    // update admin
+    // clear admin
     default: {
       const msgType = type.split("/");
       content =

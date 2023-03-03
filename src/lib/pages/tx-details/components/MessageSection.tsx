@@ -42,7 +42,6 @@ export const MessageSection = ({ txData }: MessageSectionProps) => {
             type={msg.type}
             value={msg.value}
             log={msgLog}
-            events={txData.events}
             isSingleMsg={msgs.length === 1}
           />
         );
