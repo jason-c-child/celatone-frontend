@@ -1,10 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 import { BackButton } from "lib/components/button";
 import { Loading } from "lib/components/Loading";
 import PageContainer from "lib/components/PageContainer";
 import { EmptyState } from "lib/components/state/EmptyState";
+import { AmpEvent, AmpTrack } from "lib/services/amplitude";
 import { useTxData } from "lib/services/txService";
 import { getFirstQueryParam } from "lib/utils";
 
@@ -16,6 +18,10 @@ const TxDetails = () => {
   const hashParam = getFirstQueryParam(router.query.txHash);
 
   const { data: txData, isLoading } = useTxData(hashParam);
+
+  useEffect(() => {
+    if (router.isReady) AmpTrack(AmpEvent.TO_TRANSACTION_DETAIL);
+  }, [router.isReady]);
 
   if (isLoading) return <Loading />;
 

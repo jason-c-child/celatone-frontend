@@ -86,3 +86,8 @@ export const formatPrice = (value: USD<BigSource>): string => {
   }
   return `$${d6}`;
 };
+
+export const formatInteger = (n: BigSource): string => {
+  const formatter = formatDemimal({ decimalPoints: 0, delimiter: true });
+  return formatter(n, "FormatError");
+};

@@ -12,9 +12,9 @@ interface TxHeaderProps extends FlexProps {
   txData: TxData;
 }
 
-const DotSeparator = () => {
-  return <Box bg="violet.darker" borderRadius="50%" w="4px" h="4px" />;
-};
+const DotSeparator = () => (
+  <Box bg="violet.darker" borderRadius="50%" w="4px" h="4px" />
+);
 
 export const TxHeader = ({ txData, ...flexProps }: TxHeaderProps) => {
   const lcdEndpoint = useLCDEndpoint();
