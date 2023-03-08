@@ -10,6 +10,11 @@ import {
   MdMessage,
   MdSend,
   MdMail,
+  MdOutlineHowToVote,
+  MdDonutLarge,
+  MdFormatIndentIncrease,
+  MdPersonRemove,
+  MdManageAccounts,
 } from "react-icons/md";
 
 import { useGetAddressType } from "lib/app-provider";
@@ -17,6 +22,7 @@ import { ExplorerLink } from "lib/components/ExplorerLink";
 import type { Addr } from "lib/types";
 
 import type { TxMsgData } from ".";
+import { voteOption } from "./msg-receipts/mapping";
 
 interface TxMsgExpandProps extends TxMsgData {
   isExpand: boolean;
@@ -24,8 +30,7 @@ interface TxMsgExpandProps extends TxMsgData {
 }
 
 export const TxMsgExpand = ({
-  type,
-  value,
+  msgBody,
   log,
   isExpand,
   onClick,
@@ -36,9 +41,10 @@ export const TxMsgExpand = ({
   const isIBC = Boolean(
     log?.events?.find((event) => event.type === "send_packet")
   );
+  const { "@type": type, ...body } = msgBody;
 
   switch (type) {
-    case "wasm/MsgStoreCode":
+    case "/cosmwasm.wasm.v1.MsgStoreCode":
       msgIcon = MdUpload;
       content = (
         <>
@@ -59,7 +65,7 @@ export const TxMsgExpand = ({
         </>
       );
       break;
-    case "wasm/MsgInstantiateContract":
+    case "/cosmwasm.wasm.v1.MsgInstantiateContract":
       msgIcon = MdAdd;
       content = (
         <>
@@ -77,14 +83,14 @@ export const TxMsgExpand = ({
           <p>from</p>
           <ExplorerLink
             type="code_id"
-            value={value.codeId}
+            value={body.code_id}
             canCopyWithHover
             textVariant="body1"
           />
         </>
       );
       break;
-    case "wasm/MsgInstantiateContract2":
+    case "/cosmwasm.wasm.v1.MsgInstantiateContract2":
       msgIcon = MdAdd;
       content = (
         <>
@@ -102,34 +108,88 @@ export const TxMsgExpand = ({
           <p>from</p>
           <ExplorerLink
             type="code_id"
-            value={value.codeId}
+            value={body.code_id}
             canCopyWithHover
             textVariant="body1"
           />
         </>
       );
       break;
-    case "wasm/MsgExecuteContract":
+    case "/cosmwasm.wasm.v1.MsgExecuteContract":
       msgIcon = MdMessage;
       content = (
         <>
           Execute
-          <span style={{ fontWeight: 700 }}>
-            {Object.keys(value.msg).at(0)}
-          </span>
+          <span style={{ fontWeight: 700 }}>{Object.keys(body.msg).at(0)}</span>
           on
           <ExplorerLink
             type="contract_address"
-            value={value.contract}
+            value={body.contract}
             canCopyWithHover
             textVariant="body1"
           />
         </>
       );
       break;
-    case "cosmos-sdk/MsgSend":
+    case "/cosmwasm.wasm.v1.MsgMigrateContract":
+      msgIcon = MdFormatIndentIncrease;
+      content = (
+        <>
+          Migrate{" "}
+          <ExplorerLink
+            type="contract_address"
+            value={body.contract}
+            canCopyWithHover
+            textVariant="body1"
+          />{" "}
+          to Code ID{" "}
+          <ExplorerLink
+            type="code_id"
+            value={body.code_id}
+            canCopyWithHover
+            textVariant="body1"
+          />
+        </>
+      );
+      break;
+    case "/cosmwasm.wasm.v1.MsgUpdateAdmin":
+      msgIcon = MdManageAccounts;
+      content = (
+        <>
+          Update admin on{" "}
+          <ExplorerLink
+            type="contract_address"
+            value={body.contract}
+            canCopyWithHover
+            textVariant="body1"
+          />{" "}
+          to{" "}
+          <ExplorerLink
+            type={getAddressType(body.new_admin)}
+            value={body.new_admin}
+            canCopyWithHover
+            textVariant="body1"
+          />
+        </>
+      );
+      break;
+    case "/cosmwasm.wasm.v1.MsgClearAdmin":
+      msgIcon = MdPersonRemove;
+      content = (
+        <>
+          Clear admin on{" "}
+          <ExplorerLink
+            type="contract_address"
+            value={body.contract}
+            canCopyWithHover
+            textVariant="body1"
+          />
+        </>
+      );
+      break;
+    case "/cosmos.bank.v1beta1.MsgSend":
       {
-        const toAddress = value.toAddress as Addr;
+        const toAddress = body.to_address as Addr;
         msgIcon = MdSend;
         content = (
           <>
@@ -144,7 +204,7 @@ export const TxMsgExpand = ({
         );
       }
       break;
-    case "cosmos-sdk/MsgSubmitProposal":
+    case "/cosmos.gov.v1beta1.MsgSubmitProposal":
       msgIcon = MdMail;
       content = (
         <>
@@ -165,23 +225,48 @@ export const TxMsgExpand = ({
         </>
       );
       break;
-    // vote
-    // delegate
-    // migrate
-    // update admin
-    // clear admin
+    case "/cosmos.gov.v1beta1.MsgVote":
+      msgIcon = MdOutlineHowToVote;
+      content = (
+        <>
+          Vote{" "}
+          <span style={{ fontWeight: 700 }}>
+            {voteOption[body.option as keyof typeof voteOption]}
+          </span>{" "}
+          on proposal ID{" "}
+          <ExplorerLink
+            type="proposal_id"
+            value={body.proposal_id}
+            canCopyWithHover
+            textVariant="body1"
+          />
+        </>
+      );
+      break;
+    case "/cosmos.staking.v1beta1.MsgDelegate":
+      msgIcon = MdDonutLarge;
+      content = (
+        <>
+          Delegate by{" "}
+          <ExplorerLink
+            type={getAddressType(body.delegator_address)}
+            value={body.delegator_address}
+            canCopyWithHover
+            textVariant="body1"
+          />{" "}
+          to{" "}
+          <ExplorerLink
+            type={getAddressType(body.validator_address)}
+            value={body.validator_address}
+            canCopyWithHover
+            textVariant="body1"
+          />
+        </>
+      );
+      break;
     default: {
-      const msgType = type.split("/");
-      content =
-        msgType.at(0) === "osmosis"
-          ? msgType
-              .pop()
-              ?.split("-")
-              .reduce(
-                (acc, curr) => acc + curr[0].toUpperCase() + curr.slice(1),
-                ""
-              )
-          : msgType[msgType.length - 1];
+      const msgType = type.split(".");
+      content = msgType[msgType.length - 1];
       break;
     }
   }

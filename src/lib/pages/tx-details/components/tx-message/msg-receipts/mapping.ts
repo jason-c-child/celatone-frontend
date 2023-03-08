@@ -1,7 +1,7 @@
-export const voteOption: Record<number, string> = {
-  0: "Empty",
-  1: "Yes",
-  2: "Abstain",
-  3: "No",
-  4: "NoWithVeto",
+export const voteOption = {
+  VOTE_OPTION_UNSPECIFIED: "Empty",
+  VOTE_OPTION_YES: "Yes",
+  VOTE_OPTION_NO: "No",
+  VOTE_OPTION_NO_WITH_VETO: "NoWithVeto",
+  VOTE_OPTION_ABSTAIN: "Abstain",
 };

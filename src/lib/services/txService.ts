@@ -43,8 +43,8 @@ export const useTxData = (txHash: Option<string>): UseQueryResult<TxData> => {
       return {
         ...txData,
         chainId,
-        formattedFee: txData.tx.value.fee.amount.length
-          ? formatStdFee(txData.tx.value.fee)
+        formattedFee: txData.tx.auth_info.fee?.amount.length
+          ? formatStdFee(txData.tx.auth_info.fee)
           : undefined,
       };
     },

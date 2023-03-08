@@ -36,10 +36,10 @@ export const TxInfo = ({ txData, ...flexProps }: TxInfoProps) => {
         )}
       </LabelText>
       <LabelText label="Gas Used/Requested">
-        {`${txData.gasUsed}/${txData.gasWanted}`}
+        {`${txData.gas_used}/${txData.gas_wanted}`}
       </LabelText>
       <LabelText label="Memo">
-        {txData.tx.value.memo || (
+        {txData.tx.body.memo || (
           <Text variant="body2" color="text.dark">
             No Memo
           </Text>
