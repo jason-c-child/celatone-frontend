@@ -1,10 +1,10 @@
-import { Button, Icon } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { useWallet } from "@cosmos-kit/react";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
-import { FiChevronRight } from "react-icons/fi";
 
 import { useInternalNavigate } from "lib/app-provider";
+import { CustomIcon } from "lib/components/icon";
 import { getNetworkByChainName } from "lib/data";
 import type { ActionVariant, TxReceipt } from "lib/types";
 
@@ -51,9 +51,6 @@ export const ButtonSection = ({
           </Button>
           <Button
             variant="primary"
-            rightIcon={
-              <Icon as={FiChevronRight} color="text.main" fontSize="18px" />
-            }
             onClick={() => {
               const codeId = receipts.find((r) => r.title === "Code ID")?.value;
               navigate({
@@ -64,6 +61,7 @@ export const ButtonSection = ({
             }}
           >
             Proceed to instantiate
+            <CustomIcon name="instantiate" color="text.main" boxSize="3" />
           </Button>
         </>
       );
@@ -71,9 +69,6 @@ export const ButtonSection = ({
       return (
         <Button
           variant="primary"
-          rightIcon={
-            <Icon as={FiChevronRight} color="text.main" fontSize="18px" />
-          }
           onClick={() => {
             const codeId = receipts.find((r) => r.title === "Code ID")?.value;
 
@@ -85,6 +80,7 @@ export const ButtonSection = ({
           }}
         >
           Proceed to Migrate
+          <CustomIcon name="migrate" color="text.main" boxSize="3" />
         </Button>
       );
     case "migrate":
@@ -96,14 +92,12 @@ export const ButtonSection = ({
           </Button>
           <Button
             variant="primary"
-            rightIcon={
-              <Icon as={FiChevronRight} color="text.main" fontSize="18px" />
-            }
             onClick={() =>
               navigate({ pathname: `/contract/${router.query.contract}` })
             }
           >
             View Contract Details
+            <CustomIcon name="chevron-right" color="text.main" boxSize="3" />
           </Button>
         </>
       );

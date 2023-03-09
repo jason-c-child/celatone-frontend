@@ -1,10 +1,8 @@
-import { Flex, Icon, Text, Image, Heading } from "@chakra-ui/react";
-import type { IconType } from "react-icons/lib";
+import { Flex, Text, Image, Heading } from "@chakra-ui/react";
 
 type ImageVariant = "empty" | "not-found";
 
 interface EmptyStateProps {
-  icon?: IconType;
   imageVariant?: ImageVariant;
   message: string;
   heading?: string;
@@ -17,7 +15,6 @@ const imageSourceMap: Record<ImageVariant, string> = {
 };
 
 export const EmptyState = ({
-  icon,
   message,
   imageVariant,
   heading,
@@ -30,7 +27,6 @@ export const EmptyState = ({
     borderColor="pebble.700"
   >
     <Flex alignItems="center" flexDir="column" gap="4" width="full">
-      {icon && <Icon as={icon} color="pebble.600" boxSize="16" />}
       {imageVariant && (
         <Image
           src={imageSourceMap[imageVariant]}

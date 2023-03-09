@@ -1,11 +1,11 @@
-import { Button, Icon } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { useState } from "react";
-import { FiChevronDown } from "react-icons/fi";
 
 import { useGetAddressType } from "lib/app-provider";
 import type { PermissionAddresses } from "lib/types";
 
 import { ExplorerLink } from "./ExplorerLink";
+import { CustomIcon } from "./icon";
 
 export const ViewPermissionAddresses = ({
   permissionAddresses,
@@ -51,10 +51,10 @@ export const ViewPermissionAddresses = ({
             p="unset"
             w="fit-content"
             rightIcon={
-              <Icon
-                as={FiChevronDown}
-                boxSize={4}
-                sx={{ transform: viewAll ? "rotate(180deg)" : "rotate(0deg)" }}
+              <CustomIcon
+                name={viewAll ? "chevron-up" : "chevron-down"}
+                color="lilac.main"
+                boxSize="3"
               />
             }
           >

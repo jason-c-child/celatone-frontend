@@ -2,7 +2,9 @@ import type { ColorProps, ComponentStyleConfig } from "@chakra-ui/react";
 
 const dupStyleKeys = ["title", "container", "description"];
 
-const generateVariantStyle = (variant: "honeydew" | "violet" | "error") => {
+const generateVariantStyle = (
+  variant: "honeydew" | "violet" | "success" | "warning" | "error"
+) => {
   let mainColor: ColorProps["color"];
   let bgColor: ColorProps["color"];
   let borderColor: ColorProps["color"];
@@ -17,6 +19,7 @@ const generateVariantStyle = (variant: "honeydew" | "violet" | "error") => {
     case "error":
     default:
       mainColor = `${variant}.main`;
+      borderColor = `${variant}.main`;
       bgColor = `${variant}.background`;
       break;
   }
@@ -56,6 +59,8 @@ export const Alert: ComponentStyleConfig = {
   variants: {
     honeydew: generateVariantStyle("honeydew"),
     violet: generateVariantStyle("violet"),
+    success: generateVariantStyle("success"),
+    warning: generateVariantStyle("warning"),
     error: generateVariantStyle("error"),
   },
 };
