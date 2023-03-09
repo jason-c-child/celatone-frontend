@@ -1,3 +1,4 @@
+import { useWallet } from "@cosmos-kit/react";
 import type {
   QueryFunctionContext,
   UseQueryResult,
@@ -5,7 +6,7 @@ import type {
 import { useQuery } from "@tanstack/react-query";
 import { useCallback } from "react";
 
-import { useCelatoneApp, useChainId, useLCDEndpoint } from "lib/app-provider";
+import { useCelatoneApp, useChainId } from "lib/app-provider";
 import {
   getExecuteTxsByContractAddressPagination,
   getExecuteTxsCountByContractAddress,
@@ -32,14 +33,11 @@ export interface TxData extends TxResponse {
 }
 
 export const useTxData = (txHash: Option<string>): UseQueryResult<TxData> => {
-  const lcdEndpoint = useLCDEndpoint();
+  const { currentChainName } = useWallet();
   const chainId = useChainId();
   const queryFn = useCallback(
-    async ({ queryKey }: QueryFunctionContext) => {
-      const txData = await queryTxData(
-        queryKey.at(1) as string,
-        queryKey.at(2) as string
-      );
+    async ({ queryKey }: QueryFunctionContext<string[]>) => {
+      const txData = await queryTxData(queryKey[1], queryKey[2], queryKey[3]);
       return {
         ...txData,
         chainId,
@@ -52,7 +50,7 @@ export const useTxData = (txHash: Option<string>): UseQueryResult<TxData> => {
   );
 
   return useQuery({
-    queryKey: ["tx_data", lcdEndpoint, txHash],
+    queryKey: ["tx_data", currentChainName, chainId, txHash] as string[],
     queryFn,
     enabled: !!txHash,
     refetchOnWindowFocus: false,

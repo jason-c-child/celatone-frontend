@@ -1,9 +1,11 @@
 import type { FlexProps } from "@chakra-ui/react";
 import { Button, Box, Flex, Heading, Icon, Text } from "@chakra-ui/react";
+import { useWallet } from "@cosmos-kit/react";
 import { IoIosWarning } from "react-icons/io";
 import { MdCheckCircle, MdLaunch } from "react-icons/md";
 
-import { useLCDEndpoint } from "lib/app-provider";
+import { CELATONE_API_ENDPOINT, getChainApiPath } from "env";
+import { useChainId } from "lib/app-provider";
 import { ExplorerLink } from "lib/components/ExplorerLink";
 import type { TxData } from "lib/services/txService";
 import { dateFromNow, formatUTC } from "lib/utils";
@@ -17,11 +19,14 @@ const DotSeparator = () => (
 );
 
 export const TxHeader = ({ txData, ...flexProps }: TxHeaderProps) => {
-  const lcdEndpoint = useLCDEndpoint();
+  const { currentChainName } = useWallet();
+  const chainId = useChainId();
   const isTxFailed = Boolean(txData.code);
   const openLcdPage = () => {
     window.open(
-      `${lcdEndpoint}/txs/${txData.txhash}`,
+      `${CELATONE_API_ENDPOINT}/txs/${getChainApiPath(
+        currentChainName
+      )}/${chainId}/${txData.txhash}`,
       "_blank",
       "noopener,noreferrer"
     );
