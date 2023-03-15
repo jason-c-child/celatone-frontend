@@ -12,7 +12,7 @@ import type {
   TxReceipt,
   ValidatorAddr,
 } from "lib/types";
-import { camelToTitle } from "lib/utils";
+import { convertToTitle } from "lib/utils";
 
 import { CoinComponent } from "./CoinComponent";
 
@@ -96,7 +96,7 @@ export const getGenericValueEntry = (
       valueObj = { value };
   }
 
-  return { title: camelToTitle(title), ...valueObj };
+  return { title: convertToTitle(title), ...valueObj };
 };
 
 // Duplicated Receipt
