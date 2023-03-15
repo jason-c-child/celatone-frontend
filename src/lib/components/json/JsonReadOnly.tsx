@@ -30,7 +30,7 @@ const JsonReadOnly = ({
   text,
   height,
   width,
-  margin = "8px 0 16px",
+  margin = "0 0 16px",
   canCopy,
   canViewFull,
   disableResizing,

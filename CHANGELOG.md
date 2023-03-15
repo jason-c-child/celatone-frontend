@@ -41,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#224](https://github.com/alleslabs/celatone-frontend/pull/224) Support search by tx and internal tx link
 - [#226](https://github.com/alleslabs/celatone-frontend/pull/226) Add fully functional transaction details page
+- [#230](https://github.com/alleslabs/celatone-frontend/pull/230) Add cw2info to code table
 - [#228](https://github.com/alleslabs/celatone-frontend/pull/228) Add Faucet testnet page
 - [#79](https://github.com/alleslabs/celatone-frontend/pull/79) Add dropdown menu and wireup up json attach funds
 - [#225](https://github.com/alleslabs/celatone-frontend/pull/225) Add assets section in account details page
@@ -65,6 +66,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Bug fixes
 
+- [#238](https://github.com/alleslabs/celatone-frontend/pull/238) Fix incorrect isCurrentPage for overview page
+- [#235](https://github.com/alleslabs/celatone-frontend/pull/235) Fix css bugs and aesthetics improvement
+- [#236](https://github.com/alleslabs/celatone-frontend/pull/236) Add alphabetically sorting to JSON attach funds
 - [#231](https://github.com/alleslabs/celatone-frontend/pull/231) Fix double slash for endpoint, disable calling endpoint when there is no contract addr in contract details page
 - [#229](https://github.com/alleslabs/celatone-frontend/pull/229) Disable Sentry debug to prevent "logger.info is not a function" error
 - [#219](https://github.com/alleslabs/celatone-frontend/pull/219) Fix asset value and price formatter
