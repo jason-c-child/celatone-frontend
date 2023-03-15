@@ -18,7 +18,12 @@ type MsgBodyWithoutType = Omit<MsgBody, "@type">;
 const transformKeyToSnake = (obj: MsgBodyWithoutType): MsgBodyWithoutType => {
   return Object.entries(obj).reduce((acc, entry) => {
     const [k, v] = entry;
-    acc[snakeCase(k)] = v;
+    // check if the key is camelCase
+    if (/^([a-z]+)(([A-Z]([a-z]+))+)$/.test(k)) {
+      acc[snakeCase(k)] = v;
+    } else {
+      acc[k] = v;
+    }
     return acc;
   }, {} as MsgBodyWithoutType);
 };
@@ -28,6 +33,9 @@ export const extractTxDetails = <T extends TypeUrl>(
   body: MsgBodyWithoutType,
   log: Option<Log>
 ): MsgReturnType<T> => {
+  /**
+   * @remarks Some keys are in camelCase due to old protobuf decoding
+   */
   const msgBody = transformKeyToSnake(body);
   switch (type) {
     case "/cosmwasm.wasm.v1.MsgStoreCode":

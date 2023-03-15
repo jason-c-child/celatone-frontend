@@ -17,7 +17,6 @@ export const TxMsgDetails = ({ isExpand, ...txMsgData }: TxMsgDetailsProps) => {
   const getAddressType = useGetAddressType();
   const assetInfos = useAssetInfos();
   const receipts = generateReceipts(txMsgData, getAddressType, assetInfos)
-    .filter(Boolean)
     .concat(
       txMsgData.log && {
         title: "Event Logs",
@@ -35,7 +34,8 @@ export const TxMsgDetails = ({ isExpand, ...txMsgData }: TxMsgDetailsProps) => {
           </Flex>
         ),
       }
-    ) as TxReceipt[];
+    )
+    .filter(Boolean) as TxReceipt[];
 
   return (
     <Flex
