@@ -10,7 +10,7 @@ export enum InstantiatePermission {
   UNKNOWN = "Unknown",
 }
 
-export type PermissionAddresses = Addr | Addr[];
+export type PermissionAddresses = Addr[];
 
 export interface CodeInfo extends CodeLocalInfo {
   contractCount: Option<number>;
@@ -42,7 +42,7 @@ export interface PublicCodeData {
   id: number;
   instantiatePermission: string;
   name: string;
-  permissionAddresses: string[];
+  permissionAddresses: PermissionAddresses;
   slug: string;
   uploader: string;
   verified: boolean;

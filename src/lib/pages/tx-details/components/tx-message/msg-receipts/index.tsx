@@ -64,14 +64,16 @@ export const generateReceipts = (
                   details.instantiate_permission.permission
                 }
                 permissionAddresses={
-                  details.instantiate_permission.address ||
-                  details.instantiate_permission.addresses
+                  details.instantiate_permission.address
+                    ? [details.instantiate_permission.address]
+                    : details.instantiate_permission.addresses
                 }
               />
               <ViewPermissionAddresses
                 permissionAddresses={
-                  details.instantiate_permission.address ||
-                  details.instantiate_permission.addresses
+                  details.instantiate_permission.address
+                    ? [details.instantiate_permission.address]
+                    : details.instantiate_permission.addresses
                 }
               />
             </Flex>
