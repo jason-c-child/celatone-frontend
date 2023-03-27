@@ -12,8 +12,11 @@ export const AppLink = ({
     <Link
       {...linkProps}
       href={
+        // eslint-disable-next-line no-nested-ternary
         router.query.network === "testnet"
           ? `/testnet${componentHref}`
+          : router.query.network === "localnet"
+          ? `/localnet${componentHref}`
           : `/mainnet${componentHref}`
       }
     >

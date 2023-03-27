@@ -7,6 +7,7 @@ export const GRAPH_URL: Record<string, string> = {
   osmosis: "https://osmosis-mainnet-graphql.alleslabs.dev/v1/graphql",
   osmosistestnet: "https://osmosis-testnet-graphql.alleslabs.dev/v1/graphql",
   terra2testnet: "https://terra-testnet-graphql.alleslabs.dev/v1/graphql",
+  beebchain: "https://beebchain-api.alleslabs.dev/graphql/v1/graphql",
 };
 
 export const getIndexerGraphClient = (currentChainName: string) =>
