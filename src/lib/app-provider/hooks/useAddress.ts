@@ -34,6 +34,11 @@ const addressLengthMap: {
     51: "validator_address",
     64: "contract_address",
   },
+  stargaze: {
+    44: "user_address",
+    51: "validator_address",
+    64: "contract_address",
+  },
 };
 
 export const getAddressTypeByLength = (

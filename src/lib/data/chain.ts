@@ -1,11 +1,11 @@
 import { SELECTED_CHAIN } from "env";
 import type { Option } from "lib/types";
 
-export type SupportedChain = "osmosis" | "terra" | "mitosis";
+export type SupportedChain = "osmosis" | "terra" | "mitosis" | "stargaze";
 
 interface Chain {
   mainnet: string;
-  testnet: string;
+  testnet?: string;
   localnet?: string;
 }
 
@@ -27,6 +27,10 @@ export const MITOSIS_CHAINS: Chain = {
   testnet: "osmosistestnet",
 };
 
+export const STARGAZE_CHAINS: Chain = {
+  mainnet: "stargaze",
+};
+
 export const getSupportedChainNames = (): SupportedChain[] => {
   switch (SELECTED_CHAIN) {
     case "terra":
@@ -35,6 +39,8 @@ export const getSupportedChainNames = (): SupportedChain[] => {
       return Object.values(OSMOSIS_CHAINS);
     case "mitosis":
       return Object.values(MITOSIS_CHAINS);
+    case "stargaze":
+      return Object.values(STARGAZE_CHAINS);
     default:
       throw new Error(`Unsupported chain: ${SELECTED_CHAIN}`);
   }
@@ -54,6 +60,8 @@ export const getChainNameByNetwork = (network: Network): string => {
       return OSMOSIS_CHAINS[network] ?? OSMOSIS_CHAINS.mainnet;
     case "mitosis":
       return MITOSIS_CHAINS[network] ?? MITOSIS_CHAINS.mainnet;
+    case "stargaze":
+      return STARGAZE_CHAINS[network] ?? STARGAZE_CHAINS.mainnet;
     default:
       throw new Error(`Unsupported chain: ${SELECTED_CHAIN}`);
   }
@@ -76,6 +84,11 @@ export const getNetworkByChainName = (chainName: string): Network => {
     case "mitosis":
       network = (Object.keys(MITOSIS_CHAINS) as Network[]).find(
         (each) => MITOSIS_CHAINS[each as keyof Chain] === chainName
+      );
+      break;
+    case "stargaze":
+      network = (Object.keys(STARGAZE_CHAINS) as Network[]).find(
+        (each) => STARGAZE_CHAINS[each as keyof Chain] === chainName
       );
       break;
     default:
@@ -103,6 +116,9 @@ const CHAIN_CONFIG: Record<SupportedChain, ChainConfig> = {
   },
   mitosis: {
     isWasm: false,
+  },
+  stargaze: {
+    isWasm: true,
   },
 };
 

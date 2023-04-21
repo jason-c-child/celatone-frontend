@@ -84,6 +84,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               rpc: ["https://terra-testnet-rpc.polkachu.com/"],
               rest: ["https://pisco-lcd.terra.dev/"],
             },
+            stargaze: {
+              rpc: ["https://rpc.stargaze-apis.com/"],
+              rest: ["https://rest.stargaze-apis.com/"],
+            },
           }}
         >
           <StoreProvider>

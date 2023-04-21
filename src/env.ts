@@ -25,6 +25,10 @@ export const CELATONE_FALLBACK_GAS_PRICE: Record<string, ChainGasPrice> = {
     denom: "uluna",
     gasPrice: "0.15" as U<Token>,
   },
+  stargaze: {
+    denom: "ustars",
+    gasPrice: "0.03" as U<Token>,
+  },
 };
 
 export const CELATONE_APP_CONTRACT_ADDRESS = (
@@ -42,6 +46,11 @@ export const CELATONE_APP_CONTRACT_ADDRESS = (
       return {
         example:
           "terra1k5arpcpusfrtnucr5q8f5uh5twghh3q360hv4j6fe0hvzn7x8skqempu76" as ContractAddr,
+      };
+    case "stargaze":
+      return {
+        example:
+          "stars1m4ns69zvkk2zv0946mw298tlky5ckvu08rtxggtg29p784kc5sxqwgx4h0" as ContractAddr,
       };
     default:
       return {
@@ -64,6 +73,10 @@ export const CELATONE_APP_HUMAN_ADDRESS = (
       return {
         example: "terra1dtdqq3sn8c6y6sjvtf4340aycv2g6x6pp5tkln" as HumanAddr,
       };
+    case "stargaze":
+      return {
+        example: "stars16hetkn089m2s8nsjwppwhjed4ecp4dqtvltv82" as HumanAddr,
+      };
     default:
       return {
         example: "" as HumanAddr,
@@ -76,6 +89,7 @@ export const FALLBACK_LCD_ENDPOINT: Record<string, string> = {
   osmosistestnet: "https://lcd-test.osmosis.zone/",
   terra2: "https://phoenix-lcd.terra.dev/",
   terra2testnet: "https://pisco-lcd.terra.dev/",
+  stargaze: "https://rest.stargaze-apis.com/",
 };
 
 export const MAX_FILE_SIZE = 800_000;
@@ -100,6 +114,8 @@ export const getChainApiPath = (chainName: string) => {
     case "terra2":
     case "terra2testnet":
       return "terra";
+    case "stargaze":
+      return "stargaze";
     default:
       return undefined;
   }
@@ -113,6 +129,8 @@ export const getMainnetApiPath = (chainId: string) => {
     case "pisco-1":
     case "phoenix-1":
       return "phoenix-1";
+    case "stargaze-1":
+      return "stargaze-1";
     default:
       return undefined;
   }
