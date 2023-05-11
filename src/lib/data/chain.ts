@@ -17,9 +17,8 @@ export const TERRA_CHAINS: Chain = {
 };
 
 export const OSMOSIS_CHAINS: Chain = {
-  mainnet: "osmosis",
+  mainnet: "beebchain",
   testnet: "osmosistestnet5",
-  localnet: "beebchain",
 };
 
 // TODO: Remove this when mitosis is ready
