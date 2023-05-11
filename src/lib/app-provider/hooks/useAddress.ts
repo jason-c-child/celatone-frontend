@@ -24,6 +24,10 @@ const addressLengthMap: {
     50: "validator_address",
     63: "contract_address",
   },
+  beebchain: {
+    43: "user_address",
+    63: "contract_address",
+  },
   terra2: {
     44: "user_address",
     51: "validator_address",

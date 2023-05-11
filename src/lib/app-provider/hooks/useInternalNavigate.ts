@@ -25,7 +25,13 @@ export const useInternalNavigate = () => {
         {
           pathname: `/[network]${pathname}`,
           query: {
-            network: router.query.network === "testnet" ? "testnet" : "mainnet",
+            network:
+              // eslint-disable-next-line no-nested-ternary
+              router.query.network === "testnet"
+                ? "testnet"
+                : router.query.network === "localnet"
+                ? "localnet"
+                : "mainnet",
             ...query,
           },
         },
