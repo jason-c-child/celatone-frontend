@@ -31,6 +31,14 @@ const nextConfig = {
         source: "/amplitude",
         destination: `https://api2.amplitude.com/2/httpapi`,
       },
+      {
+        source: `/neutron-1/:path*`,
+        destination: `/mainnet/:path*`,
+      },
+      {
+        source: `/pion-1/:path*`,
+        destination: `/testnet/:path*`,
+      },
     ];
   },
   async redirects() {
