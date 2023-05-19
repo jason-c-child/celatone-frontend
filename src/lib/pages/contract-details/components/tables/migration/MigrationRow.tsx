@@ -43,12 +43,16 @@ const RemarkRender = ({
       }}
     >
       <p>{isGovernance ? `${prefix} Proposal ID` : `${prefix} Tx`}</p>
-      <ExplorerLink
-        type={isGovernance ? "proposal_id" : "tx_hash"}
-        value={value.toString()}
-        showCopyOnHover
-        textFormat={textFormat}
-      />
+      {value ? (
+        <ExplorerLink
+          type={isGovernance ? "proposal_id" : "tx_hash"}
+          value={value.toString()}
+          showCopyOnHover
+          textFormat={textFormat}
+        />
+      ) : (
+        <Text>Genesis</Text>
+      )}
     </Flex>
   );
 };
@@ -95,11 +99,15 @@ export const MigrationRow = ({
         />
       </TableRow>
       <TableRow>
-        <ExplorerLink
-          value={history.height.toString()}
-          type="block_height"
-          showCopyOnHover
-        />
+        {history.height === 0 ? (
+          <Text>Genesis</Text>
+        ) : (
+          <ExplorerLink
+            value={history.height.toString()}
+            type="block_height"
+            showCopyOnHover
+          />
+        )}
       </TableRow>
       <TableRow>
         <Flex

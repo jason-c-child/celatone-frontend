@@ -1,10 +1,10 @@
 import { SELECTED_CHAIN } from "env";
 import type { Option } from "lib/types";
 
-export type SupportedChain = "osmosis" | "terra" | "mitosis";
+export type SupportedChain = "osmosis" | "terra" | "mitosis" | "neutron";
 
 interface Chain {
-  mainnet: string;
+  mainnet?: string;
   testnet: string;
   localnet?: string;
 }
@@ -27,6 +27,11 @@ export const MITOSIS_CHAINS: Chain = {
   testnet: "osmosistestnet5",
 };
 
+export const NEUTRON_CHAINS: Chain = {
+  mainnet: "neutron",
+  testnet: "neutrontestnet",
+};
+
 export const getSupportedChainNames = (): SupportedChain[] => {
   switch (SELECTED_CHAIN) {
     case "terra":
@@ -35,6 +40,8 @@ export const getSupportedChainNames = (): SupportedChain[] => {
       return Object.values(OSMOSIS_CHAINS);
     case "mitosis":
       return Object.values(MITOSIS_CHAINS);
+    case "neutron":
+      return Object.values(NEUTRON_CHAINS);
     default:
       throw new Error(`Unsupported chain: ${SELECTED_CHAIN}`);
   }
@@ -49,11 +56,13 @@ export const getSupportedChainNames = (): SupportedChain[] => {
 export const getChainNameByNetwork = (network: Network): string => {
   switch (SELECTED_CHAIN) {
     case "terra":
-      return TERRA_CHAINS[network] ?? TERRA_CHAINS.mainnet;
+      return TERRA_CHAINS[network] ?? TERRA_CHAINS.testnet;
     case "osmosis":
-      return OSMOSIS_CHAINS[network] ?? OSMOSIS_CHAINS.mainnet;
+      return OSMOSIS_CHAINS[network] ?? OSMOSIS_CHAINS.testnet;
     case "mitosis":
-      return MITOSIS_CHAINS[network] ?? MITOSIS_CHAINS.mainnet;
+      return MITOSIS_CHAINS[network] ?? MITOSIS_CHAINS.testnet;
+    case "neutron":
+      return NEUTRON_CHAINS[network] ?? NEUTRON_CHAINS.testnet;
     default:
       throw new Error(`Unsupported chain: ${SELECTED_CHAIN}`);
   }
@@ -76,6 +85,11 @@ export const getNetworkByChainName = (chainName: string): Network => {
     case "mitosis":
       network = (Object.keys(MITOSIS_CHAINS) as Network[]).find(
         (each) => MITOSIS_CHAINS[each as keyof Chain] === chainName
+      );
+      break;
+    case "neutron":
+      network = (Object.keys(NEUTRON_CHAINS) as Network[]).find(
+        (each) => NEUTRON_CHAINS[each as keyof Chain] === chainName
       );
       break;
     default:
@@ -103,6 +117,9 @@ const CHAIN_CONFIG: Record<SupportedChain, ChainConfig> = {
   },
   mitosis: {
     isWasm: false,
+  },
+  neutron: {
+    isWasm: true,
   },
 };
 

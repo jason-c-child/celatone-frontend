@@ -152,7 +152,10 @@ const AccountDetailsBody = ({ accountAddress }: AccountDetailsBodyProps) => {
           >
             Assets
           </CustomTab>
-          <CustomTab onClick={() => handleTabChange(TabIndex.Delegations)}>
+          <CustomTab
+            onClick={() => handleTabChange(TabIndex.Delegations)}
+            hidden
+          >
             Delegations
           </CustomTab>
           <CustomTab
@@ -187,6 +190,7 @@ const AccountDetailsBody = ({ accountAddress }: AccountDetailsBodyProps) => {
             count={tableCounts.proposalsCount}
             isDisabled={!tableCounts.proposalsCount}
             onClick={() => handleTabChange(TabIndex.Proposals)}
+            hidden
           >
             Proposals
           </CustomTab>
@@ -225,12 +229,12 @@ const AccountDetailsBody = ({ accountAddress }: AccountDetailsBodyProps) => {
                 onViewMore={() => handleTabChange(TabIndex.Assets)}
               />
             </Flex>
-            <Flex borderBottom="1px solid" borderBottomColor="pebble.700">
+            {/* <Flex borderBottom="1px solid" borderBottomColor="pebble.700">
               <DelegationsSection
                 walletAddress={accountAddress}
                 onViewMore={() => handleTabChange(TabIndex.Delegations)}
               />
-            </Flex>
+            </Flex> */}
             <TxsTable
               walletAddress={accountAddress}
               accountId={accountId}
@@ -258,18 +262,18 @@ const AccountDetailsBody = ({ accountAddress }: AccountDetailsBodyProps) => {
               refetchCount={refetchContractsAdminCount}
               onViewMore={() => handleTabChange(TabIndex.Admins)}
             />
-            <OpenedProposalsTable
+            {/* <OpenedProposalsTable
               walletAddress={accountAddress}
               scrollComponentId={tableHeaderId}
               totalData={tableCounts.proposalsCount}
               refetchCount={refetchProposalsCount}
               onViewMore={() => handleTabChange(TabIndex.Proposals)}
-            />
+            /> */}
           </TabPanel>
           <TabPanel p={0}>
             <AssetsSection walletAddress={accountAddress} />
           </TabPanel>
-          <TabPanel p={0}>
+          <TabPanel p={0} hidden>
             <DelegationsSection walletAddress={accountAddress} />
           </TabPanel>
           <TabPanel p={0}>
@@ -303,7 +307,7 @@ const AccountDetailsBody = ({ accountAddress }: AccountDetailsBodyProps) => {
               refetchCount={refetchContractsAdminCount}
             />
           </TabPanel>
-          <TabPanel p={0}>
+          <TabPanel p={0} hidden>
             <OpenedProposalsTable
               walletAddress={accountAddress}
               scrollComponentId={tableHeaderId}

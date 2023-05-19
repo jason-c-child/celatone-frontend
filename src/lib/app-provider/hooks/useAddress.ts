@@ -34,6 +34,16 @@ const addressLengthMap: {
     51: "validator_address",
     64: "contract_address",
   },
+  neutron: {
+    46: "user_address",
+    53: "validator_address",
+    66: "contract_address",
+  },
+  neutrontestnet: {
+    46: "user_address",
+    53: "validator_address",
+    66: "contract_address",
+  },
 };
 
 export const getAddressTypeByLength = (

@@ -19,6 +19,11 @@ import { AppProvider } from "lib/app-provider/contexts/app";
 import { Chakra } from "lib/components/Chakra";
 import { MobileGuard } from "lib/components/MobileGuard";
 import { CelatoneSeo } from "lib/components/Seo";
+import { neutron, neutronAssets } from "lib/config/neutron";
+import {
+  neutrontestnet,
+  neutrontestnetAssets,
+} from "lib/config/neutrontestnet";
 import Layout from "lib/layout";
 import "lib/styles/globals.css";
 import { StoreProvider } from "lib/providers/store";
@@ -63,8 +68,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
       <QueryClientProvider client={queryClient}>
         <WalletProvider
-          chains={chains}
-          assetLists={assets}
+          chains={[...chains, neutron, neutrontestnet]}
+          assetLists={[...assets, neutronAssets, neutrontestnetAssets]}
           wallets={wallets}
           endpointOptions={{
             osmosis: {
@@ -82,6 +87,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             terra2testnet: {
               rpc: ["https://terra-testnet-rpc.polkachu.com/"],
               rest: ["https://pisco-lcd.terra.dev/"],
+            },
+            neutron: {
+              rpc: ["https://rpc-kralum.neutron-1.neutron.org/"],
+              rest: ["https://rest-kralum.neutron-1.neutron.org/"],
+            },
+            neutrontestnet: {
+              rpc: ["https://rpc-palvus.pion-1.ntrn.tech:443/"],
+              rest: ["https://rest-palvus.pion-1.ntrn.tech:443/"],
             },
           }}
         >

@@ -163,31 +163,33 @@ export const InstantiateInfo = ({
 
       <Divider border="1px solid" borderColor="pebble.700" />
 
-      {instantiateInfo &&
-        (instantiateInfo.createdHeight ? (
-          <LabelText
-            label="Instantiated Block Height"
-            helperText1={
-              instantiateInfo.createdTime
-                ? formatUTC(instantiateInfo.createdTime)
-                : undefined
-            }
-            helperText2={
-              instantiateInfo.createdTime
-                ? dateFromNow(instantiateInfo.createdTime)
-                : undefined
-            }
-          >
+      {instantiateInfo?.createdHeight ? (
+        <LabelText
+          label="Instantiated Block Height"
+          helperText1={
+            instantiateInfo.createdTime
+              ? formatUTC(instantiateInfo.createdTime)
+              : undefined
+          }
+          helperText2={
+            instantiateInfo.createdTime
+              ? dateFromNow(instantiateInfo.createdTime)
+              : undefined
+          }
+        >
+          {Number(instantiateInfo.createdHeight) === 0 ? (
+            "Genesis"
+          ) : (
             <ExplorerLink
               type="block_height"
               value={instantiateInfo.createdHeight.toString()}
               showCopyOnHover
             />
-          </LabelText>
-        ) : (
-          <LabelText label="Instantiated Block Height">N/A</LabelText>
-        ))}
-
+          )}
+        </LabelText>
+      ) : (
+        <LabelText label="Instantiated Block Height">N/A</LabelText>
+      )}
       <LabelText
         label="Instantiated by"
         helperText1={getAddressTypeText(instantiatorType)}

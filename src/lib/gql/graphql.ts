@@ -12133,11 +12133,6 @@ export type GetBlockListQueryQuery = {
         count: number;
       } | null;
     };
-    validator?: {
-      __typename?: "validators";
-      moniker: string;
-      operator_address: string;
-    } | null;
   }>;
 };
 
@@ -12163,11 +12158,6 @@ export type GetBlockDetailsByHeightQuery = {
         } | null;
       } | null;
     };
-    validator?: {
-      __typename?: "validators";
-      moniker: string;
-      operator_address: string;
-    } | null;
   } | null;
 };
 
@@ -12972,23 +12962,6 @@ export const GetBlockListQueryDocument = {
                     ],
                   },
                 },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "validator" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "moniker" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "operator_address" },
-                      },
-                    ],
-                  },
-                },
               ],
             },
           },
@@ -13073,23 +13046,6 @@ export const GetBlockDetailsByHeightDocument = {
                             },
                           ],
                         },
-                      },
-                    ],
-                  },
-                },
-                {
-                  kind: "Field",
-                  name: { kind: "Name", value: "validator" },
-                  selectionSet: {
-                    kind: "SelectionSet",
-                    selections: [
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "moniker" },
-                      },
-                      {
-                        kind: "Field",
-                        name: { kind: "Name", value: "operator_address" },
                       },
                     ],
                   },

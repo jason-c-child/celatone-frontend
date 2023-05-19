@@ -92,13 +92,10 @@ const Searchbar = () => {
   const boxRef = useRef<HTMLDivElement>(null);
   const chainConfig = getChainConfig();
 
-  let placeholder = "Search by Wallet Address / Tx Hash / ";
-  placeholder += chainConfig.isWasm ? "Code ID / Contract Address" : "Block";
-
   useEffect(() => {
     const res: SearchResultType[] = [];
     if (chainConfig.isWasm && isCodeId(keyword)) res.push("Code ID");
-    else if (isBlock(keyword)) res.push("Block");
+    if (isBlock(keyword)) res.push("Block");
 
     if (!validateContractAddress(keyword)) res.push("Contract Address");
     if (!validateUserAddress(keyword)) res.push("Wallet Address");
@@ -140,7 +137,7 @@ const Searchbar = () => {
           value={keyword}
           h="36px"
           onChange={handleSearchChange}
-          placeholder={placeholder}
+          placeholder="Search by Wallet Address / Tx Hash / Block / Code ID / Contract Address"
           focusBorderColor="lilac.main"
           onFocus={() => setDisplayResults(keyword.length > 0)}
           onKeyDown={handleOnKeyEnter}

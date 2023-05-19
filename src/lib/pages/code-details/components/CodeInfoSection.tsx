@@ -83,8 +83,8 @@ const getMethodSpecificRender = (
    * @todo Add genesis conditioning when the view table is available
    */
   return {
-    methodRender: <LabelText label="Created on">N/A</LabelText>,
-    storedBlockRender: <Text variant="body2">N/A</Text>,
+    methodRender: <LabelText label="Created on">Genesis</LabelText>,
+    storedBlockRender: <Text variant="body2">Genesis</Text>,
   };
 };
 

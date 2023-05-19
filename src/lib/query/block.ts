@@ -19,10 +19,6 @@ export const getBlockListQueryDocument = graphql(`
           count
         }
       }
-      validator {
-        moniker
-        operator_address
-      }
     }
   }
 `);
@@ -40,10 +36,6 @@ export const getBlockDetailsByHeightQueryDocument = graphql(`
             gas_limit
           }
         }
-      }
-      validator {
-        moniker
-        operator_address
       }
     }
   }
