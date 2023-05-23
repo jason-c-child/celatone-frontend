@@ -8,11 +8,11 @@ import type { Option, PublicDetail } from "lib/types";
 export const renderSocial = (name: string): IconKeys => {
   switch (name) {
     case "twitter":
-      return "twitter";
+      return "twitter-solid";
     case "telegram":
-      return "telegram";
+      return "telegram-solid";
     case "discord":
-      return "discord";
+      return "discord-solid";
     default:
       return "info-circle-solid";
   }
@@ -39,7 +39,7 @@ export const SocialMedia = ({ details }: SocialMediaProps) => {
       {details.github && (
         <CustomIconButton
           href={details.github}
-          icon="github"
+          icon="github-solid"
           onClick={() => AmpTrackSocial(details.github)}
         />
       )}

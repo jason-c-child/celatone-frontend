@@ -144,7 +144,7 @@ export const ListSelection = forwardRef<HTMLInputElement, ListSelectionProps>(
                     <Tag
                       cursor="pointer"
                       whiteSpace="nowrap"
-                      variant="violet-light"
+                      variant="violet-dark"
                       gap={1}
                       mr={1}
                     >
@@ -175,7 +175,6 @@ export const ListSelection = forwardRef<HTMLInputElement, ListSelectionProps>(
               position="absolute"
               top={0}
               left={0}
-              fontWeight="400"
               color="text.dark"
               bgColor={labelBgColor}
               pointerEvents="none"

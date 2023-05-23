@@ -182,7 +182,6 @@ export const TagSelection = observer(
                 position="absolute"
                 top={0}
                 left={0}
-                fontWeight="400"
                 color="text.dark"
                 bgColor={labelBgColor}
                 pointerEvents="none"

@@ -18,7 +18,7 @@ export const Form: ComponentStyleConfig = {
           mx: 3,
           px: 1,
           position: "absolute",
-          fontWeight: "400",
+          fontWeight: "500",
           lineHeight: "1.2",
           pointerEvents: "none",
           transformOrigin: "left top",

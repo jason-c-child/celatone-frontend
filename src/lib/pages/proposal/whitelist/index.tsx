@@ -223,7 +223,7 @@ const ProposalToWhitelist = () => {
             <Heading as="h5" variant="h5">
               Create Proposal to Whitelist
             </Heading>
-            <Text color="text.dark" mt={4} fontWeight={500} variant="body2">
+            <Text color="text.dark" mt={4} variant="body2">
               Allowed addresses will be able to upload and stored code without
               opening proposal
             </Text>
@@ -279,7 +279,7 @@ const ProposalToWhitelist = () => {
               <Heading as="h6" variant="h6" mt={12}>
                 Addresses to be allowed to store code
               </Heading>
-              <Text color="text.dark" my={2} fontWeight={500} variant="body2">
+              <Text color="text.dark" my={2} variant="body2">
                 If the proposal is passed, these addresses will be allowed to
                 upload and store code without opening proposal
               </Text>
@@ -346,13 +346,13 @@ const ProposalToWhitelist = () => {
               <Heading as="h6" variant="h6" mt={12}>
                 Initial Deposit
               </Heading>
-              <Text color="text.dark" mt={2} fontWeight={500} variant="body2">
+              <Text color="text.dark" mt={2} variant="body2">
                 Minimum deposit required to start{" "}
                 {formatSeconds(govParams?.depositParams.maxDepositPeriod)}{" "}
                 deposit period: {govParams?.depositParams.minInitialDeposit}{" "}
                 {minDeposit?.formattedDenom}
               </Text>
-              <Text color="text.dark" mt={2} fontWeight={500} variant="body2">
+              <Text color="text.dark" mt={2} variant="body2">
                 Minimum deposit required to start{" "}
                 {formatSeconds(govParams?.votingParams.votingPeriod)} voting
                 period: {minDeposit?.formattedToken}

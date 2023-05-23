@@ -5,8 +5,11 @@ const pebble500 = "pebble.500";
 const pebble600 = "pebble.600";
 const pebble700 = "pebble.700";
 const pebble800 = "pebble.800";
+const pebble900 = "pebble.900";
 const violetLight = "violet.light";
+const violetMain = "violet.main";
 const violetDark = "violet.dark";
+const violetDarker = "violet.darker";
 const violetBg = "violet.background";
 const honeydewBg = "honeydew.background";
 const honeydewMain = "honeydew.main";
@@ -72,17 +75,17 @@ export const Button: ComponentStyleConfig = {
   variants: {
     primary: generateStyle({
       basic: {
-        background: "violet.main",
-        color: "text.main",
+        background: violetMain,
+        color: pebble900,
         "& span": {
-          color: "text.main",
+          color: pebble900,
         },
       },
       disabled: {
-        background: violetBg,
-        color: pebble600,
+        background: violetDarker,
+        color: pebble900,
         "& span": {
-          color: pebble600,
+          color: pebble900,
         },
       },
       hoverBg: violetDark,
@@ -112,13 +115,13 @@ export const Button: ComponentStyleConfig = {
     "outline-primary": generateStyle({
       basic: {
         border: borderDefualt,
-        borderColor: violetLight,
-        color: violetLight,
+        borderColor: violetDarker,
+        color: violetMain,
         "> div": {
-          color: violetLight,
+          color: violetMain,
         },
         "> svg": {
-          color: violetLight,
+          color: violetDarker,
         },
       },
       disabled: {
@@ -135,7 +138,7 @@ export const Button: ComponentStyleConfig = {
     "outline-gray": generateStyle({
       basic: {
         border: borderDefualt,
-        borderColor: pebble600,
+        borderColor: pebble500,
         color: "text.dark",
         "> svg": {
           color: "text.dark",

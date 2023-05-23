@@ -14,7 +14,6 @@ export const ContractCmdButton = ({
     height="24px"
     px="10px"
     borderRadius="16px"
-    fontWeight="400"
     onClick={onClickCmd}
   >
     {cmd}

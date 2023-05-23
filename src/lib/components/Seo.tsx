@@ -3,18 +3,19 @@ import { DefaultSeo } from "next-seo";
 
 export const CelatoneSeo = () => {
   const { currentChainRecord } = useWallet();
-  const title = `${currentChainRecord?.chain.pretty_name} Explorer | Celatone`;
+  const title = `${currentChainRecord?.chain.pretty_name} Explorer | SeiScan`;
 
   return (
     <DefaultSeo
       title={title}
-      description="A smart contract powered explorer for the Cosmos."
+      description="Explore the fastest Layer 1 blockchain, designed to scale with the industry"
       openGraph={{
         type: "website",
-        description: "A smart contract powered explorer for the Cosmos",
+        description:
+          "Explore the fastest Layer 1 blockchain, designed to scale with the industry",
         images: [
           {
-            url: "https://assets.alleslabs.dev/branding/celatone-cover.jpg",
+            url: "https://assets.alleslabs.dev/integrations/sei/cover.jpg",
             width: 1200,
             height: 630,
             alt: title,
@@ -22,7 +23,7 @@ export const CelatoneSeo = () => {
         ],
       }}
       twitter={{
-        handle: "@celatone_",
+        handle: "@SeiNetwork",
         cardType: "summary_large_image",
       }}
     />

@@ -125,7 +125,7 @@ export const TxFilterSelection = forwardRef<
                     key={option}
                   >
                     <Tag
-                      variant="violet-light"
+                      variant="violet-dark"
                       gap={1}
                       mr={1}
                       whiteSpace="nowrap"
@@ -159,7 +159,6 @@ export const TxFilterSelection = forwardRef<
               position="absolute"
               top={0}
               left={0}
-              fontWeight="400"
               color="text.dark"
               bgColor={labelBgColor}
               pointerEvents="none"

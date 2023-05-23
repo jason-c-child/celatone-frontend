@@ -1,6 +1,6 @@
 import { SELECTED_CHAIN } from "env";
 
-const APP_NAME = "celatone";
+const APP_NAME = "SeiScan";
 
 const Meta = () => {
   const chainName = SELECTED_CHAIN || "";
@@ -14,34 +14,34 @@ const Meta = () => {
       <meta name="format-detection" content="telephone=no" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="theme-color" content="#FFFFFF" />
-      <title>{`${title} Explorer | Celatone`}</title>
+      <title>{`${title} Explorer | SeiScan`}</title>
       <meta
         name="description"
-        content="A smart contract powered explorer for the Cosmos."
+        content="Explore the fastest Layer 1 blockchain, designed to scale with the industry"
       />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="Celatone Explorer" />
+      <meta property="og:title" content="SeiScan" />
       <meta
         property="og:description"
-        content="A smart contract powered explorer for the Cosmos."
+        content="Explore the fastest Layer 1 blockchain, designed to scale with the industry"
       />
       <meta
         property="og:image"
-        content="https://assets.alleslabs.dev/branding/celatone-cover.jpg"
+        content="https://assets.alleslabs.dev/integrations/sei/cover.jpg"
       />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content="Celatone Explorer" />
+      <meta property="twitter:title" content="SeiScan" />
       <meta
         property="twitter:description"
-        content="A smart contract powered explorer for the Cosmos."
+        content="Explore the fastest Layer 1 blockchain, designed to scale with the industry"
       />
       <meta
         property="twitter:image"
-        content="https://assets.alleslabs.dev/branding/celatone-cover.jpg"
+        content="https://assets.alleslabs.dev/integrations/sei/cover.jpg"
       />
     </>
   );

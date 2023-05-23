@@ -13,7 +13,7 @@ export const Radio: ComponentStyleConfig = {
     control: {
       borderColor: "text.dark",
       _checked: {
-        borderColor: violetLight,
+        borderColor: "violet.main",
         background: "transparent",
         color: violetLight,
         _before: {
@@ -45,13 +45,13 @@ export const Radio: ComponentStyleConfig = {
         w: "full",
         px: "24px",
         py: "12px",
-        border: "2px solid",
+        border: "1px solid",
         borderRadius: "12px",
         borderColor: "pebble.700",
         bgColor: "pebble.900",
         overflowX: "scroll",
         "&[data-checked]": {
-          borderColor: violetLight,
+          borderColor: "violet.main",
           bgColor: "violet.background",
         },
       },

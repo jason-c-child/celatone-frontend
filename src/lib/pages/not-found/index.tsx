@@ -26,17 +26,16 @@ const NotFoundPage = () => {
         mt={6}
       >
         <Image
-          src="https://assets.alleslabs.dev/illustration/404.svg"
+          src="https://assets.alleslabs.dev/integrations/sei/illustration/404.svg"
           alt="page not found"
           width="404px"
         />
-        <Heading variant="h5" as="h5" color="text.dark">
+        <Heading variant="h5" as="h5" color="text.main">
           This page is not found
         </Heading>
         <Text
-          color="text.disabled"
+          color="text.dark"
           variant="body2"
-          fontWeight={500}
           textAlign="center"
           lineHeight="24px"
         >

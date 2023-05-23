@@ -9,7 +9,7 @@ export const Tooltip: ComponentStyleConfig = {
     color: "text.main",
     padding: "8px 16px",
     mb: "4px",
-    fontWeight: 400,
+    fontWeight: 500,
     fontSize: "14px",
     maxW: "280px",
     bg: "honeydew.darker",

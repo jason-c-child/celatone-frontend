@@ -1,4 +1,3 @@
-import type { AlertProps } from "@chakra-ui/react";
 import {
   Alert,
   AlertDescription,
@@ -11,9 +10,8 @@ import { useWallet } from "@cosmos-kit/react";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
 
-import { useInternalNavigate } from "lib/app-provider";
+import { useCurrentNetwork, useInternalNavigate } from "lib/app-provider";
 import { ButtonCard } from "lib/components/ButtonCard";
-import { ConnectWalletAlert } from "lib/components/ConnectWalletAlert";
 import { CustomIcon } from "lib/components/icon";
 import { Loading } from "lib/components/Loading";
 import { Stepper } from "lib/components/stepper";
@@ -23,35 +21,8 @@ import { useUploadAccessParams } from "lib/services/proposalService";
 import type { HumanAddr } from "lib/types";
 import { AccessConfigPermission } from "lib/types";
 
-const getAlertContent = (
-  enabled: boolean
-): { variant: AlertProps["variant"]; icon: JSX.Element; description: string } =>
-  enabled
-    ? {
-        variant: "success",
-        icon: (
-          <CustomIcon
-            name="check-circle-solid"
-            color="success.main"
-            boxSize={4}
-          />
-        ),
-        description: "Your address is allowed to directly upload Wasm files",
-      }
-    : {
-        variant: "violet",
-        icon: (
-          <CustomIcon
-            name="info-circle-solid"
-            color="violet.light"
-            boxSize={4}
-          />
-        ),
-        description:
-          "The current network is a permissioned CosmWasm network. Only whitelisted addresses can directly upload Wasm files.",
-      };
-
 const Deploy = () => {
+  const { isMainnet } = useCurrentNetwork();
   const router = useRouter();
   const navigate = useInternalNavigate();
   const { address } = useWallet();
@@ -71,7 +42,6 @@ const Deploy = () => {
 
   if (isFetching) return <Loading />;
 
-  const { variant, icon, description } = getAlertContent(enableUpload);
   return (
     <WasmPageContainer>
       <Text variant="body1" color="text.dark" mb={3} fontWeight={700}>
@@ -81,14 +51,14 @@ const Deploy = () => {
       <Heading as="h5" variant="h5" my="48px">
         Select Deploy Option
       </Heading>
-      <ConnectWalletAlert
-        subtitle="You need to connect wallet to proceed this action"
-        mb={4}
-      />
-      {address && (
-        <Alert variant={variant} mb={4} alignItems="flex-start" gap={2}>
-          {icon}
-          <AlertDescription>{description}</AlertDescription>
+      {isMainnet && (
+        <Alert variant="violet" mb="16px" alignItems="flex-start" gap="1">
+          <CustomIcon name="info-circle-solid" boxSize="20px" />
+          <AlertDescription>
+            Uploading new Wasm files on permissioned chains is coming soon to
+            SeiScan. Currently, you can upload codes and instantiate contracts
+            without permission on testnet.
+          </AlertDescription>
         </Alert>
       )}
       <ButtonCard

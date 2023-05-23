@@ -21,7 +21,7 @@ const StepLabel = ({
   <Flex
     justify="center"
     align="center"
-    backgroundColor={disabled ? "text.disabled" : "violet.main"}
+    backgroundColor={disabled ? "text.disabled" : "honeydew.main"}
     width="24px"
     height="24px"
     borderRadius="50%"
@@ -62,7 +62,7 @@ export const StepperItem = ({
       <StepLabel step={step} disabled={disabled} currentStep={currentStep} />
       <Text
         variant="body2"
-        fontWeight={disabled ? 400 : 700}
+        fontWeight={disabled ? 500 : 700}
         color={disabled ? "text.disabled" : "text.main"}
       >
         {stepperText[mode][step]}

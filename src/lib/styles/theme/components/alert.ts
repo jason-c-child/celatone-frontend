@@ -52,7 +52,7 @@ export const Alert: ComponentStyleConfig = {
     },
     description: {
       fontSize: "14px",
-      fontWeight: 400,
+      fontWeight: 500,
       letterSpacing: "0.1px",
     },
   },

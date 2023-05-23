@@ -39,7 +39,7 @@ export const TableHeaderFreeze = chakra(GridItem, {
 const tableRowBaseStyle = {
   color: "text.main",
   fontSize: "14px",
-  fontWeight: 400,
+  fontWeight: 500,
   p: 4,
   minH: "75px",
   display: "flex",

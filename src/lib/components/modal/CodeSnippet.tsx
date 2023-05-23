@@ -28,7 +28,7 @@ import "ace-builds/src-noconflict/ace";
 import "ace-builds/src-noconflict/mode-sh";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-monokai";
+import "ace-builds/src-noconflict/theme-one_dark";
 
 interface CodeSnippetProps {
   contractAddress: ContractAddr;
@@ -208,7 +208,7 @@ execute();
         <ModalOverlay />
         <ModalContent w="840px">
           <ModalHeader>
-            <CustomIcon name="code" boxSize="6" />
+            <CustomIcon name="code" boxSize="6" color="pebble.600" />
             <Heading as="h5" variant="h5">
               Code Snippet
             </Heading>
@@ -233,7 +233,7 @@ execute();
                       <AceEditor
                         readOnly
                         mode={item.mode}
-                        theme="monokai"
+                        theme="one_dark"
                         fontSize="14px"
                         style={{
                           width: "100%",

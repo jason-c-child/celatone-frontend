@@ -13,7 +13,7 @@ const AssetLabel = chakra(Text, {
     paddingInlineStart: 1,
     paddingInlineEnd: 1,
     position: "absolute",
-    fontWeight: "400",
+    fontWeight: "500",
     lineHeight: "1.2",
     pointerEvents: "none",
     transformOrigin: "left top",

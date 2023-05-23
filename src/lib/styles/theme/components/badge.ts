@@ -4,7 +4,7 @@ export const Badge: ComponentStyleConfig = {
   baseStyle: {
     p: "4px 8px",
     borderRadius: "16px",
-    fontWeight: "400",
+    fontWeight: "500",
     fontSize: "12px",
     lineHeight: "100%",
     letterSpacing: "0.17px",

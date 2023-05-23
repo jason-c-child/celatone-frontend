@@ -11,7 +11,7 @@ import { useWallet } from "@cosmos-kit/react";
 
 import { useSelectChain } from "lib/app-provider";
 import { AppLink } from "lib/components/AppLink";
-import { FaucetBtn } from "lib/components/button";
+// import { FaucetBtn } from "lib/components/button";
 import { CustomIcon } from "lib/components/icon";
 import { WalletSection } from "lib/components/Wallet";
 import { getSupportedChainNames } from "lib/data";
@@ -36,8 +36,8 @@ const Header = () => {
     >
       <AppLink href="/">
         <Image
-          src="https://assets.alleslabs.dev/branding/logo/logo.svg"
-          alt="Celatone"
+          src="https://assets.alleslabs.dev/integrations/sei/logo.svg"
+          alt="SeiScan"
           minWidth="152px"
           width="152px"
           maxWidth="152px"
@@ -48,7 +48,7 @@ const Header = () => {
       </AppLink>
       <Searchbar />
       <Flex gap="16px">
-        <FaucetBtn />
+        {/* <FaucetBtn /> */}
         <Menu onOpen={() => AmpTrack(AmpEvent.USE_SELECT_NETWORK)}>
           <MenuButton
             pl={4}
