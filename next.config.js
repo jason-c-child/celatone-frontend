@@ -32,9 +32,6 @@ const nextConfig = {
         destination: `https://api2.amplitude.com/2/httpapi`,
       },
       {
-        source: "/amplitude/:path*",
-      },
-      {
         source: `/pacific-1/:path*`,
         destination: `/mainnet/:path*`,
       },
