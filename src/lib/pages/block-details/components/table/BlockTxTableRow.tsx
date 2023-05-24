@@ -25,7 +25,7 @@ export const BlockTxTableRow = ({
         className="copier-wrapper"
         templateColumns={templateColumns}
         onClick={isAccordion ? onToggle : undefined}
-        _hover={{ background: "pebble.900" }}
+        _hover={{ background: "gray.900" }}
         transition="all .25s ease-in-out"
         cursor={isAccordion ? "pointer" : "default"}
       >
@@ -62,7 +62,7 @@ export const BlockTxTableRow = ({
           {isAccordion && (
             <CustomIcon
               name={isOpen ? "chevron-up" : "chevron-down"}
-              color="pebble.600"
+              color="gray.600"
             />
           )}
         </TableRow>

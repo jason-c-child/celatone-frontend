@@ -1,6 +1,6 @@
 import type { ComponentStyleConfig } from "@chakra-ui/react";
 
-const violetLight = "violet.light";
+const primaryLight = "primary.light";
 
 export const Radio: ComponentStyleConfig = {
   baseStyle: {
@@ -13,9 +13,9 @@ export const Radio: ComponentStyleConfig = {
     control: {
       borderColor: "text.dark",
       _checked: {
-        borderColor: "violet.main",
+        borderColor: "primary.main",
         background: "transparent",
-        color: violetLight,
+        color: primaryLight,
         _before: {
           w: "10px",
           h: "10px",
@@ -47,12 +47,12 @@ export const Radio: ComponentStyleConfig = {
         py: "12px",
         border: "1px solid",
         borderRadius: "12px",
-        borderColor: "pebble.700",
-        bgColor: "pebble.900",
+        borderColor: "gray.700",
+        bgColor: "gray.900",
         overflowX: "scroll",
         "&[data-checked]": {
-          borderColor: "violet.main",
-          bgColor: "violet.background",
+          borderColor: "primary.main",
+          bgColor: "primary.background",
         },
       },
       control: {

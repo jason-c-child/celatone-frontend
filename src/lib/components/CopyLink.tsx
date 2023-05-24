@@ -25,23 +25,26 @@ export const CopyLink = ({ value, amptrackSection, type }: CopyLinkProps) => {
     >
       <Flex
         align="center"
+        display={{ base: "inline", md: "flex" }}
         onClick={() => {
           AmpTrackCopier(amptrackSection, type);
           onCopy();
         }}
         _hover={{
           textDecoration: "underline",
-          textDecorationColor: "lilac.light",
-          "& > p": { color: "lilac.light" },
+          textDecorationColor: "secondary.light",
+          "& > p": { color: "secondary.light" },
         }}
         cursor="pointer"
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
         <Text
+          wordBreak={{ base: "break-all", md: "inherit" }}
           variant="body2"
-          color="lilac.main"
+          color="secondary.main"
           transition="all .25s ease-in-out"
+          display="inline"
         >
           {value === address ? `${value} (Me)` : value}
         </Text>
@@ -50,7 +53,7 @@ export const CopyLink = ({ value, amptrackSection, type }: CopyLinkProps) => {
           marginLeft={2}
           name="copy"
           boxSize={3}
-          color="pebble.600"
+          color="gray.600"
         />
       </Flex>
     </Tooltip>

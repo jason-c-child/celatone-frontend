@@ -19,7 +19,7 @@ export const ExpandNavMenu = ({
         mb="4"
         key={item.category}
         borderBottom="1px solid"
-        borderColor="pebble.700"
+        borderColor="gray.700"
         sx={{
           "&:last-of-type": {
             borderBottom: "none",
@@ -66,28 +66,26 @@ export const ExpandNavMenu = ({
               gap="2"
               p={2}
               cursor="pointer"
-              _hover={{ bg: "pebble.700", borderRadius: "8px" }}
+              _hover={{ bg: "gray.700", borderRadius: "8px" }}
               my="1px"
               transition="all .25s ease-in-out"
               alignItems="center"
               position="relative"
-              bgColor={
-                isCurrentPage(submenu.slug) ? "pebble.800" : "transparent"
-              }
+              bgColor={isCurrentPage(submenu.slug) ? "gray.800" : "transparent"}
               borderRadius={isCurrentPage(submenu.slug) ? "8px" : "0px"}
             >
               <Flex
                 opacity={isCurrentPage(submenu.slug) ? 1 : 0}
                 width="3px"
                 height="20px"
-                bgColor="violet.light"
+                bgColor="primary.light"
                 position="absolute"
                 top="10px"
                 borderRadius="2px"
                 left="0px"
               />
               {submenu.icon && (
-                <CustomIcon name={submenu.icon} color="pebble.600" />
+                <CustomIcon name={submenu.icon} color="gray.600" />
               )}
               {submenu.logo && (
                 <Image

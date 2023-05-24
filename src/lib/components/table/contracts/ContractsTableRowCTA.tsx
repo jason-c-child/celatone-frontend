@@ -14,7 +14,7 @@ import {
 import { useWallet } from "@cosmos-kit/react";
 
 import { TableRow } from "../tableComponents";
-import { useInternalNavigate } from "lib/app-provider";
+import { useInternalNavigate, useMobile } from "lib/app-provider";
 import { AppLink } from "lib/components/AppLink";
 import { CustomIcon } from "lib/components/icon";
 import {
@@ -43,16 +43,19 @@ export interface CTAInfo {
 interface ContractsTableRowCTAProps {
   contractInfo: ContractInfo;
   withCTA?: CTAInfo;
+  showLastUpdate?: boolean;
 }
 
 export const ContractsTableRowCTA = ({
   contractInfo,
   withCTA,
+  showLastUpdate = true,
 }: ContractsTableRowCTAProps) => {
   const { address } = useWallet();
   const navigate = useInternalNavigate();
 
   const isAdmin = !!address && address === contractInfo.admin;
+  const isMobile = useMobile();
   return withCTA ? (
     <>
       <TableRow>
@@ -87,7 +90,7 @@ export const ContractsTableRowCTA = ({
             as={Button}
             onClick={(e) => e.stopPropagation()}
           >
-            <CustomIcon name="more" boxSize="16px" color="pebble.600" />
+            <CustomIcon name="more" boxSize="16px" color="gray.600" />
           </MenuButton>
           <MenuList onClick={(e) => e.stopPropagation()}>
             <EditContractDetailsModal
@@ -95,7 +98,7 @@ export const ContractsTableRowCTA = ({
               triggerElement={
                 <MenuItem
                   icon={
-                    <CustomIcon name="edit" boxSize="16px" color="pebble.600" />
+                    <CustomIcon name="edit" boxSize="16px" color="gray.600" />
                   }
                 >
                   Edit details
@@ -110,7 +113,7 @@ export const ContractsTableRowCTA = ({
                     <CustomIcon
                       name="bookmark"
                       boxSize="16px"
-                      color="pebble.600"
+                      color="gray.600"
                     />
                   }
                 >
@@ -119,9 +122,7 @@ export const ContractsTableRowCTA = ({
               }
             />
             <MenuItem
-              icon={
-                <CustomIcon name="admin" boxSize="16px" color="pebble.600" />
-              }
+              icon={<CustomIcon name="admin" boxSize="16px" color="gray.600" />}
               onClick={() => {
                 navigate({
                   pathname: "/admin",
@@ -140,7 +141,7 @@ export const ContractsTableRowCTA = ({
                     <CustomIcon
                       name="admin-clear"
                       boxSize="16px"
-                      color="pebble.600"
+                      color="gray.600"
                     />
                   }
                   isDisabled={!isAdmin}
@@ -168,31 +169,32 @@ export const ContractsTableRowCTA = ({
     </>
   ) : (
     <>
-      <TableRow>
-        <Flex
-          direction="column"
-          gap={1}
-          onClick={(e) => e.stopPropagation()}
-          cursor="text"
-        >
-          {contractInfo.latestUpdated ? (
-            <>
-              <Text variant="body2">
-                {formatUTC(contractInfo.latestUpdated)}
+      {showLastUpdate && (
+        <TableRow>
+          <Flex
+            direction="column"
+            gap={1}
+            onClick={(e) => e.stopPropagation()}
+            cursor="text"
+          >
+            {contractInfo.latestUpdated ? (
+              <>
+                <Text variant="body2">
+                  {formatUTC(contractInfo.latestUpdated)}
+                </Text>
+                <Text variant="body3" color="text.dark">
+                  {`(${dateFromNow(contractInfo.latestUpdated)})`}
+                </Text>
+              </>
+            ) : (
+              <Text variant="body2" color="text.dark">
+                N/A
               </Text>
-              <Text variant="body3" color="text.dark">
-                {`(${dateFromNow(contractInfo.latestUpdated)})`}
-              </Text>
-            </>
-          ) : (
-            <Text variant="body2" color="text.dark">
-              N/A
-            </Text>
-          )}
-        </Flex>
-      </TableRow>
-
-      <TableRow>
+            )}
+          </Flex>
+        </TableRow>
+      )}
+      {isMobile ? (
         <Box onClick={(e) => e.stopPropagation()}>
           {contractInfo.lists ? (
             <AddToOtherListModal
@@ -216,7 +218,33 @@ export const ContractsTableRowCTA = ({
             />
           )}
         </Box>
-      </TableRow>
+      ) : (
+        <TableRow>
+          <Box onClick={(e) => e.stopPropagation()}>
+            {contractInfo.lists ? (
+              <AddToOtherListModal
+                contractLocalInfo={contractInfo}
+                triggerElement={
+                  <StyledIconButton
+                    icon={<CustomIcon name="bookmark-solid" />}
+                    variant="ghost-primary"
+                  />
+                }
+              />
+            ) : (
+              <SaveContractDetailsModal
+                contractLocalInfo={contractInfo}
+                triggerElement={
+                  <StyledIconButton
+                    icon={<CustomIcon name="bookmark" />}
+                    variant="ghost-gray"
+                  />
+                }
+              />
+            )}
+          </Box>
+        </TableRow>
+      )}
     </>
   );
 };

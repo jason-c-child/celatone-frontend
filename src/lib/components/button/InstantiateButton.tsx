@@ -39,7 +39,7 @@ const getInstantiateButtonProps = (
       icon: (
         <CustomIcon
           name="instantiate"
-          color={isWalletConnected ? "violet.main" : "pebble.600"}
+          color={isWalletConnected ? "primary.main" : "gray.600"}
         />
       ),
     };

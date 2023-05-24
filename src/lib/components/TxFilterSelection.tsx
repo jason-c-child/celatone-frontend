@@ -28,6 +28,8 @@ export interface TxFilterSelectionProps extends InputProps {
   label?: string;
   boxWidth?: LayoutProps["width"];
   boxHeight?: LayoutProps["height"];
+  size?: string | object;
+  tagSize?: string | object;
 }
 
 const listItemProps: CSSProperties = {
@@ -52,6 +54,8 @@ export const TxFilterSelection = forwardRef<
       label = "Filter by Actions",
       boxWidth = "full",
       boxHeight = "56px",
+      size = "lg",
+      tagSize = "md",
       ...rest
     }: TxFilterSelectionProps,
     ref
@@ -112,7 +116,7 @@ export const TxFilterSelection = forwardRef<
             background="none"
             borderRadius="8px"
             border="1px solid"
-            borderColor="pebble.700"
+            borderColor="gray.700"
             maxW="100%"
             overflowX="scroll"
           >
@@ -125,11 +129,12 @@ export const TxFilterSelection = forwardRef<
                     key={option}
                   >
                     <Tag
-                      variant="violet-dark"
+                      variant="primary-dark"
                       gap={1}
                       mr={1}
                       whiteSpace="nowrap"
                       cursor="pointer"
+                      size={tagSize}
                     >
                       {displayActionValue(option)}
                       <CustomIcon name="close" boxSize="3" />
@@ -143,7 +148,7 @@ export const TxFilterSelection = forwardRef<
               autoComplete="off"
               w="100%"
               minW="200px"
-              size="lg"
+              size={size}
               placeholder={result.length ? "" : placeholder}
               onChange={(e) => filterOptions(e.currentTarget.value)}
               onFocus={() => {
@@ -177,7 +182,7 @@ export const TxFilterSelection = forwardRef<
           {displayOptions && (
             <List
               borderRadius="8px"
-              bg="pebble.900"
+              bg="gray.900"
               px="2"
               py="1"
               mt={0}
@@ -191,7 +196,7 @@ export const TxFilterSelection = forwardRef<
                 <ListItem
                   key={option}
                   style={listItemProps}
-                  _hover={{ bg: "pebble.800" }}
+                  _hover={{ bg: "gray.800" }}
                   transition="all .25s ease-in-out"
                   onClick={() => selectOption(option)}
                 >
@@ -202,7 +207,7 @@ export const TxFilterSelection = forwardRef<
                       <CustomIcon
                         name="check"
                         data-label={option}
-                        color="pebble.600"
+                        color="gray.600"
                       />
                     )}
                   </Flex>

@@ -52,7 +52,7 @@ const Deploy = () => {
         Select Deploy Option
       </Heading>
       {isMainnet && (
-        <Alert variant="violet" mb="16px" alignItems="flex-start" gap="1">
+        <Alert variant="primary" mb="16px" alignItems="flex-start" gap="1">
           <CustomIcon name="info-circle-solid" boxSize="20px" />
           <AlertDescription>
             Uploading new Wasm files on permissioned chains is coming soon to

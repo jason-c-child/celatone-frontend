@@ -1,5 +1,5 @@
 import type { BoxProps, TextProps } from "@chakra-ui/react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Flex } from "@chakra-ui/react";
 import { useWallet } from "@cosmos-kit/react";
 
 import {
@@ -8,6 +8,7 @@ import {
 } from "lib/app-fns/explorer";
 import type { AddressReturnType } from "lib/app-provider";
 import { useCurrentNetwork } from "lib/app-provider/hooks/useCurrentNetwork";
+import { useMobile } from "lib/app-provider/hooks/useMediaQuery";
 import { AmpTrackMintscan } from "lib/services/amplitude";
 import type { Option } from "lib/types";
 import { truncate } from "lib/utils";
@@ -111,12 +112,15 @@ const LinkRender = ({
   const textElement = (
     <Text
       variant={textVariant}
-      color="lilac.main"
+      color="secondary.main"
       transition="all .25s ease-in-out"
-      _hover={{ color: "lilac.light" }}
+      _hover={{ color: "secondary.light" }}
       className={isEllipsis ? "ellipsis" : undefined}
       maxW={maxWidth}
       pointerEvents={hrefLink ? "auto" : "none"}
+      wordBreak={{ base: "break-all", md: "inherit" }}
+      display={{ base: "inline", md: "flex" }}
+      align={{ base: "start", md: "center" }}
     >
       {textValue}
     </Text>
@@ -169,7 +173,7 @@ export const ExplorerLink = ({
   ];
 
   const readOnly = isReadOnly || !hrefLink;
-
+  const isMobile = useMobile();
   return (
     <Box
       className="copier-wrapper"
@@ -179,7 +183,7 @@ export const ExplorerLink = ({
       _hover={{
         ...(!readOnly && {
           textDecoration: "underline",
-          textDecorationColor: "lilac.light",
+          textDecorationColor: "secondary.light",
         }),
       }}
       {...componentProps}
@@ -187,7 +191,7 @@ export const ExplorerLink = ({
       {readOnly ? (
         <Text variant="body2">{textValue}</Text>
       ) : (
-        <>
+        <Flex display={{ base: "inline", md: "flex" }}>
           <LinkRender
             type={type}
             isInternal={isInternal}
@@ -202,11 +206,11 @@ export const ExplorerLink = ({
             type={type}
             value={copyValue || value}
             copyLabel={copyValue ? `${getCopyLabel(type)} Copied!` : undefined}
-            display={showCopyOnHover ? "none" : "block"}
-            ml="8px"
+            display={showCopyOnHover && !isMobile ? "none" : "inline"}
+            ml={2}
             amptrackSection={ampCopierSection}
           />
-        </>
+        </Flex>
       )}
     </Box>
   );

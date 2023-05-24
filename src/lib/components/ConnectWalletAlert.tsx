@@ -35,7 +35,7 @@ export const ConnectWalletAlert = ({
   return !address ? (
     <Alert
       {...alertProps}
-      variant="honeydew"
+      variant="accent"
       alignItems="center"
       justifyContent="space-between"
       py="12px"

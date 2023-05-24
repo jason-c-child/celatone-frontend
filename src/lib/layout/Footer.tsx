@@ -1,6 +1,7 @@
 import { Flex, Text, Button, Image } from "@chakra-ui/react";
 import Link from "next/link";
 
+import { useMobile } from "lib/app-provider";
 import { CustomIcon } from "lib/components/icon";
 import type { IconKeys } from "lib/components/icon";
 import { AmpEvent, AmpTrack, AmpTrackCelatone } from "lib/services/amplitude";
@@ -56,114 +57,145 @@ const seiSocial: SocialMenuType[] = [
   },
 ];
 
-const Footer = () => (
-  <Flex
-    as="footer"
-    align="end"
-    justifyContent="space-between"
-    px={12}
-    py={6}
-    mx={1}
-    background="background.overlay"
-  >
-    <Flex direction="column" gap={3} align="start">
-      <Flex direction="row" gap={1} align="center">
-        <Link
-          href="https://www.sei.io/"
-          target="_blank"
-          rel="noopener noreferrer"
+const Footer = () => {
+  const isMobile = useMobile();
+  return (
+    <Flex
+      as="footer"
+      align={{ base: "center", md: "end" }}
+      justifyContent="space-between"
+      px={{ base: 4, md: 12 }}
+      py={6}
+      mx={1}
+      background="background.overlay"
+      direction={{ base: "column", md: "row" }}
+      gap={{ base: 8, md: 1 }}
+    >
+      <Flex direction="column" gap={3} align="start">
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          gap={{ base: 2, md: 1 }}
+          align="center"
+          w={{ base: "full", md: "auto" }}
         >
-          <Image
-            src="https://www.sei.io/_next/static/media/logo-light.1249fa55.svg"
-            h={7}
-            mr={3}
-          />
-        </Link>
-        {seiSocial.map((item) => (
           <Link
-            key={`social-sei-${item.slug}`}
-            href={item.url}
+            href="https://www.sei.io/"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => AmpTrackCelatone(item.url)}
           >
-            <Button variant="ghost" size="xs" px="0">
-              <CustomIcon name={item.icon} boxSize="6" color="honeydew.main" />
-            </Button>
+            <Image
+              src="https://www.sei.io/_next/static/media/logo-light.1249fa55.svg"
+              h={7}
+              mr={3}
+            />
           </Link>
-        ))}
-      </Flex>
-      <Text variant="body3" color="pebble.400">
-        Explore the fastest Layer 1 blockchain, designed to scale with the
-        industry
-      </Text>
-    </Flex>
-    <Flex direction="row" alignItems="end" minW="60px">
-      <Button
-        variant="ghost-gray"
-        size="xs"
-        sx={{ _hover: { "> div > svg": { opacity: "100" } } }}
-      >
-        <Link
-          href="https://celat.one/"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => AmpTrack(AmpEvent.ALLESLABS)}
-        >
-          <Flex
-            gap={1}
-            align="center"
-            sx={{ _hover: { "> div": { opacity: "100" } } }}
-          >
-            <Flex opacity="0" transition="all .25s ease-in-out">
-              <CustomIcon name="celatone" />
-            </Flex>
-            <Text variant="body3" color="text.dark">
-              Powered by
+          {isMobile && (
+            <Text variant="body3" color="gray.400" mb={2}>
+              Explore the fastest Layer 1 blockchain, designed to scale with the
+              industry
             </Text>
-            <Text
-              variant="body3"
-              color="lilac.main"
-              transition="all .25s ease-in-out"
-              _hover={{ color: "lilac.light" }}
+          )}
+          <Flex direction="row" gap={1} align="center">
+            {seiSocial.map((item) => (
+              <Link
+                key={`social-sei-${item.slug}`}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => AmpTrackCelatone(item.url)}
+              >
+                <Button variant="ghost" size="xs" px="0">
+                  <CustomIcon
+                    name={item.icon}
+                    boxSize="6"
+                    color="accent.main"
+                  />
+                </Button>
+              </Link>
+            ))}
+          </Flex>
+        </Flex>
+        {!isMobile && (
+          <Text variant="body3" color="gray.400">
+            Explore the fastest Layer 1 blockchain, designed to scale with the
+            industry
+          </Text>
+        )}
+      </Flex>
+      <Flex
+        direction="row"
+        alignItems="end"
+        minW="60px"
+        pr={{ base: 8, md: 0 }}
+      >
+        <Button
+          variant="ghost-gray"
+          size="xs"
+          sx={{ _hover: { "> div > svg": { opacity: "100" } } }}
+        >
+          <Link
+            href="https://celat.one/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => AmpTrack(AmpEvent.ALLESLABS)}
+          >
+            <Flex
+              gap={1}
+              align="center"
+              sx={{ _hover: { "> div": { opacity: "100" } } }}
             >
-              Celatone
-            </Text>
-          </Flex>
-        </Link>
-      </Button>
-      <Link
-        href="https://feedback.alleslabs.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => AmpTrack(AmpEvent.FEEDBACK)}
-      >
-        <Button variant="ghost-gray" size="xs" pl="1" mr="1">
-          <Flex gap={1} align="center">
-            <CustomIcon name="feedback" color="pebble.600" />
-            <Text variant="body3" color="text.dark">
-              Feedback
-            </Text>
-          </Flex>
+              <Flex opacity="0" transition="all .25s ease-in-out">
+                <CustomIcon name="celatone" />
+              </Flex>
+              <Text variant="body3" color="text.dark">
+                Powered by
+              </Text>
+              <Text
+                variant="body3"
+                color="secondary.main"
+                transition="all .25s ease-in-out"
+                _hover={{ color: "secondary.light" }}
+              >
+                Celatone
+              </Text>
+            </Flex>
+          </Link>
         </Button>
-      </Link>
-      <Flex direction="row" gap={1} align="center">
-        {socialMenu.map((item) => (
+        <Flex>
           <Link
-            key={`social-${item.slug}`}
-            href={item.url}
+            href="https://feedback.alleslabs.com"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => AmpTrackCelatone(item.url)}
+            onClick={() => AmpTrack(AmpEvent.FEEDBACK)}
           >
-            <Button variant="ghost" size="xs" px="0">
-              <CustomIcon name={item.icon} boxSize="4" color="pebble.600" />
+            <Button variant="ghost-gray" size="xs" pl="1" mr="1">
+              <Flex gap={1} align="center">
+                <CustomIcon name="feedback" color="gray.600" />
+                <Text variant="body3" color="text.dark">
+                  Feedback
+                </Text>
+              </Flex>
             </Button>
           </Link>
-        ))}
+          <Flex direction="row" gap={1} align="center">
+            {socialMenu.map((item) => (
+              <Link
+                key={`social-${item.slug}`}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => AmpTrackCelatone(item.url)}
+              >
+                <Button variant="ghost" size="xs" px="0">
+                  <CustomIcon name={item.icon} boxSize="4" color="gray.600" />
+                </Button>
+              </Link>
+            ))}
+          </Flex>
+        </Flex>
       </Flex>
     </Flex>
-  </Flex>
-);
+  );
+};
 
 export default Footer;

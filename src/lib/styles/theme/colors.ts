@@ -51,7 +51,7 @@ const extendedColors: BasicColor = {
     dark: "#92A4B5",
     disabled: "#586D81",
   },
-  violet: {
+  primary: {
     main: "#F0E3CF",
     light: "#FAF6EF",
     lighter: "#FAF6EF",
@@ -59,7 +59,7 @@ const extendedColors: BasicColor = {
     darker: "#787971",
     background: "#303939",
   },
-  honeydew: {
+  accent: {
     main: "#6C80B2",
     light: "#8797C0",
     lighter: "#8797C0",
@@ -67,14 +67,14 @@ const extendedColors: BasicColor = {
     darker: "#3F4F78",
     background: "#203043",
   },
-  lilac: {
+  secondary: {
     main: "#6C80B2",
     light: "#8797C0",
     dark: "#184354",
     darker: "#3F4F78",
     background: "#203043",
   },
-  pebble: {
+  gray: {
     100: "#FCFCFD",
     400: "#92A4B5",
     500: "#586D81",

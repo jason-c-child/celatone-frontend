@@ -208,15 +208,15 @@ execute();
         <ModalOverlay />
         <ModalContent w="840px">
           <ModalHeader>
-            <CustomIcon name="code" boxSize="6" color="pebble.600" />
+            <CustomIcon name="code" boxSize="6" color="gray.600" />
             <Heading as="h5" variant="h5">
               Code Snippet
             </Heading>
           </ModalHeader>
-          <ModalCloseButton color="pebble.600" />
+          <ModalCloseButton color="gray.600" />
           <ModalBody px={4} maxH="640px" overflow="scroll">
             <Tabs>
-              <TabList borderBottom="1px solid" borderColor="pebble.700">
+              <TabList borderBottom="1px solid" borderColor="gray.700">
                 {codeSnippets[type].map((item) => (
                   <CustomTab key={`menu-${item.name}`}>{item.name}</CustomTab>
                 ))}

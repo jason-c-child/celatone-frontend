@@ -7,7 +7,7 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const baseStyle = definePartsStyle({
   track: {
     _checked: {
-      bg: "honeydew.main",
+      bg: "accent.main",
     },
   },
 });

@@ -10,7 +10,7 @@ interface CopierProps {
   value: string;
   copyLabel?: string;
   display?: LayoutProps["display"];
-  ml?: string;
+  ml?: number | string;
   amptrackSection?: string;
 }
 
@@ -18,8 +18,8 @@ export const Copier = ({
   type,
   value,
   copyLabel,
-  display = "block",
-  ml = "8px",
+  display = "inline",
+  ml = 2,
   amptrackSection,
 }: CopierProps) => (
   <CopyTemplate
@@ -34,8 +34,8 @@ export const Copier = ({
         marginLeft={ml}
         onClick={() => AmpTrackCopier(amptrackSection, type)}
         name="copy"
-        boxSize="12px"
-        color="pebble.600"
+        boxSize={3}
+        color="gray.600"
       />
     }
   />

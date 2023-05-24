@@ -11,7 +11,11 @@ import {
 import type { ChangeEvent, KeyboardEvent } from "react";
 import { useRef, useEffect, useState } from "react";
 
-import { useInternalNavigate, useValidateAddress } from "lib/app-provider";
+import {
+  useInternalNavigate,
+  useMobile,
+  useValidateAddress,
+} from "lib/app-provider";
 import { CustomIcon } from "lib/components/icon";
 import { getChainConfig } from "lib/data";
 import { AmpTrackUseMainSearch } from "lib/services/amplitude";
@@ -60,7 +64,7 @@ const ResultItem = ({ type, value, handleSelectResult }: ResultItemProps) => {
   const route = type ? getRoute(type) : null;
 
   return (
-    <ListItem p={2} borderBottomColor="pebble.700" bg="pebble.900">
+    <ListItem p={2} borderBottomColor="gray.700" bg="gray.900">
       <Text variant="body2" fontWeight="500" color="text.dark" p="8px">
         {text}
       </Text>
@@ -69,7 +73,7 @@ const ResultItem = ({ type, value, handleSelectResult }: ResultItemProps) => {
           variant="body2"
           p="8px"
           borderRadius="8px"
-          _hover={{ bg: "pebble.800", cursor: "pointer" }}
+          _hover={{ bg: "gray.800", cursor: "pointer" }}
           transition="all 0.25s ease-in-out"
           onClick={() => handleSelectResult(type, true)}
         >
@@ -82,6 +86,7 @@ const ResultItem = ({ type, value, handleSelectResult }: ResultItemProps) => {
 
 // TODO - Implement all search for Wasm chain
 const Searchbar = () => {
+  const isMobile = useMobile();
   const navigate = useInternalNavigate();
   const { validateContractAddress, validateUserAddress } = useValidateAddress();
 
@@ -92,20 +97,27 @@ const Searchbar = () => {
   const boxRef = useRef<HTMLDivElement>(null);
   const chainConfig = getChainConfig();
 
-  let placeholder = "Search by Wallet Address / Tx Hash / ";
-  placeholder += chainConfig.isWasm ? "Code ID / Contract Address" : "Block";
+  let placeholder = "Search by Wallet Address / Tx Hash";
+  if (!isMobile)
+    placeholder += chainConfig.isWasm
+      ? "/ Code ID / Contract Address"
+      : "/ Block";
 
   useEffect(() => {
     const res: SearchResultType[] = [];
-    if (chainConfig.isWasm && isCodeId(keyword)) res.push("Code ID");
-    if (isBlock(keyword)) res.push("Block");
-    if (!validateContractAddress(keyword)) res.push("Contract Address");
+    if (!isMobile) {
+      if (chainConfig.isWasm && isCodeId(keyword)) res.push("Code ID");
+      else if (isBlock(keyword)) res.push("Block");
+
+      if (!validateContractAddress(keyword)) res.push("Contract Address");
+    }
     if (!validateUserAddress(keyword)) res.push("Wallet Address");
     if (isTxHash(keyword)) res.push("Transaction Hash");
     // TODO: add proposal ID
     setResults(res);
   }, [
     chainConfig.isWasm,
+    isMobile,
     keyword,
     validateContractAddress,
     validateUserAddress,
@@ -140,18 +152,18 @@ const Searchbar = () => {
           h="36px"
           onChange={handleSearchChange}
           placeholder={placeholder}
-          focusBorderColor="lilac.main"
+          focusBorderColor="secondary.main"
           onFocus={() => setDisplayResults(keyword.length > 0)}
           onKeyDown={handleOnKeyEnter}
         />
         <InputRightElement pointerEvents="none" h="full">
-          <CustomIcon name="search" color="pebble.600" />
+          <CustomIcon name="search" color="gray.600" />
         </InputRightElement>
       </InputGroup>
       {displayResults && (
         <List
           borderRadius="8px"
-          bg="pebble.900"
+          bg="gray.900"
           position="absolute"
           zIndex="2"
           w="full"
