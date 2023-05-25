@@ -90,7 +90,12 @@ const Footer = () => {
             />
           </Link>
           {isMobile && (
-            <Text variant="body3" color="gray.400" mb={2}>
+            <Text
+              variant="body3"
+              color="gray.400"
+              mb={2}
+              textAlign={{ base: "center", md: "left" }}
+            >
               Explore the fastest Layer 1 blockchain, designed to scale with the
               industry
             </Text>

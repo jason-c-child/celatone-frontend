@@ -74,7 +74,7 @@ const Layout = ({ children }: LayoutProps) => {
           <Navbar isExpand={isExpand} setIsExpand={setIsExpand} />
         </GridItem>
       )}
-      <GridItem area="main" overflowY="auto" id="content">
+      <GridItem area="main" overflowY="auto" overflowX="hidden" id="content">
         <div style={{ minHeight: `calc(100vh - 129px)` }}>{children}</div>
         <Footer />
       </GridItem>
