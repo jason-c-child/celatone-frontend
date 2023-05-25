@@ -128,9 +128,12 @@ export const TxHeader = ({ txData, ...flexProps }: TxHeaderProps) => {
         )}
         {txData.timestamp ? (
           <>
-            <Text color="text.dark" display="inline">
-              {dateFromNow(txData.timestamp)}
-            </Text>
+            <Flex gap={1} alignItems="center">
+              <CustomIcon name="history" boxSize={3} color="gray.600" />
+              <Text color="text.dark" display="inline">
+                {dateFromNow(txData.timestamp)}
+              </Text>
+            </Flex>
             <DotSeparator />
             <Text color="text.dark" display="inline">
               {formatUTC(txData.timestamp)}

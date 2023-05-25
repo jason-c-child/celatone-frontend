@@ -13,6 +13,7 @@ interface ValidatorBadgeProps {
   validator: ValidatorInfo | null;
   badgeSize?: ImageProps["boxSize"];
   maxWidth?: string;
+  hasLabel?: boolean;
 }
 
 const FallbackRender = ({
@@ -37,6 +38,7 @@ export const ValidatorBadge = ({
   validator,
   badgeSize = 10,
   maxWidth = "160px",
+  hasLabel = true,
 }: ValidatorBadgeProps) => {
   const { currentChainName } = useWallet();
   const isMobile = useMobile();
@@ -56,7 +58,7 @@ export const ValidatorBadge = ({
             borderRadius="50%"
           />
           <Flex direction="column">
-            {isMobile && <MobileLabel label="Validator" />}
+            {isMobile && hasLabel && <MobileLabel label="Validator" />}
             <ExplorerLink
               value={validator.moniker ?? validator.validatorAddress}
               copyValue={validator.validatorAddress}

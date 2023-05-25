@@ -12,8 +12,12 @@ import { DefaultMobileCard } from "./DefaultMobileCard";
 
 interface TransactionCardProps {
   transaction: Transaction;
+  showRelations?: boolean;
 }
-export const TransactionCard = ({ transaction }: TransactionCardProps) => {
+export const TransactionCard = ({
+  transaction,
+  showRelations = true,
+}: TransactionCardProps) => {
   return (
     <DefaultMobileCard
       topContent={
@@ -30,7 +34,7 @@ export const TransactionCard = ({ transaction }: TransactionCardProps) => {
               showCopyOnHover
             />
           </Flex>
-          <RelationChip isSigner={transaction.isSigner} />
+          {showRelations && <RelationChip isSigner={transaction.isSigner} />}
         </>
       }
       middleContent={

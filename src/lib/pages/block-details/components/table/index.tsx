@@ -1,6 +1,8 @@
-import { TableContainer } from "@chakra-ui/react";
+import { Flex, TableContainer } from "@chakra-ui/react";
 import type { ChangeEvent } from "react";
 
+import { useMobile } from "lib/app-provider";
+import { BlockTxCard } from "lib/components/card/BlockTxCard";
 import { Loading } from "lib/components/Loading";
 import { Pagination } from "lib/components/pagination";
 import { usePaginator } from "lib/components/pagination/usePaginator";
@@ -54,6 +56,8 @@ export const BlockTransactionTable = ({
     setCurrentPage(1);
   };
 
+  const isMobile = useMobile();
+
   if (blockTxLoading) return <Loading />;
   if (!blockTxs || !blockTxCount)
     return (
@@ -70,19 +74,30 @@ export const BlockTransactionTable = ({
   return (
     <>
       <TableTitle title="Transactions" count={blockTxCount} />
-      <TableContainer>
-        <BlockTxTableHeader
-          templateColumns={TEMPLATE_COLUMNS}
-          scrollComponentId={scrollComponentId}
-        />
-        {blockTxs.map((tx, idx) => (
-          <BlockTxTableRow
-            key={`block-tx-${idx.toString()}-${tx.hash}`}
+      {isMobile ? (
+        <Flex direction="column" gap={4} w="full" mt={4}>
+          {blockTxs.map((tx, idx) => (
+            <BlockTxCard
+              key={`block-tx-${idx.toString()}-${tx.hash}`}
+              blockTx={tx}
+            />
+          ))}
+        </Flex>
+      ) : (
+        <TableContainer>
+          <BlockTxTableHeader
             templateColumns={TEMPLATE_COLUMNS}
-            transaction={tx}
+            scrollComponentId={scrollComponentId}
           />
-        ))}
-      </TableContainer>
+          {blockTxs.map((tx, idx) => (
+            <BlockTxTableRow
+              key={`block-tx-${idx.toString()}-${tx.hash}`}
+              templateColumns={TEMPLATE_COLUMNS}
+              transaction={tx}
+            />
+          ))}
+        </TableContainer>
+      )}
       {blockTxCount > 10 && (
         <Pagination
           currentPage={currentPage}

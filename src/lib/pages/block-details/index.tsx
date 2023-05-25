@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
+import { useMobile } from "lib/app-provider";
 import { BackButton } from "lib/components/button";
 import { Loading } from "lib/components/Loading";
 import PageContainer from "lib/components/PageContainer";
@@ -25,12 +26,12 @@ const BlockDetail = () => {
   useEffect(() => {
     if (router.isReady) AmpTrack(AmpEvent.TO_BLOCK_DETAIL);
   }, [router.isReady]);
-
+  const isMobile = useMobile();
   if (isLoading) return <Loading />;
 
   return (
     <PageContainer>
-      <BackButton />
+      {!isMobile && <BackButton />}
       {blockData ? (
         <>
           <BlockDetailsTop blockData={blockData} />

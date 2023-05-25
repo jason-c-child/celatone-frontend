@@ -39,21 +39,54 @@ export const BlockDetailsTop = ({ blockData }: BlockDetailsTopProps) => {
   return (
     <Flex
       justify="space-between"
-      mb={12}
-      pb={12}
+      mb={{ base: 8, md: 12 }}
+      pb={{ base: 8, md: 12 }}
       mt={6}
       borderBottomColor="gray.700"
       borderBottomWidth="1px"
     >
-      <Flex direction="column" gap={1}>
-        <Flex alignItems="center">
-          <CustomIcon name="block" boxSize="5" color="secondary.main" />
-          <Heading as="h5" variant="h5" className="ellipsis">
-            {blockData.height}
-          </Heading>
+      <Flex direction="column" gap={1} w="full">
+        <Flex justify="space-between" align="center">
+          <Flex alignItems="center">
+            <CustomIcon name="block" boxSize="5" color="secondary.main" />
+            <Heading
+              as="h5"
+              variant={{ base: "h6", md: "h5" }}
+              className="ellipsis"
+            >
+              {blockData.height}
+            </Heading>
+          </Flex>
+          <Flex gap={2}>
+            {!disablePrevious && (
+              <AppLink href={`/blocks/${block - 1}`}>
+                <StyledIconButton
+                  icon={<CustomIcon name="chevron-left" />}
+                  variant="ghost-gray"
+                />
+              </AppLink>
+            )}
+            <AppLink href={`/blocks/${block + 1}`}>
+              <StyledIconButton
+                icon={<CustomIcon name="chevron-right" />}
+                variant="ghost-gray"
+              />
+            </AppLink>
+            <Button
+              variant="ghost-gray"
+              padding={2}
+              rightIcon={<CustomIcon name="launch" boxSize={3} />}
+              onClick={openLcdPage}
+            >
+              View in JSON
+            </Button>
+          </Flex>
         </Flex>
-        <Flex gap={2}>
-          <Text variant="body2" color="text.dark">
+        <Flex
+          gap={{ base: 0, md: 2 }}
+          direction={{ base: "column", md: "row" }}
+        >
+          <Text variant="body2" color="text.dark" display="inline">
             Block Hash:
           </Text>
           <CopyLink
@@ -74,30 +107,6 @@ export const BlockDetailsTop = ({ blockData }: BlockDetailsTopProps) => {
             {formatUTC(blockData.timestamp)}
           </Text>
         </Flex>
-      </Flex>
-      <Flex gap={2}>
-        {!disablePrevious && (
-          <AppLink href={`/blocks/${block - 1}`}>
-            <StyledIconButton
-              icon={<CustomIcon name="chevron-left" />}
-              variant="ghost-gray"
-            />
-          </AppLink>
-        )}
-        <AppLink href={`/blocks/${block + 1}`}>
-          <StyledIconButton
-            icon={<CustomIcon name="chevron-right" />}
-            variant="ghost-gray"
-          />
-        </AppLink>
-        <Button
-          variant="ghost-gray"
-          padding={2}
-          rightIcon={<CustomIcon name="launch" boxSize={3} />}
-          onClick={openLcdPage}
-        >
-          View in JSON
-        </Button>
       </Flex>
     </Flex>
   );
