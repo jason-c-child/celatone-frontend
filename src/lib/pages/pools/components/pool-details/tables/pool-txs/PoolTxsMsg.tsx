@@ -35,7 +35,7 @@ export const PoolTxsMsg = ({
   const { isOpen, onToggle } = useDisclosure();
   const msgDetailTemplateColumns = templateColumns
     .split(" ")
-    .slice(0, 2)
+    .slice(0, 3)
     .concat("1fr")
     .join(" ");
 
@@ -129,6 +129,7 @@ export const PoolTxsMsg = ({
           hidden={!isOpen}
           templateColumns={msgDetailTemplateColumns}
         >
+          <TableNoBorderRow py={0} />
           <TableNoBorderRow py={0} />
           <TableNoBorderRow py={0} />
           <TableNoBorderRow py={0}>
