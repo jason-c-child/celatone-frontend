@@ -191,7 +191,11 @@ export const ExplorerLink = ({
       {readOnly ? (
         <Text variant="body2">{textValue}</Text>
       ) : (
-        <Flex display={{ base: "inline", md: "flex" }}>
+        <Flex
+          display={{ base: "inline-flex", md: "flex" }}
+          align="center"
+          h="24px"
+        >
           <LinkRender
             type={type}
             isInternal={isInternal}

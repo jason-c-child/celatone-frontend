@@ -28,6 +28,7 @@ export const Copier = ({
     triggerElement={
       <CustomIcon
         id={type}
+        h="24px"
         className="copier"
         display={display}
         cursor="pointer"

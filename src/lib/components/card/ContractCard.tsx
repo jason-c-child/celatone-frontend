@@ -18,20 +18,20 @@ interface InstantiatedContractCardProps {
 }
 const instantiatorRemark = (remark: Option<ContractHistoryRemark>) => {
   if (!remark) {
-    return <MobileLabel variant="body2" label="Instantiated by" />;
+    return <MobileLabel label="Instantiated by" />;
   }
   if (
     remark.operation ===
     RemarkOperation.CONTRACT_CODE_HISTORY_OPERATION_TYPE_GENESIS
   )
-    return <MobileLabel variant="body2" label="Genesis" />;
+    return <MobileLabel label="Genesis" />;
   if (
     remark.operation ===
     RemarkOperation.CONTRACT_CODE_HISTORY_OPERATION_TYPE_MIGRATE
   )
-    return <MobileLabel variant="body2" label="Migrated by" />;
+    return <MobileLabel label="Migrated by" />;
 
-  return <MobileLabel variant="body2" label="Instantiated by" />;
+  return <MobileLabel label="Instantiated by" />;
 };
 export const InstantiatedContractCard = ({
   contractInfo,
@@ -40,7 +40,7 @@ export const InstantiatedContractCard = ({
   <DefaultMobileCard
     topContent={
       <>
-        <Flex gap={2}>
+        <Flex gap={2} align="center">
           <MobileLabel variant="body2" label="Contract Address" />
           <ExplorerLink
             value={contractInfo.contractAddress}
@@ -57,20 +57,20 @@ export const InstantiatedContractCard = ({
     }
     middleContent={
       <Flex gap={3} direction="column">
-        <Flex direction="column" gap={0}>
-          <MobileLabel variant="body2" label="Contract Name" />
+        <Flex direction="column">
+          <MobileLabel label="Contract Name" />
           <ContractNameCell contractLocalInfo={contractInfo} isReadOnly />
         </Flex>
         <Flex>
-          <Flex direction="column" gap={0} flex="1">
+          <Flex direction="column" flex="1">
             {instantiatorRemark(contractInfo.remark)}
             <InstantiatorRender
               contractInfo={contractInfo}
               isReadOnly={false}
             />
           </Flex>
-          <Flex direction="column" gap={0} flex="1">
-            <MobileLabel variant="body2" label="Tags" />
+          <Flex direction="column" flex="1">
+            <MobileLabel label="Tags" />
             <TagsCell
               tagSize="xs"
               contractLocalInfo={contractInfo}
@@ -83,7 +83,7 @@ export const InstantiatedContractCard = ({
     bottomContent={
       <>
         {contractInfo.latestUpdated && (
-          <Flex direction="column" gap={0}>
+          <Flex direction="column">
             <Text variant="body3">{formatUTC(contractInfo.latestUpdated)}</Text>
             <Text variant="body3" color="text.dark">
               {`(${dateFromNow(contractInfo.latestUpdated)})`}

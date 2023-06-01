@@ -18,10 +18,10 @@ export const Proposer = ({
       value={proposer}
       showCopyOnHover
       ampCopierSection={amptrackSection}
-      textVariant={{ base: "body2", md: "body1" }}
+      textVariant="body2"
     />
   ) : (
-    <Text color="text.dark" variant={{ base: "body2", md: "body1" }}>
+    <Text color="text.dark" variant="body2">
       N/A
     </Text>
   );

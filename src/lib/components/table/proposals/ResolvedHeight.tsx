@@ -17,13 +17,13 @@ export const ResolvedHeight = ({
 }) => {
   if (isDepositOrVoting)
     return (
-      <Text color="text.dark" variant={{ base: "body2", md: "body1" }}>
+      <Text color="text.dark" variant="body2">
         Pending
       </Text>
     );
   if (!resolvedHeight || isDepositFailed)
     return (
-      <Text color="text.dark" variant={{ base: "body2", md: "body1" }}>
+      <Text color="text.dark" variant="body2">
         N/A
       </Text>
     );
@@ -33,7 +33,7 @@ export const ResolvedHeight = ({
       value={resolvedHeight.toString()}
       showCopyOnHover
       ampCopierSection={amptrackSection}
-      textVariant={{ base: "body2", md: "body1" }}
+      textVariant="body2"
     />
   );
 };

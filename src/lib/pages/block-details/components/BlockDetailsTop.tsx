@@ -41,7 +41,7 @@ export const BlockDetailsTop = ({ blockData }: BlockDetailsTopProps) => {
       justify="space-between"
       mb={{ base: 8, md: 12 }}
       pb={{ base: 8, md: 12 }}
-      mt={6}
+      mt={{ base: 2, md: 6 }}
       borderBottomColor="gray.700"
       borderBottomWidth="1px"
     >

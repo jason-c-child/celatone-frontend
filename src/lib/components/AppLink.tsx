@@ -10,6 +10,7 @@ export const AppLink = ({
   const componentHref = linkProps.href.toString();
   return (
     <Link
+      style={{ height: "24px", display: "flex", alignItems: "center" }}
       {...linkProps}
       href={
         router.query.network === "testnet"
@@ -18,7 +19,7 @@ export const AppLink = ({
       }
     >
       {typeof children === "string" ? (
-        <Text variant="body2" color={linkProps.color}>
+        <Text variant="body2" color={linkProps.color} h="auto">
           {children}
         </Text>
       ) : (

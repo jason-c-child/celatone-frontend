@@ -15,8 +15,9 @@ export const MobileGuard = ({ children }: MobileGuardProps) => {
   const isResponsive =
     pathName.includes(`account`) ||
     pathName.includes(`/txs`) ||
-    router.asPath === "/" ||
-    "/[network]";
+    pathName.includes(`/blocks`) ||
+    pathName.includes(`/contract`);
+
   if (isResponsive && isMobile) return <>{children}</>;
   if (!isResponsive && isMobile) return <NoMobile />;
   return <>{children}</>;

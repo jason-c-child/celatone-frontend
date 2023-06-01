@@ -57,6 +57,7 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
             <IconButton
               fontSize="24px"
               variant="none"
+              size={{ base: "sm", md: "md" }}
               aria-label="save"
               icon={
                 contractLocalInfo.lists ? (
@@ -94,8 +95,18 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
   };
 
   return (
-    <Flex justify="space-between" my={6}>
-      <Flex direction="column" gap={1} textOverflow="ellipsis" maxW="670px">
+    <Flex
+      justify="space-between"
+      my={{ base: 0, md: 6 }}
+      align={{ base: "center", md: "start" }}
+      direction={{ base: "column", md: "row" }}
+    >
+      <Flex
+        direction="column"
+        textOverflow="ellipsis"
+        maxW="670px"
+        gap={{ base: 2, md: 1 }}
+      >
         <Flex gap={1}>
           {publicProject.publicDetail?.logo && (
             <Image
@@ -110,7 +121,11 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
             {displayName}
           </Heading>
         </Flex>
-        <Flex gap={2}>
+        <Flex
+          mt={{ base: 2, md: 0 }}
+          gap={{ base: 0, md: 2 }}
+          direction={{ base: "column", md: "row" }}
+        >
           <Text
             color="text.dark"
             variant="body2"
@@ -125,7 +140,10 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
             type="contract_address"
           />
         </Flex>
-        <Flex gap={2}>
+        <Flex
+          gap={{ base: 0, md: 2 }}
+          direction={{ base: "column", md: "row" }}
+        >
           <Text color="text.dark" variant="body2" fontWeight={500}>
             Label:
           </Text>
@@ -134,7 +152,7 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
           </Text>
         </Flex>
         {publicProject.publicInfo?.name && (
-          <Flex gap={2}>
+          <Flex direction={{ base: "column", md: "row" }}>
             <Text color="text.dark" variant="body2" fontWeight={500}>
               Public Contract Name:
             </Text>
@@ -147,7 +165,7 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
           <GitHubLink github={publicProject.publicInfo?.github} />
         )}
       </Flex>
-      <Flex gap={4}>
+      <Flex gap={{ base: 2, md: 4 }} mt={{ base: 8, md: 0 }}>
         <AdminButton
           contractAddress={contractAddress as ContractAddr}
           admin={instantiateInfo?.admin}
@@ -156,6 +174,7 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
           variant="outline-primary"
           leftIcon={<CustomIcon name="query" />}
           onClick={goToQuery}
+          size={{ base: "sm", md: "md" }}
         >
           Query
         </Button>
@@ -163,6 +182,7 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
           variant="outline-primary"
           leftIcon={<CustomIcon name="execute" />}
           onClick={goToExecute}
+          size={{ base: "sm", md: "md" }}
         >
           Execute
         </Button>
@@ -176,6 +196,7 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
                   variant="none"
                   aria-label="edit"
                   color="gray.600"
+                  size={{ base: "sm", md: "md" }}
                   icon={<CustomIcon name="edit" />}
                 />
               }

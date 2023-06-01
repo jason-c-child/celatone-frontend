@@ -24,8 +24,8 @@ export const ProposalCard = ({ proposal }: ProposalCardProps) => {
     <DefaultMobileCard
       topContent={
         <>
-          <Flex gap={2}>
-            <MobileLabel variant="body2" label="Proposal ID" />
+          <Flex gap={2} align="center">
+            <MobileLabel label="Proposal ID" variant="body2" />
             <ExplorerLink
               isReadOnly={isDepositFailed}
               type="proposal_id"
@@ -39,15 +39,16 @@ export const ProposalCard = ({ proposal }: ProposalCardProps) => {
       middleContent={
         <Flex direction="column" gap={3}>
           <Flex direction="column" gap={1}>
-            <MobileLabel variant="body2" label="Proposal Title" />
+            <MobileLabel label="Proposal Title" />
             <Text color="text.main" variant="body2">
               {proposal.title}
             </Text>
             <Text color="text.dark" variant="body3">
-              {proposal.type}
+              Type: {proposal.type}
             </Text>
           </Flex>
-          <Flex direction="column" gap={0}>
+          <Flex direction="column" gap={1}>
+            <MobileLabel label="Voting Ends" />
             <VotingEndTime
               votingEndTime={proposal.votingEndTime}
               depositEndTime={proposal.depositEndTime}
@@ -58,16 +59,16 @@ export const ProposalCard = ({ proposal }: ProposalCardProps) => {
       }
       bottomContent={
         <>
-          <Flex direction="column" gap={0} flex="3">
-            <MobileLabel variant="body2" label="Resolved Block Height" />
+          <Flex direction="column" flex="3">
+            <MobileLabel label="Resolved Block Height" />
             <ResolvedHeight
               resolvedHeight={proposal.resolvedHeight}
               isDepositOrVoting={isDepositOrVoting}
               isDepositFailed={isDepositFailed}
             />
           </Flex>
-          <Flex direction="column" gap={0} flex="2">
-            <MobileLabel variant="body2" label="Proposed by" />
+          <Flex direction="column" flex="2">
+            <MobileLabel label="Proposed by" />
             <Proposer proposer={proposal.proposer} />
           </Flex>
         </>

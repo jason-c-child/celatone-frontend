@@ -34,7 +34,7 @@ export const VotingEndTime = ({
       onClick={(e) => e.stopPropagation()}
       cursor="initial"
     >
-      <Text variant={{ base: "body2", md: "body1" }}>
+      <Text variant={{ base: "body3", md: "body2" }}>
         {isDepositPeriod ? "Voting not started" : formatUTC(votingEndTime)}
       </Text>
       <Text variant={{ base: "body3", md: "body2" }}>

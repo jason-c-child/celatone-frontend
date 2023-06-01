@@ -119,98 +119,105 @@ export const InstantiateInfo = ({
   const adminType = getAddressType(instantiateInfo.admin);
 
   return (
-    <Container>
-      <LabelText label="Network">{chainId}</LabelText>
-
-      <LabelText label="From Code" helperText1={codeInfo?.name}>
-        <ExplorerLink
-          type="code_id"
-          value={instantiateInfo.codeId}
-          showCopyOnHover
-        />
-      </LabelText>
-
-      <LabelText label="CW2 Info">
-        {contractCw2Info ? (
-          <Text variant="body2">
-            {contractCw2Info.contract} ({contractCw2Info.version})
-          </Text>
-        ) : (
-          <Text variant="body2" color="text.dark">
-            No Info
-          </Text>
-        )}
-      </LabelText>
-
-      {instantiateInfo.admin ? (
-        <LabelText
-          label="Admin Address"
-          helperText1={getAddressTypeText(adminType)}
-        >
+    <Container w={{ base: "full", md: "auto" }}>
+      <Flex direction={{ base: "row", md: "column" }} gap={{ base: 1, md: 6 }}>
+        <LabelText flex="1" label="Network">
+          {chainId}
+        </LabelText>
+        <LabelText flex="1" label="From Code" helperText1={codeInfo?.name}>
           <ExplorerLink
-            type={adminType}
-            value={instantiateInfo.admin}
+            type="code_id"
+            value={instantiateInfo.codeId}
             showCopyOnHover
           />
         </LabelText>
-      ) : (
-        <LabelText label="Admin Address">
-          <Text variant="body2" color="text.dark">
-            No Admin
-          </Text>
+      </Flex>
+      <Flex direction={{ base: "row", md: "column" }} gap={{ base: 1, md: 6 }}>
+        <LabelText flex="1" label="CW2 Info">
+          {contractCw2Info ? (
+            <Text variant="body2">
+              {contractCw2Info.contract} ({contractCw2Info.version})
+            </Text>
+          ) : (
+            <Text variant="body2" color="text.dark">
+              No Info
+            </Text>
+          )}
         </LabelText>
-      )}
-
-      <Divider border="1px solid" borderColor="gray.700" />
-
-      {instantiateInfo &&
-        (instantiateInfo.createdHeight ? (
+        {instantiateInfo.admin ? (
           <LabelText
-            label="Instantiated Block Height"
-            helperText1={
-              instantiateInfo.createdTime
-                ? formatUTC(instantiateInfo.createdTime)
-                : undefined
-            }
-            helperText2={
-              instantiateInfo.createdTime
-                ? dateFromNow(instantiateInfo.createdTime)
-                : undefined
-            }
+            flex="1"
+            label="Admin Address"
+            helperText1={getAddressTypeText(adminType)}
           >
             <ExplorerLink
-              type="block_height"
-              value={instantiateInfo.createdHeight.toString()}
+              type={adminType}
+              value={instantiateInfo.admin}
               showCopyOnHover
             />
           </LabelText>
         ) : (
-          <LabelText label="Instantiated Block Height">N/A</LabelText>
-        ))}
-
-      <LabelText
-        label="Instantiated by"
-        helperText1={getAddressTypeText(instantiatorType)}
-      >
-        <ExplorerLink
-          type={instantiatorType}
-          value={instantiateInfo.instantiator}
-          showCopyOnHover
-        />
-      </LabelText>
-
-      <InitRender
-        initTxHash={initTxHash}
-        initProposalId={initProposalId}
-        initProposalTitle={initProposalTitle}
-        createdHeight={instantiateInfo.createdHeight}
-      />
-
-      {instantiateInfo.ibcPortId && (
-        <LabelText label="IBC Port ID">
-          <PortIdRender portId={instantiateInfo.ibcPortId} />
+          <LabelText flex="1" label="Admin Address">
+            <Text variant="body2" color="text.dark">
+              No Admin
+            </Text>
+          </LabelText>
+        )}
+      </Flex>
+      <Divider border="1px solid" borderColor="gray.700" />
+      <Flex direction={{ base: "row", md: "column" }} gap={{ base: 1, md: 6 }}>
+        {instantiateInfo &&
+          (instantiateInfo.createdHeight ? (
+            <LabelText
+              flex="1"
+              label="Instantiated Block Height"
+              helperText1={
+                instantiateInfo.createdTime
+                  ? formatUTC(instantiateInfo.createdTime)
+                  : undefined
+              }
+              helperText2={
+                instantiateInfo.createdTime
+                  ? dateFromNow(instantiateInfo.createdTime)
+                  : undefined
+              }
+            >
+              <ExplorerLink
+                type="block_height"
+                value={instantiateInfo.createdHeight.toString()}
+                showCopyOnHover
+              />
+            </LabelText>
+          ) : (
+            <LabelText flex="1" label="Instantiated Block Height">
+              N/A
+            </LabelText>
+          ))}
+        <LabelText
+          flex="1"
+          label="Instantiated by"
+          helperText1={getAddressTypeText(instantiatorType)}
+        >
+          <ExplorerLink
+            type={instantiatorType}
+            value={instantiateInfo.instantiator}
+            showCopyOnHover
+          />
         </LabelText>
-      )}
+      </Flex>
+      <Flex direction={{ base: "row", md: "column" }} gap={{ base: 1, md: 6 }}>
+        <InitRender
+          initTxHash={initTxHash}
+          initProposalId={initProposalId}
+          initProposalTitle={initProposalTitle}
+          createdHeight={instantiateInfo.createdHeight}
+        />
+        {instantiateInfo.ibcPortId && (
+          <LabelText label="IBC Port ID">
+            <PortIdRender portId={instantiateInfo.ibcPortId} />
+          </LabelText>
+        )}
+      </Flex>
     </Container>
   );
 };

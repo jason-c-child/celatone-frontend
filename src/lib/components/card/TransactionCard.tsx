@@ -49,7 +49,7 @@ export const TransactionCard = ({
       }
       bottomContent={
         <Flex direction="column" gap={3}>
-          <Flex direction="column" gap={0}>
+          <Flex direction="column">
             <MobileLabel label="sender" />
             <ExplorerLink
               value={transaction.sender}
@@ -57,7 +57,7 @@ export const TransactionCard = ({
               showCopyOnHover
             />
           </Flex>
-          <Flex direction="column" gap={0}>
+          <Flex direction="column">
             <Text variant="body3">{formatUTC(transaction.created)}</Text>
             <Text variant="body3" color="text.dark">
               {`(${dateFromNow(transaction.created)})`}

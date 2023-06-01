@@ -20,7 +20,7 @@ export const StoredCodeCard = ({ codeInfo }: StoredCodeCardProps) => {
     <DefaultMobileCard
       topContent={
         <>
-          <Flex gap={2}>
+          <Flex gap={2} align="center">
             <MobileLabel variant="body2" label="Code ID" />
             <ExplorerLink
               type="code_id"
@@ -40,12 +40,12 @@ export const StoredCodeCard = ({ codeInfo }: StoredCodeCardProps) => {
       }
       middleContent={
         <Flex direction="column" gap={3}>
-          <Flex direction="column" gap={0}>
-            <MobileLabel variant="body2" label="Code Name" />
+          <Flex direction="column">
+            <MobileLabel label="Code Name" />
             <CodeNameCell code={codeInfo} isReadOnly />
           </Flex>
-          <Flex direction="column" gap={0}>
-            <MobileLabel variant="body2" label="CW2 Info" />
+          <Flex direction="column">
+            <MobileLabel label="CW2 Info" />
             <Text
               color={cw2Info ? "text.main" : "text.disabled"}
               wordBreak="break-all"
@@ -57,10 +57,10 @@ export const StoredCodeCard = ({ codeInfo }: StoredCodeCardProps) => {
       }
       bottomContent={
         <Flex gap={3} w="full">
-          <Flex direction="column" gap={0} flex="1">
-            <MobileLabel variant="body2" label="Contracts" />
+          <Flex direction="column" flex="1">
+            <MobileLabel label="Contracts" />
             <Text
-              variant="body2"
+              variant="body3"
               onClick={(e) => e.stopPropagation()}
               cursor="text"
               color={codeInfo.contractCount ? "text.main" : "text.disabled"}
@@ -68,8 +68,8 @@ export const StoredCodeCard = ({ codeInfo }: StoredCodeCardProps) => {
               {codeInfo.contractCount ?? "N/A"}
             </Text>
           </Flex>
-          <Flex direction="column" gap={0} flex="1">
-            <MobileLabel variant="body2" label="Permission" />
+          <Flex direction="column" flex="1">
+            <MobileLabel label="Permission" />
             <PermissionChip
               instantiatePermission={codeInfo.instantiatePermission}
               permissionAddresses={codeInfo.permissionAddresses}
