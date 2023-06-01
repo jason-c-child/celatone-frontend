@@ -6,13 +6,13 @@ import { SaveOrRemoveCodeModal } from "../modal";
 import { PermissionChip } from "../PermissionChip";
 import { CodeNameCell } from "../table";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
-import type { CodeInfo } from "lib/types";
+import type { CodeInfo, PublicCode } from "lib/types";
 import { getCw2Info } from "lib/utils";
 
 import { DefaultMobileCard } from "./DefaultMobileCard";
 
 interface StoredCodeCardProps {
-  codeInfo: CodeInfo;
+  codeInfo: CodeInfo | PublicCode;
 }
 export const StoredCodeCard = ({ codeInfo }: StoredCodeCardProps) => {
   const cw2Info = getCw2Info(codeInfo.cw2Contract, codeInfo.cw2Version);

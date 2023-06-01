@@ -55,6 +55,7 @@ export const DetailHeader = ({ details, slug }: DetailHeaderProps) => (
       w="full"
       mt={2}
       gap={5}
+      direction={{ base: "column", md: "row" }}
     >
       <Box>
         <Flex gap={2} align="center">
@@ -75,7 +76,12 @@ export const DetailHeader = ({ details, slug }: DetailHeaderProps) => (
           {getNameAndDescriptionDefault(details?.description)}
         </Text>
       </Box>
-      <Flex alignItems="center" gap={4}>
+      <Flex
+        alignItems="center"
+        justify="space-between"
+        gap={4}
+        w={{ base: "full", md: "auto" }}
+      >
         <SocialMedia details={details} />
         <BookmarkButton details={details} slug={slug} />
       </Flex>

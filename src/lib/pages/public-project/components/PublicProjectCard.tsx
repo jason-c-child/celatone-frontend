@@ -65,10 +65,10 @@ export const PublicProjectCard = observer(
                 />
                 <Text
                   variant="body1"
-                  fontWeight="600"
+                  fontWeight={600}
                   textOverflow="ellipsis"
                   overflow="hidden"
-                  mt="4px"
+                  mt={1}
                 >
                   {item.name}
                 </Text>
@@ -77,7 +77,7 @@ export const PublicProjectCard = observer(
             </Flex>
             <Text
               ref={ref as React.MutableRefObject<HTMLParagraphElement>}
-              variant="body3"
+              variant="body2"
               color="text.dark"
               pt={3}
             >
