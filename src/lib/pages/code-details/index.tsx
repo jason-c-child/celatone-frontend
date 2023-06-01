@@ -42,8 +42,12 @@ const CodeDetailsBody = observer(
 
     return (
       <>
-        <Flex justify="space-between" mt={6}>
-          <Flex direction="column" gap={1}>
+        <Flex
+          justify="space-between"
+          mt={{ base: 0, md: 6 }}
+          direction={{ base: "column", md: "row" }}
+        >
+          <Flex direction="column" gap={{ base: 2, md: 1 }}>
             <Flex gap={1}>
               {publicProject.publicDetail?.logo && (
                 <Image
@@ -61,14 +65,21 @@ const CodeDetailsBody = observer(
               </Heading>
             </Flex>
             {publicProject.publicCodeData?.name && (
-              <Flex gap={2}>
+              <Flex
+                mt={{ base: 2, md: 0 }}
+                gap={{ base: 0, md: 2 }}
+                direction={{ base: "column", md: "row" }}
+              >
                 <Text fontWeight={500} color="text.dark" variant="body2">
                   Public Code Name:
                 </Text>
                 <Text variant="body2">{publicProject.publicCodeData.name}</Text>
               </Flex>
             )}
-            <Flex gap={2}>
+            <Flex
+              gap={{ base: 0, md: 2 }}
+              direction={{ base: "column", md: "row" }}
+            >
               <Text fontWeight={500} color="text.dark" variant="body2">
                 Code ID:
               </Text>
@@ -78,7 +89,10 @@ const CodeDetailsBody = observer(
                 type="code_id"
               />
             </Flex>
-            <Flex gap={2}>
+            <Flex
+              gap={{ base: 0, md: 2 }}
+              direction={{ base: "column", md: "row" }}
+            >
               <Text fontWeight={500} color="text.dark" variant="body2">
                 CW2 Info:
               </Text>
