@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
+import { useMobile } from "lib/app-provider";
 import { BackButton } from "lib/components/button";
 import { CopyLink } from "lib/components/CopyLink";
 import { CustomIcon } from "lib/components/icon";
@@ -128,7 +129,7 @@ const CodeDetails = observer(() => {
   const router = useRouter();
   const codeIdParam = getFirstQueryParam(router.query.codeId);
   const data = useCodeData(Number(codeIdParam));
-
+  const isMobile = useMobile();
   useEffect(() => {
     if (router.isReady) AmpTrack(AmpEvent.TO_CODE_DETAIL);
   }, [router.isReady]);
@@ -136,7 +137,7 @@ const CodeDetails = observer(() => {
   if (data.isLoading) return <Loading />;
   return (
     <PageContainer>
-      <BackButton />
+      {!isMobile && <BackButton />}
       {!isCodeId(codeIdParam) ? (
         <InvalidCode />
       ) : (

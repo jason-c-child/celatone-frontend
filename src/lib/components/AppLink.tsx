@@ -10,7 +10,6 @@ export const AppLink = ({
   const componentHref = linkProps.href.toString();
   return (
     <Link
-      style={{ height: "24px", display: "flex", alignItems: "center" }}
       {...linkProps}
       href={
         router.query.network === "testnet"
