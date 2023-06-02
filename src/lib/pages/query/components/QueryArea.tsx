@@ -132,11 +132,11 @@ export const QueryArea = ({
           )
         )}
       </Box>
-      <Flex gap={4}>
+      <Flex gap={4} direction={{ base: "column", md: "row" }}>
         <Box w="full">
           <JsonInput topic="Query Msg" text={msg} setText={setMsg} />
-          <Flex align="center" justify="space-between">
-            <Flex gap={2}>
+          <Flex align="center" justify="space-between" gap={{ base: 1, md: 0 }}>
+            <Flex gap={{ base: 1, md: 2 }}>
               <CopyButton
                 isDisable={!msg.length}
                 value={msg}
@@ -152,6 +152,7 @@ export const QueryArea = ({
               variant="primary"
               fontSize="14px"
               p="6px 16px"
+              size={{ base: "sm", md: "md" }}
               onClick={handleQuery}
               isDisabled={jsonValidate(msg) !== null}
               isLoading={isFetching || isRefetching}
