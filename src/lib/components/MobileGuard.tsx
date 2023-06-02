@@ -18,7 +18,10 @@ export const MobileGuard = ({ children }: MobileGuardProps) => {
     pathName.includes(`/blocks`) ||
     pathName.includes(`/contract`) ||
     pathName.includes(`/projects`) ||
-    pathName.includes(`/code`);
+    pathName.includes(`/code`) ||
+    pathName === "/" ||
+    pathName === "/mainnet" ||
+    pathName === "/testnet";
 
   if (isResponsive && isMobile) return <>{children}</>;
   if (!isResponsive && isMobile) return <NoMobile />;

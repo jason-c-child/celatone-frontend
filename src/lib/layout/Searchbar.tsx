@@ -97,20 +97,19 @@ const Searchbar = () => {
   const boxRef = useRef<HTMLDivElement>(null);
   const chainConfig = getChainConfig();
 
-  let placeholder = "Search by Wallet Address / Tx Hash";
-  if (!isMobile)
-    placeholder += chainConfig.isWasm
-      ? "/ Code ID / Contract Address"
-      : "/ Block";
+  let placeholder = "Search by Wallet Address / Tx Hash ";
+  placeholder += chainConfig.isWasm
+    ? "/ Code ID / Contract Address"
+    : "/ Block";
 
   useEffect(() => {
     const res: SearchResultType[] = [];
-    if (!isMobile) {
-      if (chainConfig.isWasm && isCodeId(keyword)) res.push("Code ID");
-      else if (isBlock(keyword)) res.push("Block");
 
-      if (!validateContractAddress(keyword)) res.push("Contract Address");
-    }
+    if (chainConfig.isWasm && isCodeId(keyword)) res.push("Code ID");
+    else if (isBlock(keyword)) res.push("Block");
+
+    if (!validateContractAddress(keyword)) res.push("Contract Address");
+
     if (!validateUserAddress(keyword)) res.push("Wallet Address");
     if (isTxHash(keyword)) res.push("Transaction Hash");
     // TODO: add proposal ID
@@ -157,7 +156,7 @@ const Searchbar = () => {
           onKeyDown={handleOnKeyEnter}
         />
         <InputRightElement pointerEvents="none" h="full">
-          <CustomIcon name="search" color="gray.600" />
+          <CustomIcon name="search" color="gray.600" bg="gray.900" />
         </InputRightElement>
       </InputGroup>
       {displayResults && (
