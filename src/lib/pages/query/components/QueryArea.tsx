@@ -5,7 +5,7 @@ import type { AxiosError } from "axios";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-import { useLCDEndpoint } from "lib/app-provider";
+import { useLCDEndpoint, useMobile } from "lib/app-provider";
 import { ContractCmdButton } from "lib/components/ContractCmdButton";
 import { CopyButton } from "lib/components/copy";
 import { CustomIcon } from "lib/components/icon";
@@ -93,6 +93,7 @@ export const QueryArea = ({
     };
   });
 
+  const isMobile = useMobile();
   return (
     <Flex direction="column">
       <Box width="full" mt={4} mb={8} alignItems="center">
@@ -158,7 +159,7 @@ export const QueryArea = ({
               isLoading={isFetching || isRefetching}
               leftIcon={<CustomIcon name="query" />}
             >
-              Query (Ctrl + Enter)
+              Query {!isMobile && "(Ctrl + Enter)"}
             </Button>
           </Flex>
         </Box>
