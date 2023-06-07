@@ -90,6 +90,31 @@ export const SEI_THEME: ThemeConfig = {
       900: "#0C1C23",
     },
   },
+  button: {
+    primary: {
+      background: "#F0E3CF",
+      color: "#0C1C23",
+      disabledBackground: "#787971",
+      disabledColor: "#0C1C23",
+    },
+    outlinePrimary: {
+      borderColor: "#787971",
+      color: "#F0E3CF",
+      disabledBorderColor: "#1D343F",
+      disabledColor: "#40566A",
+    },
+  },
+  borderRadius: {
+    default: "8px",
+    iconButton: "36px",
+    viewButton: "0 0 8px 8px",
+    uploadButton: "50%",
+    tag: "full",
+    badge: "16px",
+    radio: "12px",
+    indicator: "2px",
+    stepper: "full",
+  },
   jsonTheme: "one_dark",
   illustration: {
     error: "https://assets.alleslabs.dev/integrations/sei/illustration/404.svg",
@@ -104,6 +129,7 @@ export const SEI_THEME: ThemeConfig = {
     logo: "https://www.sei.io/_next/static/media/logo-light.1249fa55.svg",
     description:
       "A Smart Contract Explorer for Sei | Explore, deploy, execute, and query smart contracts on Sei from a user-friendly web UI",
+    iconStyle: "rounded",
   },
   socialMedia: {
     website: "https://www.sei.io/",

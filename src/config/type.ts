@@ -87,6 +87,31 @@ export type ThemeConfig = {
       900: string;
     };
   };
+  button?: {
+    primary?: {
+      background: string;
+      color: string;
+      disabledBackground: string;
+      disabledColor: string;
+    };
+    outlinePrimary?: {
+      borderColor: string;
+      color: string;
+      disabledBorderColor: string;
+      disabledColor: string;
+    };
+  };
+  borderRadius: {
+    default: string;
+    iconButton: string;
+    viewButton: string;
+    uploadButton: string;
+    tag: string;
+    badge: string;
+    radio: string;
+    indicator: string;
+    stepper: string;
+  };
   illustration: {
     error: string;
     searchNotFound: string;
@@ -97,6 +122,7 @@ export type ThemeConfig = {
   footer?: {
     logo: string;
     description: string;
+    iconStyle: "rounded" | "regular";
   };
   socialMedia?: {
     website?: string;
@@ -107,6 +133,5 @@ export type ThemeConfig = {
     telegram?: string;
     reddit?: string;
     linkedin?: string;
-    facebook?: string;
   };
 };

@@ -89,6 +89,17 @@ export const DEFAULT_THEME: ThemeConfig = {
       900: "#1A1A22",
     },
   },
+  borderRadius: {
+    default: "8px",
+    iconButton: "36px",
+    viewButton: "0 0 8px 8px",
+    uploadButton: "50%",
+    tag: "full",
+    badge: "16px",
+    radio: "12px",
+    indicator: "2px",
+    stepper: "full",
+  },
   jsonTheme: "monokai",
   illustration: {
     error: "https://assets.alleslabs.dev/illustration/404.svg",
