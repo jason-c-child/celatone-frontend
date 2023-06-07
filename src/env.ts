@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, OSMOSIS_THEME } from "config/theme";
+import { DEFAULT_THEME, OSMOSIS_THEME, SEI_THEME } from "config/theme";
 import type { SupportedChain } from "lib/data";
 import type {
   ContractAddr,
@@ -147,6 +147,7 @@ export const CURR_THEME = (() => {
     case "osmosis":
       return OSMOSIS_THEME;
     case "sei":
+      return SEI_THEME;
     default:
       return DEFAULT_THEME;
   }

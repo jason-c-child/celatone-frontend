@@ -119,15 +119,6 @@ export const TransactionsTableRow = ({
             <FurtherActionButton transaction={transaction} />
           </TableRow>
         )}
-
-        <TableRow>
-          {isAccordion && (
-            <CustomIcon
-              name={isOpen ? "chevron-up" : "chevron-down"}
-              color="gray.600"
-            />
-          )}
-        </TableRow>
       </Grid>
       {isAccordion && (
         <Grid w="full" py={4} hidden={!isOpen}>
