@@ -95,29 +95,17 @@ export const BlockDetailsTop = ({ blockData }: BlockDetailsTopProps) => {
             type="block_hash"
           />
         </Flex>
-        <Flex direction="column" gap={1}>
-          <Flex gap={2}>
+        <Flex gap={2} alignItems="center">
+          <Flex gap={1} alignItems="center">
+            <CustomIcon name="history" boxSize={3} color="gray.600" />
             <Text variant="body2" color="text.dark">
-              Block Hash:
-            </Text>
-            <CopyLink
-              value={blockData.hash.toUpperCase()}
-              amptrackSection="block_details_top"
-              type="block_hash"
-            />
-          </Flex>
-          <Flex gap={2} alignItems="center">
-            <Flex gap={1} alignItems="center">
-              <CustomIcon name="history" boxSize={3} color="gray.600" />
-              <Text variant="body2" color="text.dark">
-                {dateFromNow(blockData.timestamp)}
-              </Text>
-            </Flex>
-            <DotSeparator />
-            <Text variant="body2" color="text.dark">
-              {formatUTC(blockData.timestamp)}
+              {dateFromNow(blockData.timestamp)}
             </Text>
           </Flex>
+          <DotSeparator />
+          <Text variant="body2" color="text.dark">
+            {formatUTC(blockData.timestamp)}
+          </Text>
         </Flex>
       </Flex>
     </Flex>

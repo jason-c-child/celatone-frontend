@@ -167,22 +167,22 @@ export const InstantiateInfo = ({
         )}
       </Flex>
       <Divider border="1px solid" borderColor="gray.700" />
+      {createdHeight ? (
+        <LabelText
+          label="Instantiated Block Height"
+          helperText1={createdTime ? formatUTC(createdTime) : undefined}
+          helperText2={createdTime ? dateFromNow(createdTime) : undefined}
+        >
+          <ExplorerLink
+            type="block_height"
+            value={createdHeight.toString()}
+            showCopyOnHover
+          />
+        </LabelText>
+      ) : (
+        <LabelText label="Instantiated Block Height">N/A</LabelText>
+      )}
       <Flex direction={{ base: "row", md: "column" }} gap={{ base: 1, md: 6 }}>
-        {createdHeight ? (
-          <LabelText
-            label="Instantiated Block Height"
-            helperText1={createdTime ? formatUTC(createdTime) : undefined}
-            helperText2={createdTime ? dateFromNow(createdTime) : undefined}
-          >
-            <ExplorerLink
-              type="block_height"
-              value={createdHeight.toString()}
-              showCopyOnHover
-            />
-          </LabelText>
-        ) : (
-          <LabelText label="Instantiated Block Height">N/A</LabelText>
-        )}
         <LabelText
           flex="1"
           label="Instantiated by"
@@ -194,14 +194,16 @@ export const InstantiateInfo = ({
             showCopyOnHover
           />
         </LabelText>
+        <Flex flex="1">
+          <InitRender
+            initTxHash={initTxHash}
+            initProposalId={initProposalId}
+            initProposalTitle={initProposalTitle}
+            createdHeight={instantiateInfo.createdHeight}
+          />
+        </Flex>
       </Flex>
       <Flex direction={{ base: "row", md: "column" }} gap={{ base: 1, md: 6 }}>
-        <InitRender
-          initTxHash={initTxHash}
-          initProposalId={initProposalId}
-          initProposalTitle={initProposalTitle}
-          createdHeight={instantiateInfo.createdHeight}
-        />
         {instantiateInfo.ibcPortId && (
           <LabelText label="IBC Port ID">
             <PortIdRender portId={instantiateInfo.ibcPortId} />

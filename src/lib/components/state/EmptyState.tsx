@@ -33,7 +33,7 @@ export const EmptyState = ({
           {heading}
         </Heading>
       )}
-      <Flex fontSize="16px" color="text.dark">
+      <Flex fontSize="16px" color="text.dark" textAlign="center">
         {message}
       </Flex>
     </Flex>

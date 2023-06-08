@@ -62,7 +62,7 @@ const CodeDetailsBody = observer(
           direction={{ base: "column", md: "row" }}
         >
           <Flex direction="column" gap={{ base: 2, md: 1 }}>
-            <Flex gap={1}>
+            <Flex gap={1} align="center">
               <CustomIcon name="code" boxSize={5} color="secondary.main" />
               {publicProject.publicDetail?.logo && (
                 <Image
@@ -73,7 +73,7 @@ const CodeDetailsBody = observer(
                   height={7}
                 />
               )}
-              <Heading as="h5" variant="h5">
+              <Heading as="h5" variant={{ base: "h6", md: "h5" }}>
                 {localCodeInfo?.name ??
                   publicProject.publicCodeData?.name ??
                   codeId}

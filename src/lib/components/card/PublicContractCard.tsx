@@ -49,11 +49,6 @@ export const PublicContractCard = ({
             justifyContent="center"
             onClick={(e) => e.stopPropagation()}
           >
-            <AppLink href={`/execute?contract=${publicInfo.contractAddress}`}>
-              <Button variant="outline-gray" size="sm">
-                Execute
-              </Button>
-            </AppLink>
             <AppLink href={`/query?contract=${publicInfo.contractAddress}`}>
               <Button variant="outline-gray" size="sm">
                 Query

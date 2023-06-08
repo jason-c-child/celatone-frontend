@@ -36,7 +36,10 @@ export const TokenSection = ({ balances, amptrackPage }: TokenSectionProps) => {
     }
     return (
       <>
-        <Grid gridGap={4} gridTemplateColumns="repeat(4, 1fr)">
+        <Grid
+          gridGap={4}
+          gridTemplateColumns={{ base: "1fr", md: "repeat(4, 1fr)" }}
+        >
           {supportedAssets.map((balance, index) => {
             if (!showMore && index >= 4) {
               return null;

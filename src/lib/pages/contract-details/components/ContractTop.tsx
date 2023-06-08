@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import router from "next/router";
 
-import { useInternalNavigate } from "lib/app-provider";
+import { useInternalNavigate, useMobile } from "lib/app-provider";
 import { Breadcrumb } from "lib/components/Breadcrumb";
 import { AdminButton } from "lib/components/button";
 import { CopyLink } from "lib/components/CopyLink";
@@ -29,7 +29,7 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
   const navigate = useInternalNavigate();
   const { contractLocalInfo, instantiateInfo, publicProject } = contractData;
   const contractAddress = getFirstQueryParam(router.query.contractAddress);
-
+  const isMobile = useMobile();
   const displayName =
     contractLocalInfo?.name ||
     publicProject.publicInfo?.name ||
@@ -134,7 +134,11 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
                 height={7}
               />
             )}
-            <Heading as="h5" variant="h5" className="ellipsis">
+            <Heading
+              as="h5"
+              variant={{ base: "h6", md: "h5" }}
+              className="ellipsis"
+            >
               {displayName}
             </Heading>
           </Flex>
@@ -203,23 +207,25 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
           >
             Execute
           </Button>
-          <Flex>
-            {contractLocalInfo && (
-              <EditContractDetailsModal
-                contractLocalInfo={contractLocalInfo}
-                triggerElement={
-                  <IconButton
-                    fontSize="24px"
-                    variant="none"
-                    aria-label="edit"
-                    color="gray.600"
-                    icon={<CustomIcon name="edit" />}
-                  />
-                }
-              />
-            )}
-            {renderSaveButton()}
-          </Flex>
+          {!isMobile && (
+            <Flex>
+              {contractLocalInfo && (
+                <EditContractDetailsModal
+                  contractLocalInfo={contractLocalInfo}
+                  triggerElement={
+                    <IconButton
+                      fontSize="24px"
+                      variant="none"
+                      aria-label="edit"
+                      color="gray.600"
+                      icon={<CustomIcon name="edit" />}
+                    />
+                  }
+                />
+              )}
+              {renderSaveButton()}
+            </Flex>
+          )}
         </Flex>
       </Flex>
     </Flex>

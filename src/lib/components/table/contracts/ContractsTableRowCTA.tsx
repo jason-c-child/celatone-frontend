@@ -64,11 +64,13 @@ export const ContractsTableRowCTA = ({
           justifyContent="flex-end"
           onClick={(e) => e.stopPropagation()}
         >
-          <AppLink href={`/execute?contract=${contractInfo.contractAddress}`}>
-            <Button variant="outline-gray" size="sm">
-              Execute
-            </Button>
-          </AppLink>
+          {!isMobile && (
+            <AppLink href={`/execute?contract=${contractInfo.contractAddress}`}>
+              <Button variant="outline-gray" size="sm">
+                Execute
+              </Button>
+            </AppLink>
+          )}
           <AppLink href={`/query?contract=${contractInfo.contractAddress}`}>
             <Button variant="outline-gray" size="sm">
               Query
