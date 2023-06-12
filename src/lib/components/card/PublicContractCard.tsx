@@ -1,35 +1,20 @@
-import { Box, Button, Flex, IconButton, chakra } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import { useWallet } from "@cosmos-kit/react";
 
 import { AppLink } from "../AppLink";
 import { ExplorerLink } from "../ExplorerLink";
-import { CustomIcon } from "../icon";
-import { AddToOtherListModal, SaveContractDetailsModal } from "../modal";
 import { ContractNameCell } from "../table";
 import { getAddressTypeByLength } from "lib/app-provider";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
-import type { ContractLocalInfo } from "lib/stores/contract";
 import type { PublicContract } from "lib/types";
 
 import { DefaultMobileCard } from "./DefaultMobileCard";
 
 interface PublicContractCardProps {
   publicInfo: PublicContract;
-  localInfo: ContractLocalInfo;
 }
-const StyledIconButton = chakra(IconButton, {
-  baseStyle: {
-    display: "flex",
-    alignItems: "center",
-    fontSize: "22px",
-    borderRadius: "36px",
-  },
-});
 
-export const PublicContractCard = ({
-  publicInfo,
-  localInfo,
-}: PublicContractCardProps) => {
+export const PublicContractCard = ({ publicInfo }: PublicContractCardProps) => {
   const { currentChainName } = useWallet();
   return (
     <DefaultMobileCard
@@ -54,29 +39,6 @@ export const PublicContractCard = ({
                 Query
               </Button>
             </AppLink>
-            <Box onClick={(e) => e.stopPropagation()}>
-              {localInfo.lists ? (
-                <AddToOtherListModal
-                  contractLocalInfo={localInfo}
-                  triggerElement={
-                    <StyledIconButton
-                      icon={<CustomIcon name="bookmark-solid" />}
-                      variant="ghost-primary"
-                    />
-                  }
-                />
-              ) : (
-                <SaveContractDetailsModal
-                  contractLocalInfo={localInfo}
-                  triggerElement={
-                    <StyledIconButton
-                      icon={<CustomIcon name="bookmark" />}
-                      variant="ghost-gray"
-                    />
-                  }
-                />
-              )}
-            </Box>
           </Flex>
         </>
       }

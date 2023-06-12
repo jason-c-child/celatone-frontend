@@ -8,8 +8,8 @@ import { scrollToTop } from "lib/utils";
 
 import Footer from "./Footer";
 import Header from "./Header";
+import MobileHeader from "./mobile/MobileHeader";
 import Navbar from "./navbar";
-import Searchbar from "./Searchbar";
 import SubHeader from "./SubHeader";
 
 type LayoutProps = {
@@ -23,15 +23,17 @@ const Layout = ({ children }: LayoutProps) => {
   const isMobile = useMobile();
 
   const mobile = {
-    templateAreas: `"header""subheader""main"`,
-    templateRows: "60px 56px 1fr",
+    templateAreas: `"header""main"`,
+    templateRows: "60px 1fr",
     templateCols: "1fr",
-    subHeader: <Searchbar />,
+    header: <MobileHeader />,
+    subHeader: undefined,
   };
   const fullMode = {
     templateAreas: `"header header""subheader subheader""nav main"`,
     templateRows: "70px 48px 1fr",
     templateCols: isExpand ? "224px 1fr" : "48px 1fr",
+    header: <Header />,
     subHeader: <SubHeader />,
   };
 
@@ -53,26 +55,28 @@ const Layout = ({ children }: LayoutProps) => {
       bg="background.main"
     >
       <GridItem bg="gray.900" area="header" mb={1}>
-        <Header />
-      </GridItem>
-      <GridItem
-        bg={{ base: "background.main", md: "gray.900" }}
-        area="subheader"
-        mb="1"
-        overflowY={isMobile ? "visible" : "auto"}
-        py={{ base: 2, md: 0 }}
-        px={{ base: 4, md: 0 }}
-      >
-        {mode.subHeader}
+        {mode.header}
       </GridItem>
       {!isMobile && (
-        <GridItem
-          bg={{ base: "background.main", md: "gray.900" }}
-          area="nav"
-          overflowY={isMobile ? "visible" : "auto"}
-        >
-          <Navbar isExpand={isExpand} setIsExpand={setIsExpand} />
-        </GridItem>
+        <>
+          <GridItem
+            bg={{ base: "background.main", md: "gray.900" }}
+            area="subheader"
+            mb="1"
+            overflowY={isMobile ? "visible" : "auto"}
+            py={{ base: 2, md: 0 }}
+            px={{ base: 4, md: 0 }}
+          >
+            {mode.subHeader}
+          </GridItem>
+          <GridItem
+            bg={{ base: "background.main", md: "gray.900" }}
+            area="nav"
+            overflowY={isMobile ? "visible" : "auto"}
+          >
+            <Navbar isExpand={isExpand} setIsExpand={setIsExpand} />
+          </GridItem>
+        </>
       )}
       <GridItem area="main" overflowY="auto" overflowX="hidden" id="content">
         <div style={{ minHeight: `calc(100vh - 129px)` }}>{children}</div>

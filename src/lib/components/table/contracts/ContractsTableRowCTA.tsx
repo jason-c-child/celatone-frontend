@@ -64,13 +64,11 @@ export const ContractsTableRowCTA = ({
           justifyContent="flex-end"
           onClick={(e) => e.stopPropagation()}
         >
-          {!isMobile && (
-            <AppLink href={`/execute?contract=${contractInfo.contractAddress}`}>
-              <Button variant="outline-gray" size="sm">
-                Execute
-              </Button>
-            </AppLink>
-          )}
+          <AppLink href={`/execute?contract=${contractInfo.contractAddress}`}>
+            <Button variant="outline-gray" size="sm">
+              Execute
+            </Button>
+          </AppLink>
           <AppLink href={`/query?contract=${contractInfo.contractAddress}`}>
             <Button variant="outline-gray" size="sm">
               Query
@@ -83,7 +81,6 @@ export const ContractsTableRowCTA = ({
           </AppLink>
         </Flex>
       </TableRow>
-
       <TableRow>
         <Menu>
           <MenuButton
@@ -196,31 +193,7 @@ export const ContractsTableRowCTA = ({
           </Flex>
         </TableRow>
       )}
-      {isMobile ? (
-        <Box onClick={(e) => e.stopPropagation()}>
-          {contractInfo.lists ? (
-            <AddToOtherListModal
-              contractLocalInfo={contractInfo}
-              triggerElement={
-                <StyledIconButton
-                  icon={<CustomIcon name="bookmark-solid" />}
-                  variant="ghost-primary"
-                />
-              }
-            />
-          ) : (
-            <SaveContractDetailsModal
-              contractLocalInfo={contractInfo}
-              triggerElement={
-                <StyledIconButton
-                  icon={<CustomIcon name="bookmark" />}
-                  variant="ghost-gray"
-                />
-              }
-            />
-          )}
-        </Box>
-      ) : (
+      {!isMobile && (
         <TableRow>
           <Box onClick={(e) => e.stopPropagation()}>
             {contractInfo.lists ? (

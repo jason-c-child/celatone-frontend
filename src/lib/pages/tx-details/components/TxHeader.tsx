@@ -23,7 +23,7 @@ export const TxHeader = ({ txData, ...flexProps }: TxHeaderProps) => {
   return (
     <Flex direction="column" gap={2} {...flexProps}>
       <Flex justify="space-between" align="center">
-        <Flex gap={2}>
+        <Flex gap={2} mt={{ base: 2, md: 4 }} mb={{ base: 2, md: 0 }}>
           <Heading as="h5" variant={{ base: "h6", md: "h5" }}>
             Transaction Details
           </Heading>
@@ -130,12 +130,20 @@ export const TxHeader = ({ txData, ...flexProps }: TxHeaderProps) => {
           <>
             <Flex gap={1} alignItems="center">
               <CustomIcon name="history" boxSize={3} color="gray.600" />
-              <Text color="text.dark" display="inline">
+              <Text
+                variant={{ base: "body3", md: "body2" }}
+                color="text.dark"
+                display="inline"
+              >
                 {dateFromNow(txData.timestamp)}
               </Text>
             </Flex>
             <DotSeparator />
-            <Text color="text.dark" display="inline">
+            <Text
+              variant={{ base: "body3", md: "body2" }}
+              color="text.dark"
+              display="inline"
+            >
               {formatUTC(txData.timestamp)}
             </Text>
           </>

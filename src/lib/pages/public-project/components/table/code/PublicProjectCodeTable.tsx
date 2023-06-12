@@ -91,7 +91,7 @@ export const PublicProjectCodeTable = observer(
             value={searchKeyword}
             setInputState={setSearchKeyword}
             placeholder="Search with code ID or code name"
-            size="lg"
+            size={{ base: "md", md: "lg" }}
             mb={6}
           />
         )}

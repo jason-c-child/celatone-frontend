@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
+import { useMobile } from "lib/app-provider";
 import { Breadcrumb } from "lib/components/Breadcrumb";
 import { CopyLink } from "lib/components/CopyLink";
 import { CustomIcon } from "lib/components/icon";
@@ -34,7 +35,7 @@ const CodeDetailsBody = observer(
     const { getCodeLocalInfo } = useCodeStore();
     const localCodeInfo = getCodeLocalInfo(codeId);
     const { chainId, codeData, publicProject } = codeDataState;
-
+    const isMobile = useMobile();
     if (!codeData) return <InvalidCode />;
 
     const cw2Info = getCw2Info(codeData.cw2Contract, codeData.cw2Version);
@@ -62,22 +63,27 @@ const CodeDetailsBody = observer(
           direction={{ base: "column", md: "row" }}
         >
           <Flex direction="column" gap={{ base: 2, md: 1 }}>
-            <Flex gap={1} align="center">
-              <CustomIcon name="code" boxSize={5} color="secondary.main" />
-              {publicProject.publicDetail?.logo && (
-                <Image
-                  src={publicProject.publicDetail.logo}
-                  borderRadius="full"
-                  alt={publicProject.publicDetail.name}
-                  width={7}
-                  height={7}
-                />
-              )}
-              <Heading as="h5" variant={{ base: "h6", md: "h5" }}>
-                {localCodeInfo?.name ??
-                  publicProject.publicCodeData?.name ??
-                  codeId}
-              </Heading>
+            <Flex
+              justify={{ base: "space-between", md: "start" }}
+              align="center"
+            >
+              <Flex gap={1} align="center">
+                <CustomIcon name="code" boxSize={5} color="secondary.main" />
+                {publicProject.publicDetail?.logo && (
+                  <Image
+                    src={publicProject.publicDetail.logo}
+                    borderRadius="full"
+                    alt={publicProject.publicDetail.name}
+                    width={7}
+                    height={7}
+                  />
+                )}
+                <Heading as="h5" variant={{ base: "h6", md: "h5" }}>
+                  {localCodeInfo?.name ??
+                    publicProject.publicCodeData?.name ??
+                    codeId}
+                </Heading>
+              </Flex>
             </Flex>
             {publicProject.publicCodeData?.name && (
               <Flex
@@ -124,18 +130,21 @@ const CodeDetailsBody = observer(
             )}
           </Flex>
           <Flex direction="column" gap={1}>
-            <CTASection
-              id={codeId}
-              uploader={localCodeInfo?.uploader ?? codeData.uploader}
-              name={localCodeInfo?.name}
-              instantiatePermission={
-                codeData.instantiatePermission ?? AccessConfigPermission.UNKNOWN
-              }
-              permissionAddresses={codeData.permissionAddresses ?? []}
-              contractCount={undefined}
-              cw2Contract={undefined}
-              cw2Version={undefined}
-            />
+            {!isMobile && (
+              <CTASection
+                id={codeId}
+                uploader={localCodeInfo?.uploader ?? codeData.uploader}
+                name={localCodeInfo?.name}
+                instantiatePermission={
+                  codeData.instantiatePermission ??
+                  AccessConfigPermission.UNKNOWN
+                }
+                permissionAddresses={codeData.permissionAddresses ?? []}
+                contractCount={undefined}
+                cw2Contract={undefined}
+                cw2Version={undefined}
+              />
+            )}
           </Flex>
         </Flex>
         {publicProject.publicCodeData?.description && (

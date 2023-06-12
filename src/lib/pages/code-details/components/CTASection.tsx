@@ -10,7 +10,6 @@ import type { CodeInfo } from "lib/types";
 export const CTASection = observer((codeInfo: CodeInfo) => {
   const { isCodeIdSaved, getCodeLocalInfo } = useCodeStore();
   const isSaved = isCodeIdSaved(codeInfo.id);
-
   return (
     <Flex gap={{ base: 2, md: 4 }} my={{ base: 8, md: 0 }} justify="center">
       {(getCodeLocalInfo(codeInfo.id)?.name || isSaved) && (

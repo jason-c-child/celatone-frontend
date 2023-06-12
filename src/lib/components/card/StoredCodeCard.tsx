@@ -1,8 +1,6 @@
-import { Flex, HStack, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
-import { InstantiateButton } from "../button";
 import { ExplorerLink } from "../ExplorerLink";
-import { SaveOrRemoveCodeModal } from "../modal";
 import { PermissionChip } from "../PermissionChip";
 import { CodeNameCell } from "../table";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
@@ -28,14 +26,13 @@ export const StoredCodeCard = ({ codeInfo }: StoredCodeCardProps) => {
               showCopyOnHover
             />
           </Flex>
-          <HStack onClick={(e) => e.stopPropagation()}>
+          {/* <HStack onClick={(e) => e.stopPropagation()}>
             <InstantiateButton
               instantiatePermission={codeInfo.instantiatePermission}
               permissionAddresses={codeInfo.permissionAddresses}
               codeId={codeInfo.id}
             />
-            <SaveOrRemoveCodeModal codeInfo={codeInfo} />
-          </HStack>
+          </HStack> */}
         </>
       }
       middleContent={

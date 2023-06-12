@@ -19,7 +19,7 @@ export const AccountTop = ({
   return (
     <>
       <Flex direction="column" gap={1} mt={{ base: 2, md: 6 }} mb={6}>
-        <Flex gap={1}>
+        <Flex gap={1} align="center">
           {publicDetail?.logo && (
             <Image
               src={publicDetail.logo}

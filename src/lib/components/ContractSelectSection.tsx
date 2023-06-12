@@ -92,7 +92,9 @@ const ContractDetailsButton = ({
   instantiator,
   label,
 }: ContractDetailsButtonProps) => {
+  const isMobile = useMobile();
   const isExist = !!contractLocalInfo?.lists;
+  if (isMobile) return null;
   return isExist ? (
     <EditContractDetailsModal
       contractLocalInfo={contractLocalInfo}

@@ -1,7 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 
 import { ExplorerLink } from "../ExplorerLink";
-import { ContractNameCell, TagsCell } from "../table";
+import { ContractNameCell } from "../table";
 import { InstantiatorRender } from "../table/contracts/ContractsTableRow";
 import type { CTAInfo } from "../table/contracts/ContractsTableRowCTA";
 import { ContractsTableRowCTA } from "../table/contracts/ContractsTableRowCTA";
@@ -61,22 +61,9 @@ export const InstantiatedContractCard = ({
           <MobileLabel label="Contract Name" />
           <ContractNameCell contractLocalInfo={contractInfo} isReadOnly />
         </Flex>
-        <Flex>
-          <Flex direction="column" flex="1">
-            {instantiatorRemark(contractInfo.remark)}
-            <InstantiatorRender
-              contractInfo={contractInfo}
-              isReadOnly={false}
-            />
-          </Flex>
-          <Flex direction="column" flex="1">
-            <MobileLabel label="Tags" />
-            <TagsCell
-              tagSize="xs"
-              contractLocalInfo={contractInfo}
-              isReadOnly
-            />
-          </Flex>
+        <Flex direction="column">
+          {instantiatorRemark(contractInfo.remark)}
+          <InstantiatorRender contractInfo={contractInfo} isReadOnly={false} />
         </Flex>
       </Flex>
     }

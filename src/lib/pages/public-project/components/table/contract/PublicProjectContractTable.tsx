@@ -82,7 +82,7 @@ export const PublicProjectContractTable = observer(
             value={searchKeyword}
             setInputState={setSearchKeyword}
             placeholder="Search with contract address or contract name"
-            size="lg"
+            size={{ base: "md", md: "lg" }}
             mb={6}
           />
         )}
@@ -91,7 +91,6 @@ export const PublicProjectContractTable = observer(
             {publicContracts.map((contract) => (
               <PublicContractCard
                 publicInfo={contract.publicInfo}
-                localInfo={contract.localInfo}
                 key={contract.publicInfo.contractAddress}
               />
             ))}

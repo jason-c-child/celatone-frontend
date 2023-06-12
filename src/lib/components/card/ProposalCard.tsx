@@ -59,7 +59,7 @@ export const ProposalCard = ({ proposal }: ProposalCardProps) => {
       }
       bottomContent={
         <>
-          <Flex direction="column" flex="3">
+          <Flex direction="column" flex="1">
             <MobileLabel label="Resolved Block Height" />
             <ResolvedHeight
               resolvedHeight={proposal.resolvedHeight}
@@ -67,7 +67,7 @@ export const ProposalCard = ({ proposal }: ProposalCardProps) => {
               isDepositFailed={isDepositFailed}
             />
           </Flex>
-          <Flex direction="column" flex="2">
+          <Flex direction="column" flex="1">
             <MobileLabel label="Proposed by" />
             <Proposer proposer={proposal.proposer} />
           </Flex>

@@ -61,7 +61,7 @@ export const PublicProjectAccountTable = ({
           value={searchKeyword}
           setInputState={setSearchKeyword}
           placeholder="Search with account address, name or description"
-          size="lg"
+          size={{ base: "md", md: "lg" }}
           mb={6}
         />
       )}

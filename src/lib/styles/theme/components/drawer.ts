@@ -15,7 +15,6 @@ const baseStyle = definePartsStyle({
   },
   body: {
     color: "text.main",
-    py: "16px",
   },
   overlay: {
     bg: "background.overlay",

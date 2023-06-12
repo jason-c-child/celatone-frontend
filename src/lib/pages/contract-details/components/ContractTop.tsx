@@ -110,12 +110,11 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
           },
           { text: truncate(contractAddress) },
         ]}
-        mb={6}
       />
       <Flex
         justify="space-between"
-        my={{ base: 0, md: 6 }}
         align={{ base: "center", md: "start" }}
+        mt={{ base: 3, md: 6 }}
         direction={{ base: "column", md: "row" }}
       >
         <Flex
@@ -124,7 +123,12 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
           maxW="670px"
           gap={{ base: 2, md: 1 }}
         >
-          <Flex gap={1}>
+          <Flex gap={1} align="center">
+            <CustomIcon
+              name="contract-address"
+              boxSize={5}
+              color="secondary.main"
+            />
             {publicProject.publicDetail?.logo && (
               <Image
                 src={publicProject.publicDetail.logo}
@@ -186,27 +190,36 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
             <GitHubLink github={publicProject.publicInfo?.github} />
           )}
         </Flex>
-        <Flex gap={{ base: 2, md: 4 }} mt={{ base: 8, md: 0 }}>
-          <AdminButton
-            contractAddress={contractAddress as ContractAddr}
-            admin={instantiateInfo?.admin}
-          />
+        <Flex
+          gap={{ base: 2, md: 4 }}
+          mt={{ base: 8, md: 0 }}
+          w={{ base: "full", md: "auto" }}
+        >
+          {!isMobile && (
+            <AdminButton
+              contractAddress={contractAddress as ContractAddr}
+              admin={instantiateInfo?.admin}
+            />
+          )}
           <Button
             variant="outline-primary"
+            w={{ base: "full", md: "auto" }}
             leftIcon={<CustomIcon name="query" />}
             onClick={goToQuery}
             size={{ base: "sm", md: "md" }}
           >
             Query
           </Button>
-          <Button
-            variant="outline-primary"
-            leftIcon={<CustomIcon name="execute" />}
-            onClick={goToExecute}
-            size={{ base: "sm", md: "md" }}
-          >
-            Execute
-          </Button>
+          {!isMobile && (
+            <Button
+              variant="outline-primary"
+              leftIcon={<CustomIcon name="execute" />}
+              onClick={goToExecute}
+              size={{ base: "sm", md: "md" }}
+            >
+              Execute
+            </Button>
+          )}
           {!isMobile && (
             <Flex>
               {contractLocalInfo && (

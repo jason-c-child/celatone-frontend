@@ -13,10 +13,12 @@ import { DefaultMobileCard } from "./DefaultMobileCard";
 interface TransactionCardProps {
   transaction: Transaction;
   showRelations?: boolean;
+  showTimestamp?: boolean;
 }
 export const TransactionCard = ({
   transaction,
   showRelations = true,
+  showTimestamp = true,
 }: TransactionCardProps) => {
   return (
     <DefaultMobileCard
@@ -57,12 +59,14 @@ export const TransactionCard = ({
               showCopyOnHover
             />
           </Flex>
-          <Flex direction="column">
-            <Text variant="body3">{formatUTC(transaction.created)}</Text>
-            <Text variant="body3" color="text.dark">
-              {`(${dateFromNow(transaction.created)})`}
-            </Text>
-          </Flex>
+          {showTimestamp && (
+            <Flex direction="column">
+              <Text variant="body3">{formatUTC(transaction.created)}</Text>
+              <Text variant="body3" color="text.dark">
+                {`(${dateFromNow(transaction.created)})`}
+              </Text>
+            </Flex>
+          )}
         </Flex>
       }
     />

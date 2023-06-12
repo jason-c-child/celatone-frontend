@@ -58,7 +58,7 @@ const ContractDetailsBody = observer(
       <>
         <ContractTop contractData={contractData} />
         {/* Tokens Section */}
-        <Flex direction="column" mt={{ base: 8, md: 0 }}>
+        <Flex direction="column" mt={{ base: 8, md: 4 }}>
           <TokenSection balances={contractData.balances} />
         </Flex>
         {/* Contract Description Section */}
