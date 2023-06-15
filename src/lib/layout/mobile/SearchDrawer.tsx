@@ -193,11 +193,13 @@ export const SearchDrawer = () => {
                   justify="center"
                   borderRadius={CURR_THEME.borderRadius.default}
                 >
-                  <Text variant="body2">Your result will display here </Text>
+                  <Text variant="body2" color="text.dark">
+                    Your result will display here
+                  </Text>
                 </Flex>
               )}
             </FormControl>
-            <Text variant="body3" textAlign="center" mt={2}>
+            <Text variant="body3" color="text.dark" textAlign="center" mt={2}>
               You can search by Block Height / Tx Hash / Code ID / Contract
               Address / Wallet Address
             </Text>

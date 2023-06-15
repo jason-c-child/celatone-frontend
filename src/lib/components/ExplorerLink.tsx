@@ -34,6 +34,7 @@ interface ExplorerLinkProps extends BoxProps {
   textVariant?: TextProps["variant"];
   ampCopierSection?: string;
   openNewTab?: boolean;
+  fixedHeight?: boolean;
 }
 
 const getNavigationUrl = (
@@ -157,6 +158,7 @@ export const ExplorerLink = ({
   textVariant = "body2",
   ampCopierSection,
   openNewTab,
+  fixedHeight,
   ...componentProps
 }: ExplorerLinkProps) => {
   const { address, currentChainName } = useWallet();
@@ -194,7 +196,7 @@ export const ExplorerLink = ({
         <Flex
           display={{ base: "inline-flex", md: "flex" }}
           align="center"
-          h="24px"
+          h={fixedHeight ? "24px" : "auto"}
         >
           <LinkRender
             type={type}
