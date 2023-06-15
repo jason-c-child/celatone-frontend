@@ -91,6 +91,16 @@ export const OSMOSIS_THEME: ThemeConfig = {
       900: "#140F34",
     },
   },
+  tag: {
+    signer: {
+      bg: "accent.darker",
+      color: "inherit",
+    },
+    related: {
+      bg: "primary.dark",
+      color: "text.main",
+    },
+  },
   borderRadius: {
     default: "8px",
     iconButton: "36px",

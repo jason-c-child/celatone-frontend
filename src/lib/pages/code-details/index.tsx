@@ -152,7 +152,7 @@ const CodeDetailsBody = observer(
             title="Public Code Description"
             description={publicProject.publicCodeData.description}
             textLine={2}
-            icon={<CustomIcon name="website" ml={0} mb={2} color="gray.600" />}
+            icon={<CustomIcon name="public-project" ml={0} color="gray.600" />}
           />
         )}
         <Divider borderColor="gray.700" my={{ base: 6, md: 12 }} />

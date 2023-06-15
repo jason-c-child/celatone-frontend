@@ -129,7 +129,7 @@ export const TxFilterSelection = forwardRef<
                     key={option}
                   >
                     <Tag
-                      variant="primary-dark"
+                      variant="primary-light"
                       gap={1}
                       mr={1}
                       whiteSpace="nowrap"
@@ -202,8 +202,7 @@ export const TxFilterSelection = forwardRef<
                   onClick={() => selectOption(option)}
                 >
                   <Flex alignItems="center" justifyContent="space-between">
-                    <Text>{displayActionValue(option)}</Text>
-
+                    <Text>{displayActionValue(option)}</Text>f
                     {isOptionSelected(option) && (
                       <CustomIcon
                         name="check"

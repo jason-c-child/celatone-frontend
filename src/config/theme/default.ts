@@ -100,6 +100,16 @@ export const DEFAULT_THEME: ThemeConfig = {
     indicator: "2px",
     stepper: "full",
   },
+  tag: {
+    signer: {
+      bg: "accent.darker",
+      color: "inherit",
+    },
+    related: {
+      bg: "primary.dark",
+      color: "text.main",
+    },
+  },
   jsonTheme: "monokai",
   illustration: {
     error: "https://assets.alleslabs.dev/illustration/404.svg",

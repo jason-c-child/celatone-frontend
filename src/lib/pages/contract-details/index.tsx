@@ -10,7 +10,7 @@ import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-import { useValidateAddress } from "lib/app-provider";
+import { useMobile, useValidateAddress } from "lib/app-provider";
 import { CustomTab } from "lib/components/CustomTab";
 import { Loading } from "lib/components/Loading";
 import PageContainer from "lib/components/PageContainer";
@@ -51,7 +51,7 @@ const ContractDetailsBody = observer(
       refetchTransactions,
       refetchRelatedProposals,
     } = useContractDetailsTableCounts(contractAddress);
-
+    const isMobile = useMobile();
     if (!contractData.instantiateInfo) return <InvalidContract />;
 
     return (
@@ -72,6 +72,11 @@ const ContractDetailsBody = observer(
           direction={{ base: "column", md: "row" }}
         >
           {/* Instantiate Info */}
+          {isMobile && (
+            <Heading as="h6" variant="h6" mb={6} id={tableHeaderId}>
+              Instantiate Info
+            </Heading>
+          )}
           <InstantiateInfo contractData={contractData} />
           {/* Contract Info (Expand) */}
           <Flex direction="column" flex={0.8} gap={4} mt={{ base: 12, md: 0 }}>
@@ -94,7 +99,6 @@ const ContractDetailsBody = observer(
         <Heading as="h6" variant="h6" mb={6} id={tableHeaderId}>
           History
         </Heading>
-
         <Tabs>
           <TabList
             borderBottom="1px solid"

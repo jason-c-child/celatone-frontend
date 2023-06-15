@@ -113,17 +113,16 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
       />
       <Flex
         justify="space-between"
-        align={{ base: "center", md: "start" }}
         mt={{ base: 3, md: 6 }}
         direction={{ base: "column", md: "row" }}
+        gap={{ md: 4 }}
       >
         <Flex
           direction="column"
           textOverflow="ellipsis"
-          maxW="670px"
           gap={{ base: 2, md: 1 }}
         >
-          <Flex gap={1} align="center">
+          <Flex gap={1} align={{ base: "start", md: "center" }}>
             <CustomIcon
               name="contract-address"
               boxSize={5}
@@ -140,8 +139,10 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
             )}
             <Heading
               as="h5"
+              mt={{ base: 1, md: 0 }}
+              ml={{ base: 1, md: 0 }}
               variant={{ base: "h6", md: "h5" }}
-              className="ellipsis"
+              className={!isMobile ? "ellipsis" : ""}
             >
               {displayName}
             </Heading>
@@ -210,16 +211,15 @@ export const ContractTop = ({ contractData }: ContractTopProps) => {
           >
             Query
           </Button>
-          {!isMobile && (
-            <Button
-              variant="outline-primary"
-              leftIcon={<CustomIcon name="execute" />}
-              onClick={goToExecute}
-              size={{ base: "sm", md: "md" }}
-            >
-              Execute
-            </Button>
-          )}
+          <Button
+            variant="outline-primary"
+            w={{ base: "full", md: "auto" }}
+            leftIcon={<CustomIcon name="execute" />}
+            onClick={goToExecute}
+            size={{ base: "sm", md: "md" }}
+          >
+            Execute
+          </Button>
           {!isMobile && (
             <Flex>
               {contractLocalInfo && (

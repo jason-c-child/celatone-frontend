@@ -96,21 +96,19 @@ export const PublicProjectContractTable = observer(
             ))}
           </Flex>
         ) : (
-          <>
-            <TableContainer>
-              <ContractTableHeader />
-              {publicContracts.map((contract) => (
-                <PublicProjectContractRow
-                  key={contract.publicInfo.contractAddress}
-                  publicContractInfo={contract}
-                  templateColumns={TEMPLATE_COLUMNS}
-                />
-              ))}
-            </TableContainer>
-            {contracts.length > 5 && onViewMore && (
-              <ViewMore onClick={onViewMore} />
-            )}
-          </>
+          <TableContainer>
+            <ContractTableHeader />
+            {publicContracts.map((contract) => (
+              <PublicProjectContractRow
+                key={contract.publicInfo.contractAddress}
+                publicContractInfo={contract}
+                templateColumns={TEMPLATE_COLUMNS}
+              />
+            ))}
+          </TableContainer>
+        )}
+        {contracts.length > 5 && onViewMore && (
+          <ViewMore onClick={onViewMore} />
         )}
       </Box>
     );

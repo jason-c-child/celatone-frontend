@@ -3,8 +3,6 @@ import { Flex, Text } from "@chakra-ui/react";
 import { ExplorerLink } from "../ExplorerLink";
 import { ContractNameCell } from "../table";
 import { InstantiatorRender } from "../table/contracts/ContractsTableRow";
-import type { CTAInfo } from "../table/contracts/ContractsTableRowCTA";
-import { ContractsTableRowCTA } from "../table/contracts/ContractsTableRowCTA";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
 import type { ContractHistoryRemark, ContractInfo, Option } from "lib/types";
 import { RemarkOperation } from "lib/types";
@@ -14,7 +12,6 @@ import { DefaultMobileCard } from "./DefaultMobileCard";
 
 interface InstantiatedContractCardProps {
   contractInfo: ContractInfo;
-  withCTA?: CTAInfo;
 }
 const instantiatorRemark = (remark: Option<ContractHistoryRemark>) => {
   if (!remark) {
@@ -35,25 +32,17 @@ const instantiatorRemark = (remark: Option<ContractHistoryRemark>) => {
 };
 export const InstantiatedContractCard = ({
   contractInfo,
-  withCTA,
 }: InstantiatedContractCardProps) => (
   <DefaultMobileCard
     topContent={
-      <>
-        <Flex gap={2} align="center">
-          <MobileLabel variant="body2" label="Contract Address" />
-          <ExplorerLink
-            value={contractInfo.contractAddress}
-            type="contract_address"
-            showCopyOnHover
-          />
-        </Flex>
-        <ContractsTableRowCTA
-          showLastUpdate={false}
-          contractInfo={contractInfo}
-          withCTA={withCTA}
+      <Flex gap={2} align="center">
+        <MobileLabel variant="body2" label="Contract Address" />
+        <ExplorerLink
+          value={contractInfo.contractAddress}
+          type="contract_address"
+          showCopyOnHover
         />
-      </>
+      </Flex>
     }
     middleContent={
       <Flex gap={3} direction="column">

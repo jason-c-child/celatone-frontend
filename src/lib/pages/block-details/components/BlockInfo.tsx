@@ -13,7 +13,7 @@ export const BlockInfo = ({ blockData }: BlockInfoProps) => {
   return (
     <Box mb={12}>
       <Heading as="h6" variant="h6" mb={6}>
-        Block Information
+        Block Info
       </Heading>
       <Flex gap={{ base: 4, md: 12 }} direction={{ base: "column", md: "row" }}>
         <Flex direction="row" flex="1" maxW={{ md: "400px" }}>

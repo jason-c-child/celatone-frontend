@@ -61,8 +61,8 @@ export const TokenSection = ({ balances, amptrackPage }: TokenSectionProps) => {
 
   return (
     <>
-      <Flex justify="space-between">
-        <Text variant="body2" color="text.dark" mb={1} fontWeight={500}>
+      <Flex justify="space-between" align="center" mb={{ base: 2, md: 1 }}>
+        <Text variant="body2" color="text.dark" fontWeight={500}>
           Assets
         </Text>
         <UnsupportedTokensModal

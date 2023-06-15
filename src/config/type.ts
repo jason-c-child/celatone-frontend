@@ -87,6 +87,16 @@ export type ThemeConfig = {
       900: string;
     };
   };
+  tag: {
+    signer: {
+      bg: string;
+      color: string;
+    };
+    related: {
+      bg: string;
+      color: string;
+    };
+  };
   button?: {
     primary?: {
       background: string;

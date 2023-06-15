@@ -90,6 +90,16 @@ export const SEI_THEME: ThemeConfig = {
       900: "#0C1C23",
     },
   },
+  tag: {
+    signer: {
+      bg: "accent.darker",
+      color: "inherit",
+    },
+    related: {
+      bg: "primary.dark",
+      color: "gray.900",
+    },
+  },
   button: {
     primary: {
       background: "#F0E3CF",

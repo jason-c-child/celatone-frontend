@@ -115,7 +115,7 @@ export const CodeInfoSection = ({
   return (
     <Box mb={12}>
       <Heading as="h6" variant="h6" mb={6}>
-        Code Information
+        Code Info
       </Heading>
       <Grid
         templateColumns={{

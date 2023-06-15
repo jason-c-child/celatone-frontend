@@ -72,22 +72,18 @@ export const PublicProjectAccountTable = ({
           ))}
         </Flex>
       ) : (
-        <>
-          <TableContainer mb={4}>
-            <AccountTableHeader />
-            {filteredAccounts.map((account) => (
-              <PublicProjectAccountRow
-                key={account.address}
-                accountInfo={account}
-                templateColumns={TEMPLATE_COLUMNS}
-              />
-            ))}
-          </TableContainer>
-          {accounts.length > 5 && onViewMore && (
-            <ViewMore onClick={onViewMore} />
-          )}
-        </>
+        <TableContainer mb={4}>
+          <AccountTableHeader />
+          {filteredAccounts.map((account) => (
+            <PublicProjectAccountRow
+              key={account.address}
+              accountInfo={account}
+              templateColumns={TEMPLATE_COLUMNS}
+            />
+          ))}
+        </TableContainer>
       )}
+      {accounts.length > 5 && onViewMore && <ViewMore onClick={onViewMore} />}
     </Box>
   );
 };
