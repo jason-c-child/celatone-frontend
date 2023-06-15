@@ -4,7 +4,7 @@ import { useWallet } from "@cosmos-kit/react";
 import { AppLink } from "../AppLink";
 import { ExplorerLink } from "../ExplorerLink";
 import { ContractNameCell } from "../table";
-import { getAddressTypeByLength } from "lib/app-provider";
+import { getAddressTypeByLength, useInternalNavigate } from "lib/app-provider";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
 import type { PublicContract } from "lib/types";
 
@@ -16,8 +16,15 @@ interface PublicContractCardProps {
 
 export const PublicContractCard = ({ publicInfo }: PublicContractCardProps) => {
   const { currentChainName } = useWallet();
+  const navigate = useInternalNavigate();
   return (
     <DefaultMobileCard
+      onClick={() =>
+        navigate({
+          pathname: "/contracts/[contractAddr]",
+          query: { contractAddr: publicInfo.contractAddress },
+        })
+      }
       topContent={
         <>
           <Flex align="start" direction="column">

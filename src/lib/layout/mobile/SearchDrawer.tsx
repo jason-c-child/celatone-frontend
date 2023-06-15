@@ -157,6 +157,7 @@ export const SearchDrawer = () => {
                 <Input
                   value={keyword}
                   h="36px"
+                  autoFocus
                   onChange={handleSearchChange}
                   placeholder={placeholder}
                   focusBorderColor="secondary.main"

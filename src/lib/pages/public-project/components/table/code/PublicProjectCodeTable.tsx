@@ -70,6 +70,7 @@ export const PublicProjectCodeTable = observer(
         },
       })
     );
+
     if (!publicCodes.length)
       return (
         <>

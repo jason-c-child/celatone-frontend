@@ -2,7 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 
 import { ExplorerLink } from "../ExplorerLink";
 import { CodeNameCell } from "../table";
-import { useGetAddressType } from "lib/app-provider";
+import { useGetAddressType, useInternalNavigate } from "lib/app-provider";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
 import { RemarkRender } from "lib/pages/contract-details/components/tables/migration/MigrationRow";
 import type { ContractMigrationHistory } from "lib/types";
@@ -16,8 +16,15 @@ interface MigrationCardProps {
 export const MigrationCard = ({ history }: MigrationCardProps) => {
   const getAddressType = useGetAddressType();
   const cw2Info = getCw2Info(history.cw2Contract, history.cw2Version);
+  const navigate = useInternalNavigate();
   return (
     <DefaultMobileCard
+      onClick={() =>
+        navigate({
+          pathname: "/codes/[codeId]",
+          query: { codeId: history.codeId.toString() },
+        })
+      }
       topContent={
         <Flex w="full">
           <Flex flex="1" gap={2} align="center">

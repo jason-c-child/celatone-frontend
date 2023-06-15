@@ -52,6 +52,7 @@ const Layout = ({ children }: LayoutProps) => {
       gridTemplateColumns={mode.templateCols}
       h="100vh"
       overflowX="hidden"
+      overflowY="scroll"
       bg="background.main"
     >
       <GridItem bg="gray.900" area="header" mb={1}>
@@ -69,16 +70,12 @@ const Layout = ({ children }: LayoutProps) => {
           >
             {mode.subHeader}
           </GridItem>
-          <GridItem
-            bg={{ base: "background.main", md: "gray.900" }}
-            area="nav"
-            overflowY={isMobile ? "visible" : "auto"}
-          >
+          <GridItem bg={{ base: "background.main", md: "gray.900" }} area="nav">
             <Navbar isExpand={isExpand} setIsExpand={setIsExpand} />
           </GridItem>
         </>
       )}
-      <GridItem area="main" overflowY="auto" overflowX="hidden" id="content">
+      <GridItem area="main" overflowX="hidden" id="content">
         <div style={{ minHeight: `calc(100vh - 129px)` }}>{children}</div>
         <Footer />
       </GridItem>

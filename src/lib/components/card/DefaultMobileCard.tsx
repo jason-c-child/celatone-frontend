@@ -18,6 +18,7 @@ export const DefaultMobileCard = ({
       borderRadius="8px"
       background="gray.900"
       p={3}
+      cursor="pointer"
       direction="column"
       gap={3}
       w="full"

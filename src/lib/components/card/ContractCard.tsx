@@ -3,6 +3,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import { ExplorerLink } from "../ExplorerLink";
 import { ContractNameCell } from "../table";
 import { InstantiatorRender } from "../table/contracts/ContractsTableRow";
+import { useInternalNavigate } from "lib/app-provider";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
 import type { ContractHistoryRemark, ContractInfo, Option } from "lib/types";
 import { RemarkOperation } from "lib/types";
@@ -32,41 +33,55 @@ const instantiatorRemark = (remark: Option<ContractHistoryRemark>) => {
 };
 export const InstantiatedContractCard = ({
   contractInfo,
-}: InstantiatedContractCardProps) => (
-  <DefaultMobileCard
-    topContent={
-      <Flex gap={2} align="center">
-        <MobileLabel variant="body2" label="Contract Address" />
-        <ExplorerLink
-          value={contractInfo.contractAddress}
-          type="contract_address"
-          showCopyOnHover
-        />
-      </Flex>
-    }
-    middleContent={
-      <Flex gap={3} direction="column">
-        <Flex direction="column">
-          <MobileLabel label="Contract Name" />
-          <ContractNameCell contractLocalInfo={contractInfo} isReadOnly />
+}: InstantiatedContractCardProps) => {
+  const navigate = useInternalNavigate();
+  return (
+    <DefaultMobileCard
+      onClick={() =>
+        navigate({
+          pathname: "/contracts/[contractAddr]",
+          query: { contractAddr: contractInfo.contractAddress },
+        })
+      }
+      topContent={
+        <Flex gap={2} align="center">
+          <MobileLabel variant="body2" label="Contract Address" />
+          <ExplorerLink
+            value={contractInfo.contractAddress}
+            type="contract_address"
+            showCopyOnHover
+          />
         </Flex>
-        <Flex direction="column">
-          {instantiatorRemark(contractInfo.remark)}
-          <InstantiatorRender contractInfo={contractInfo} isReadOnly={false} />
-        </Flex>
-      </Flex>
-    }
-    bottomContent={
-      <>
-        {contractInfo.latestUpdated && (
+      }
+      middleContent={
+        <Flex gap={3} direction="column">
           <Flex direction="column">
-            <Text variant="body3">{formatUTC(contractInfo.latestUpdated)}</Text>
-            <Text variant="body3" color="text.dark">
-              {`(${dateFromNow(contractInfo.latestUpdated)})`}
-            </Text>
+            <MobileLabel label="Contract Name" />
+            <ContractNameCell contractLocalInfo={contractInfo} isReadOnly />
           </Flex>
-        )}
-      </>
-    }
-  />
-);
+          <Flex direction="column">
+            {instantiatorRemark(contractInfo.remark)}
+            <InstantiatorRender
+              contractInfo={contractInfo}
+              isReadOnly={false}
+            />
+          </Flex>
+        </Flex>
+      }
+      bottomContent={
+        <>
+          {contractInfo.latestUpdated && (
+            <Flex direction="column">
+              <Text variant="body3">
+                {formatUTC(contractInfo.latestUpdated)}
+              </Text>
+              <Text variant="body3" color="text.dark">
+                {`(${dateFromNow(contractInfo.latestUpdated)})`}
+              </Text>
+            </Flex>
+          )}
+        </>
+      }
+    />
+  );
+};

@@ -2,6 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 
 import { ExplorerLink } from "../ExplorerLink";
 import { ValidatorBadge } from "../ValidatorBadge";
+import { useInternalNavigate } from "lib/app-provider";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
 import type { BlockInfo } from "lib/types/block";
 import { dateFromNow, formatUTC, truncate } from "lib/utils";
@@ -12,8 +13,15 @@ interface BlockCardProps {
   blockData: BlockInfo;
 }
 export const BlockCard = ({ blockData }: BlockCardProps) => {
+  const navigate = useInternalNavigate();
   return (
     <DefaultMobileCard
+      onClick={() =>
+        navigate({
+          pathname: "/blocks/[blockHeight]",
+          query: { blockHeight: blockData.height },
+        })
+      }
       topContent={
         <Flex align="center" justify="center" gap={2} w="full">
           <Flex direction="column" flex="1">

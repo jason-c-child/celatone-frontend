@@ -3,6 +3,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import { ExplorerLink } from "../ExplorerLink";
 import { PermissionChip } from "../PermissionChip";
 import { CodeNameCell } from "../table";
+import { useInternalNavigate } from "lib/app-provider";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
 import type { CodeInfo, PublicCode } from "lib/types";
 import { getCw2Info } from "lib/utils";
@@ -14,26 +15,24 @@ interface StoredCodeCardProps {
 }
 export const StoredCodeCard = ({ codeInfo }: StoredCodeCardProps) => {
   const cw2Info = getCw2Info(codeInfo.cw2Contract, codeInfo.cw2Version);
+  const navigate = useInternalNavigate();
   return (
     <DefaultMobileCard
+      onClick={() =>
+        navigate({
+          pathname: "/codes/[codeId]",
+          query: { codeId: codeInfo.id.toString() },
+        })
+      }
       topContent={
-        <>
-          <Flex gap={2} align="center">
-            <MobileLabel variant="body2" label="Code ID" />
-            <ExplorerLink
-              type="code_id"
-              value={codeInfo.id.toString()}
-              showCopyOnHover
-            />
-          </Flex>
-          {/* <HStack onClick={(e) => e.stopPropagation()}>
-            <InstantiateButton
-              instantiatePermission={codeInfo.instantiatePermission}
-              permissionAddresses={codeInfo.permissionAddresses}
-              codeId={codeInfo.id}
-            />
-          </HStack> */}
-        </>
+        <Flex gap={2} align="center">
+          <MobileLabel variant="body2" label="Code ID" />
+          <ExplorerLink
+            type="code_id"
+            value={codeInfo.id.toString()}
+            showCopyOnHover
+          />
+        </Flex>
       }
       middleContent={
         <Flex direction="column" gap={3}>
@@ -46,6 +45,7 @@ export const StoredCodeCard = ({ codeInfo }: StoredCodeCardProps) => {
             <Text
               color={cw2Info ? "text.main" : "text.disabled"}
               wordBreak="break-all"
+              onClick={(e) => e.stopPropagation()}
             >
               {cw2Info ?? "N/A"}
             </Text>

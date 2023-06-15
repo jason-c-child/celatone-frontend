@@ -4,6 +4,7 @@ import { RenderActionMessages } from "../action-msg/ActionMessages";
 import { ExplorerLink } from "../ExplorerLink";
 import { CustomIcon } from "../icon";
 import { RelationChip } from "../table/transactions/RelationChip";
+import { useInternalNavigate } from "lib/app-provider";
 import { MobileLabel } from "lib/pages/account-details/components/mobile/MobileLabel";
 import type { Transaction } from "lib/types";
 import { dateFromNow, formatUTC } from "lib/utils";
@@ -20,8 +21,15 @@ export const TransactionCard = ({
   showRelations = true,
   showTimestamp = true,
 }: TransactionCardProps) => {
+  const navigate = useInternalNavigate();
   return (
     <DefaultMobileCard
+      onClick={() =>
+        navigate({
+          pathname: "/txs/[txHash]",
+          query: { txHash: transaction.hash.toLocaleUpperCase() },
+        })
+      }
       topContent={
         <>
           <Flex align="center" gap={2}>
