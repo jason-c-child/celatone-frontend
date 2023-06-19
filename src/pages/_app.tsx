@@ -15,6 +15,7 @@ import { AppProvider } from "lib/app-provider/contexts/app";
 import { Chakra } from "lib/components/Chakra";
 import { MobileGuard } from "lib/components/MobileGuard";
 import { CelatoneSeo } from "lib/components/Seo";
+import { oatchain, oatchainAsset } from "lib/config/oatchain";
 import Layout from "lib/layout";
 import "lib/styles/globals.css";
 import { StoreProvider } from "lib/providers/store";
@@ -72,8 +73,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
       <QueryClientProvider client={queryClient}>
         <ChainProvider
-          chains={chains}
-          assetLists={assets}
+          chains={[...chains, oatchain]}
+          assetLists={[...assets, oatchainAsset]}
           wallets={wallets}
           endpointOptions={{
             isLazy: true,
