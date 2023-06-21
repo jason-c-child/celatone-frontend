@@ -4,7 +4,7 @@ import type { Option } from "lib/types";
 export type SupportedChain = "osmosis" | "terra" | "mitosis" | "sei";
 
 interface Chain {
-  mainnet: string;
+  mainnet?: string;
   testnet: string;
   localnet?: string;
 }
@@ -28,7 +28,6 @@ export const MITOSIS_CHAINS: Chain = {
 };
 
 export const SEI_CHAINS: Chain = {
-  mainnet: "sei",
   testnet: "seitestnet2",
 };
 
